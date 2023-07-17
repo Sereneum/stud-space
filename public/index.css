@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --var-bg: #EDEDED;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --var-bg: #000000;
+    }
+}
+
+#root {
+    box-sizing: border-box;
+    width: 100%;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 0;
+    align-content: center;
+    flex-wrap: nowrap;
+    gap: 0;
+}
