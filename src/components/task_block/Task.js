@@ -80,6 +80,7 @@ const Task = () => {
         navigate(-1)
     }
 
+    const isSuccess = currentData.statusID === 4
 
     // >xd<
     // Task
@@ -87,8 +88,6 @@ const Task = () => {
     // ----Solution
     // --------SolutionFile
     // --------SolutionModal
-    // ------------Dropzone
-    // ------------MobileDropzone
     // ----Materials
     // >xd<
 
@@ -112,12 +111,13 @@ const Task = () => {
                 periodRealization={currentData.periodRealization}
                 statusID={currentData.statusID}
                 notation={detailData?.notation}
+                isSuccess={isSuccess}
             />
 
             {/* Блок с решением задания (прикрепление + уже прикрепленные файлы)*/}
             <Solution
                 files={detailData?.files.sort((a, b) => a.dateLoading < b.dateLoading)}
-                isSuccess={currentData.statusID === 4}
+                isSuccess={isSuccess}
                 parameters={parameters}
                 loadingTaskData={loadingTaskData}
             />

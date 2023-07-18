@@ -1,7 +1,7 @@
 import {$authHost} from "./index";
 import {API_ALL_COURSES, API_COURSE, API_DELETE_FILE, API_DUTY, API_UPLOAD_FILE} from "./consts";
 import axios from "axios";
-import {preEpoch_mergeCourseData} from "./preEpoch";
+import {preEpoch_mergeCourseData, preEpoch_division} from "./preEpoch";
 
 
 const conv = data => {
@@ -88,4 +88,31 @@ export const epoch_deleteFile = (fileID) => new Promise((resolve, reject) => {
         .then(d => resolve(d.data))
         .catch(e => e)
 })
+
+// Получение всех active/passive курсов
+export const epoch_fetchConfigurableCourses = (id) => {
+    return new Promise((resolve, reject) => {
+        Promise.all([epoch_fetchServerData(id), fetchAllCourses(id)])
+            .then(r => resolve(preEpoch_division(r[0].active, r[1])))
+            .catch(err => reject(err))
+    })
+}
+
+/* Обновление активных курсов в бд */
+export const epoch_updateActiveCourses = async (id, active = []) => {
+    return new Promise((resolve, reject) => {
+        let body = JSON.stringify({
+            id,
+            active: JSON.stringify(active),
+            type: "add"
+        })
+        serverInter.post('', body)
+            .then(d => {
+                console.log('epoch_updateActiveCourses -> result = ', d.data)
+                resolve(d.data)
+            })
+            .catch(e => reject({status: 0, error: e}))
+    })
+}
+
 

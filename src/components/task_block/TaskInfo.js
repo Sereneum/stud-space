@@ -7,7 +7,7 @@ import moment from 'moment';
 import 'moment/locale/ru';
 import {timeManager} from "../../managers/timeManager"; // Подключаем русскую локаль
 
-const TaskInfo = ({status, teacher, dateAdded, periodRealization, statusID, notation}) => {
+const TaskInfo = ({status, teacher, dateAdded, periodRealization, statusID, notation, isSuccess}) => {
 
 
     const normalizationDate = (dateStr) => {
@@ -19,6 +19,7 @@ const TaskInfo = ({status, teacher, dateAdded, periodRealization, statusID, nota
         return `${day < 10 ? '0' + day : day}.${month < 10 ? '0' + month : month}.${year}`
     }
 
+    const deadline = timeManager(periodRealization)
 
     return (
         <div className="element_container">
@@ -35,10 +36,15 @@ const TaskInfo = ({status, teacher, dateAdded, periodRealization, statusID, nota
                             {getStatusIcon(statusID).icon}
                             <p className="text_lighter">{status}</p>
                         </div>
-                        <div className="lighter not_checked">
-                            <Clock weight="bold" className="icon_min"/>
-                            <p>{timeManager(periodRealization)}</p>
-                        </div>
+                        {
+                            deadline !== '0_0'
+                            &&
+                            <div className="lighter not_checked">
+                                <Clock weight="bold" className="icon_min"/>
+                                <p>{deadline}</p>
+                            </div>
+                        }
+
                     </div>
 
                     <div className="column_container_mini">

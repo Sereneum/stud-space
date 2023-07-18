@@ -3,8 +3,9 @@ import {GearFine, CaretRight,} from "@phosphor-icons/react";
 import {NavLink, useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import {Context} from "../../index";
+import {observer} from "mobx-react-lite";
 
-const CoursesInner = () => {
+const CoursesInner = observer(() => {
 
     const {courseData} = useContext(Context)
     const navigate = useNavigate()
@@ -40,6 +41,6 @@ const CoursesInner = () => {
 
         </>
     );
-}
+})
 
 export default CoursesInner;

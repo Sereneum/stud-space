@@ -83,6 +83,33 @@
     animation: enter 1s cubic-bezier(0, 1.07, 0, 0.99);
 }
 
+.rename {
+    font-size: 17px;
+    color: #ffffff;
+    /*background-color: #262626;*/
+    background-color: transparent;
+    border: 0 solid transparent;
+    /* border-radius: 7px; */
+    text-align: left;
+    color: black;
+
+    /*padding: 0 10px;*/
+    margin-bottom: 2px;
+
+    padding: 0;
+    /* margin: 0; */
+    -webkit-user-select: none;
+    user-select: none;
+    vertical-align: center;
+    width: 100%;
+    line-height: normal;
+}
+
+.rename.focus {
+    outline: none;
+}
+
+
 @media (pointer: fine) {
 .save_button:hover {
     filter: brightness(110%);

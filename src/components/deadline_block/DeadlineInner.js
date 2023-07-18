@@ -1,11 +1,9 @@
-import {CaretRight, Clock} from "@phosphor-icons/react";
-import {NavLink, useNavigate} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "../../index";
-import {checkDeadline} from "../../managers/timeManager";
 import DeadlineItem from "./DeadlineItem";
+import {observer} from "mobx-react-lite";
 
-const DeadlineInner = () => {
+const DeadlineInner = observer(() => {
     const {courseData} = useContext(Context)
 
     const [tasks, setTasks] = useState([])
@@ -29,11 +27,8 @@ const DeadlineInner = () => {
         v.push(courseData.courses[0].tasks[0])
         setTasks(v)
         setIsLoading(false)
-        // console.log(v[0])
         return () => setIsLoading(true)
-    }, [])
-
-
+    }, [courseData.courses])
 
 
     // ждем-с
@@ -57,6 +52,6 @@ const DeadlineInner = () => {
             </div>
         </>
     );
-}
+})
 
 export default DeadlineInner;

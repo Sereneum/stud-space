@@ -4,18 +4,24 @@ import {assignorIcon, assignorIconDownload, handleDownload} from "../../managers
 import {epoch_deleteFile} from "../../http/epochServer";
 
 /*Прикрепленный файл юзера в задании*/
-const SolutionFile = ({file, isSuccess, loadingTaskData}) => {
-
+const SolutionFile = ({file, isSuccess, loadingTaskData, isLast}) => {
 
     const download = () => handleDownload(file.nameFile, file.link)
 
     const deleteFile = () => {
-        if(isSuccess) return
+        if (isSuccess) return
 
         epoch_deleteFile(file.fileID)
-            .then(r => {console.log(r); loadingTaskData()})
+            .then(r => {
+                console.log(r);
+                loadingTaskData()
+            })
             .catch(err => console.log(err))
     }
+
+    console.log(file.nameFile ? file.nameFile : file.nameLink, isLast)
+
+
 
     return (
         <>
@@ -26,16 +32,21 @@ const SolutionFile = ({file, isSuccess, loadingTaskData}) => {
                     {assignorIconDownload(file.nameFile)}
                 </div>
 
-                <div className="breaker_ver"></div>
+                {!isSuccess
+                    &&
+                    <>
+                        <div className="breaker_ver"></div>
+                        <div className="button_cover_elem" onClick={deleteFile}>
+                            <div className="button_red">
+                                <Trash weight="bold" className="exit_text" size={"20px"}/>
+                            </div>
+                        </div>
+                    </>
+                }
 
-                <div className="button_cover_elem" onClick={deleteFile}>
-                    <div className="button_red">
-                        <Trash weight="bold" className="exit_text" size={"20px"}/>
-                    </div>
-                </div>
             </div>
 
-            <div className="breaker"></div>
+            {!(isSuccess && isLast)  && <div className="breaker"></div>}
         </>
     );
 };

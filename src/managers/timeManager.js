@@ -20,7 +20,7 @@ export const timeManager = (dead) => {
 
     // 1 случай - конец
     if (daysDiff <= 0 && hoursDiff <= 0)
-        return 'уфсе'
+        return '0_0'
 
     // 2 случай - ласт день
     if (daysDiff === 0 && hoursDiff > 0)

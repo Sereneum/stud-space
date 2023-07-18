@@ -1,95 +1,144 @@
-import { PencilSimple, PushPin, PushPinSlash } from "@phosphor-icons/react";
+import {PushPin, PushPinSlash} from "@phosphor-icons/react";
+import FixedCourse from "./FixedCourse";
+import LooseCourse from "./LooseCourse";
+import {useContext, useEffect, useState} from "react";
+import {Context} from "../../index";
+import {epoch_fetchConfigurableCourses, epoch_updateActiveCourses} from "../../http/epochServer";
+import {preEpoch_saveCourses} from "../../http/preEpoch";
+import {observer} from "mobx-react-lite";
 
-const Settings = () => {
-    return (
+const Settings = observer(() => {
+
+    const {user, courseData} = useContext(Context)
+    const [active, setActive] = useState([])
+    const [passive, setPassive] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+    // const [isSaveLoading, setIsSaveLoading] = useState(0)
+
+    const id = user.userData.anotherID
+
+    useEffect(() => {
+        epoch_fetchConfigurableCourses(id)
+            .then(r => {
+                setActive(r.active)
+                setPassive(r.passive)
+                setIsLoading(false)
+            })
+    }, [id])
+
+
+    if (isLoading) return <>
         <div className="block settings_block">
             <div className="title_container">
                 <h1>Настройка курсов</h1>
             </div>
+        </div>
+    </>
 
+    // const clickOnActive = useCallback(item => {
+    //     setPassive([active[item], ...passive])
+    //     setActive(active.filter((i, index) => item !== index))
+    // }, [active, passive])
+    //
+    // const clickOnPassive = useCallback(item => {
+    //     setActive([...active, passive[item]])
+    //     setPassive(passive.filter((i, index) => item !== index))
+    // }, [passive])
+
+    // const rename = useCallback((value, localIndex) => {
+    //     setActive(active.map((i, mapIndex) =>
+    //         mapIndex === localIndex ? {...i, course_name: value} : i
+    //     ))
+    // }, [active])
+
+    const clickOnActive = item => {
+        setPassive([active[item], ...passive])
+        setActive(active.filter((i, index) => item !== index))
+    }
+
+    const clickOnPassive = item => {
+        setActive([...active, passive[item]])
+        setPassive(passive.filter((i, index) => item !== index))
+    }
+
+    const rename = (value, localIndex) => {
+        setActive(active.map((i, mapIndex) =>
+            mapIndex === localIndex ? {...i, course_name: value} : i
+        ))
+    }
+
+    const save = () => {
+        // setIsSaveLoading(2)
+        preEpoch_saveCourses(courseData.courses, active)
+            .then(r => {
+                courseData.setCourses(r)
+                // setIsSaveLoading(prev => prev - 1)
+            })
+
+        epoch_updateActiveCourses(id, active)
+            .then(r => {
+                // setIsSaveLoading(prev => prev - 1)
+            })
+    }
+
+
+    return (
+        <div className="block settings_block">
+            {/*TITLE*/}
+            <div className="title_container">
+                <h1>Настройка курсов</h1>
+            </div>
+
+            {/*FIXED COURSES BLOCK*/}
             <div className="element_container">
+
+                {/*FIXED COURSES - TITLE*/}
                 <div className="title_container">
-                    <PushPin weight="fill" className="icon_min" />
+                    <PushPin weight="fill" className="icon_min"/>
                     <h3>Закреплено</h3>
                 </div>
 
-                <div className="content_cover">
-                    <div className="content_elem_column">
-                        <h3>Сейсморазведка</h3>
-                        <div className="container_row_start">
-                            <div className="button_settings edit"> 
-                                <PencilSimple weight="bold" className="icon_min" />
-                                <p className="text_min">Изменить</p>
-                            </div>
-                            <div className="button_settings unpin">
-                                <PushPinSlash weight="bold" className="icon_min red" />
-                                <p className="text_min red">Открепить</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="content_cover">
-                    <div className="content_elem_column">
-                        <h3>Магниторазведка</h3>
-                        <div className="container_row_start">
-                            <div className="button_settings edit"> 
-                                <PencilSimple weight="bold" className="icon_min" />
-                                <p className="text_min">Изменить</p>
-                            </div>
-                            <div className="button_settings unpin">
-                                <PushPinSlash weight="bold" className="icon_min red" />
-                                <p className="text_min red">Открепить</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {/*FIXED COURSES - ITEMS LIST*/}
+                {
+                    active.map((item, index) => <FixedCourse
+                        item={item}
+                        key={'a' + item.course_id}
+                        choose={() => clickOnActive(index)}
+                        localIndex={index}
+                        rename={rename}
+                    />)
+                }
             </div>
 
-
-
+            {/*LOOSE COURSES BLOCK*/}
             <div className="element_container">
+
+                {/*LOOSE COURSES - TITLE*/}
                 <div className="title_container">
-                    <PushPinSlash weight="fill" className="icon_min" />
+                    <PushPinSlash weight="fill" className="icon_min"/>
                     <h3>Не закреплено</h3>
                 </div>
 
+                {/*LOOSE COURSES - ITEMS LIST*/}
                 <div className="content_cover">
-
-                    <div className="content_elem_row select">
-                        <p>Базы данных</p>
-                        <PushPin weight="bold" className="icon_min" />
-                    </div>
-
-                    <div className="breaker"></div>
-
-                    <div className="content_elem_row select">
-                        <p>Месторождения полезных ископаемых (ПИ-20)</p>
-                        <PushPin weight="bold" className="icon_min" />
-                    </div>
-
-                    <div className="breaker"></div>
-
-                    <div className="content_elem_row select">
-                        <p>Программно-аппаратный комплекс в гравиразведке</p>
-                        <PushPin weight="bold" className="icon_min" />
-                    </div>
-
-                    <div className="breaker"></div>
-
-                    <div className="content_elem_row select">
-                        <p>Программно-аппаратный комплекс в радиометрии (ПИ-20)</p>
-                        <PushPin weight="bold" className="icon_min" />
-                    </div>
-
+                    {
+                        passive.map((item, index) =>
+                            <LooseCourse
+                                item={item}
+                                isLast={index === passive.length - 1}
+                                key={'p' + item.course_id}
+                                choose={() => clickOnPassive(index)}
+                            />)
+                    }
                 </div>
             </div>
-            
-            <div className="save_button">
+
+            {/* SAVE */}
+            <div className="save_button" onClick={save}>
                 <h4 className="text_lighter">Сохранить изменения</h4>
             </div>
         </div>
     );
-}
+})
 
 export default Settings;

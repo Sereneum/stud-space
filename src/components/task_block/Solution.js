@@ -10,6 +10,8 @@ const Solution = ({files, parameters, loadingTaskData, isSuccess}) => {
     const [isModal, setIsModal] = useState(false)
     const setModal = () => setIsModal(prev => !prev)
 
+    if(files.length ===0 && isSuccess) return <></>
+
     return (
         <div className="element_container">
             <div className="title_container">
@@ -17,22 +19,26 @@ const Solution = ({files, parameters, loadingTaskData, isSuccess}) => {
             </div>
 
             <div className="content_cover">
-
                 {/* Прикрепленные файлы */}
                 {
-                    files.map(file => <SolutionFile
+                    files.map((file, index) => <SolutionFile
                         file={file}
                         key={file.fileID}
                         isSuccess={isSuccess}
                         loadingTaskData={loadingTaskData}
+                        isLast={index === files.length - 1}
                     />)
                 }
 
                 {/* Открыть модалку */}
-                <div onClick={setModal} className="content_elem_row select">
-                    <Plus weight="bold" className="icon_min" height={"24px"}/>
-                    <p>Добавить</p>
-                </div>
+                {!isSuccess
+                    &&
+                    <div onClick={setModal} className="content_elem_row select">
+                        <Plus weight="bold" className="icon_min" height={"24px"}/>
+                        <p>Добавить</p>
+                    </div>
+                }
+
 
                 {/* Модалка, куда прикрепляются курсы */}
                 <SolutionModal

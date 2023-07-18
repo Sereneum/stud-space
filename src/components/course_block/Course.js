@@ -1,6 +1,6 @@
-import {Check, Clock, CaretRight, CaretLeft, PencilSimple, X, WarningCircle} from "@phosphor-icons/react";
+import {CaretLeft} from "@phosphor-icons/react";
 
-import {NavLink, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Materials from "../materials/Materials";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "../../index";
@@ -30,7 +30,7 @@ const Course = observer(() => {
 
         // ну тут просто юзер *тык*нул на курсик
         setCourse(courseData.courses.find(item => item.course_id === courseData.activeCourse))
-    }, [courseData.activeCourse])
+    }, [])
 
     // ждем-с
     if (course === null) return <div className="block"/>
@@ -45,10 +45,10 @@ const Course = observer(() => {
                 <h1>{course.course_name}</h1>
             </div>
 
-            <NavLink to={'/courses'} className="title_container back_container tablet">
+            <div onClick={() => navigate('/courses')} className="title_container back_container tablet">
                 <CaretLeft weight="bold" className="icon_mid"/>
-                <h2>Сейсморазведка</h2>
-            </NavLink>
+                <h2>{course.course_name}</h2>
+            </div>
 
             <div className="element_container">
                 <div className="title_container">
