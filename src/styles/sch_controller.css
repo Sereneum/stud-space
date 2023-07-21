@@ -1,0 +1,158 @@
+.my-node-enter {
+    /*display: none;*/
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+.my-node-enter-active {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: all 0.2s cubic-bezier(0.88, 0.02, 0.22, 0.98);
+}
+
+.my-node-enter-done {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.my-node-exit {
+    opacity: 1;
+    /* transform: scale(1, 1); */
+    transform: translateY(0px);
+    transition: all 0.2s cubic-bezier(0.88, 0.02, 0.22, 0.98);
+}
+
+.my-node-exit-active {
+    opacity: 0;
+    /* transform: scale(0, 0); */
+    transform: translateY(-30px);
+}
+
+.my-node-exit-done {
+    display: none;
+    opacity: 0;
+    transform: translateY(-30px);
+}
+
+
+.calendar {
+    position: absolute;
+    height: fit-content;
+    width: 245px;
+    margin-left:  292px;
+    margin-top: -50px;
+    padding: 4px;
+    /* top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 30px 10px rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(25px);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.month {
+    width: 120px;
+    text-align: center;
+}
+
+.days {
+    color:rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.day {
+    text-align: center;
+    padding: 5px 6px;
+}
+
+.calendar_box {
+    margin-bottom: 15px;
+}
+
+.table {
+    width: 100%;
+    height: 100%;
+}
+
+tbody {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+td.isNow {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255);
+    cursor: pointer;
+}
+
+td {
+    width: 28px;
+    height: 28px;
+
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.3);
+    flex: none;
+    order: 5;
+    flex-grow: 0;
+    border-radius: 15%;
+}
+
+td.isOk {
+    color: rgba(255, 255, 255);
+    cursor: pointer;
+}
+
+.head {
+    color: rgba(255, 255, 255);
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.calendar_box {
+    margin-bottom: 15px;
+}
+
+
+.days {
+    color:rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+
+.calendar_date_pool {
+    border-top: 10px solid transparent;
+}
+
+.arrow {
+    width: 14px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.passiveArrow {
+    filter: opacity(.4);
+}

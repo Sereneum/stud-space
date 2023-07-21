@@ -11,6 +11,8 @@ const Settings = observer(() => {
 
     const {user, courseData} = useContext(Context)
     const [active, setActive] = useState([])
+    const [pureActive, setPureActive] = useState([])
+    const [isDirty, setIsDirty] = useState(false)
     const [passive, setPassive] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     // const [isSaveLoading, setIsSaveLoading] = useState(0)
@@ -21,10 +23,19 @@ const Settings = observer(() => {
         epoch_fetchConfigurableCourses(id)
             .then(r => {
                 setActive(r.active)
+                setPureActive(r.active)
                 setPassive(r.passive)
                 setIsLoading(false)
             })
     }, [id])
+
+    useEffect(() => {
+        if(pureActive === active) {
+            if(isDirty) setIsDirty(false)
+        } else {
+            if(!isDirty) setIsDirty(true)
+        }
+    }, [active])
 
 
     if (isLoading) return <>
@@ -134,7 +145,11 @@ const Settings = observer(() => {
             </div>
 
             {/* SAVE */}
-            <div className="save_button" onClick={save}>
+            <div
+                className="save_button"
+                onClick={save}
+                style={{"display": `${isDirty ? '' : 'none'}`}}
+            >
                 <h4 className="text_lighter">Сохранить изменения</h4>
             </div>
         </div>

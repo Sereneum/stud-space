@@ -1,7 +1,8 @@
 import {$authHost} from "./index";
-import {API_ALL_COURSES, API_COURSE, API_DELETE_FILE, API_DUTY, API_UPLOAD_FILE} from "./consts";
+import {API_ALL_COURSES, API_COURSE, API_DELETE_FILE, API_DUTY, API_MORE_INFO, API_UPLOAD_FILE} from "./consts";
 import axios from "axios";
 import {preEpoch_mergeCourseData, preEpoch_division} from "./preEpoch";
+import {parserDateNow} from "../managers/timeManager";
 
 
 const conv = data => {
@@ -89,7 +90,7 @@ export const epoch_deleteFile = (fileID) => new Promise((resolve, reject) => {
         .catch(e => e)
 })
 
-// Получение всех active/passive курсов
+/* Получение всех active/passive курсов */
 export const epoch_fetchConfigurableCourses = (id) => {
     return new Promise((resolve, reject) => {
         Promise.all([epoch_fetchServerData(id), fetchAllCourses(id)])
@@ -114,5 +115,39 @@ export const epoch_updateActiveCourses = async (id, active = []) => {
             .catch(e => reject({status: 0, error: e}))
     })
 }
+
+// export const epoch_getMinorUserData = (id) => new Promise((resolve, reject) => {
+//     $authHost(API_MORE_INFO + id)
+// })
+
+export const epoch_getMinorUserData = (id) =>
+    $authHost(API_MORE_INFO + id)
+
+export const epoch_schedule = ({groupID, weekID = parserDateNow(), isCalendar}) =>
+    new Promise((resolve, reject) =>  {
+        const apiUrl = `/api/Rasp?idGroup=${groupID}&sdate=${weekID ? weekID : parserDateNow()}`
+        const apiCalendarUrl = `api/GetRaspDates?idGroup=${groupID}`
+
+        const promiseList = [
+            new Promise((resCurrentWeek, rejCurrentWeek) => {
+                $authHost(apiUrl)
+                    .then(r => resCurrentWeek(r.data.data))
+                    .catch(err => rejCurrentWeek(err))
+            })
+        ]
+        if (!isCalendar) promiseList.push(
+            new Promise((resCalendarData, rejCalendarData) => {
+                $authHost(apiCalendarUrl)
+                    .then(r => resCalendarData(r.data.data))
+                    .catch(err => rejCalendarData(err))
+            })
+        )
+        Promise.all(promiseList)
+            .then(r => resolve(r))
+    })
+
+
+
+
 
 

@@ -42,25 +42,13 @@ const FixedCourse = ({item, choose, localIndex, rename}) => {
                         :
                         <h3>{item.course_name}</h3>
                 }
-                {/*<>*/}
-                {/*    <h3 style={{'display': isInputMode ? 'none' : ''}}>{item.course_name}</h3>*/}
-                {/*    <input*/}
-                {/*        value={input}*/}
-                {/*        onChange={change}*/}
-                {/*        className="rename"*/}
-                {/*        ref={ref}*/}
-                {/*        onBlur={handleBlur}*/}
-                {/*        onFocus={handleFocus}*/}
-                {/*        name="rename"*/}
-                {/*        style={{'display': isInputMode ? '' : 'none'}}*/}
-                {/*    />*/}
-                {/*</>*/}
 
                 <div className="container_row_start">
                     {/* change */}
                     <div
                         onClick={activeChange}
                         className="button_settings edit"
+                        style={{"filter": `invert(${isInputMode ? '100%' : '0'})`}}
                     >
                         <PencilSimple weight="bold" className="icon_min"/>
                         <p className="text_min">Изменить</p>

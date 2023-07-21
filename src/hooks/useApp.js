@@ -11,6 +11,7 @@ const next = (id, end, courseData) => {
     loadingCourses(id)
         .then(r => {
             console.log('courses: ', r.courses)
+            // список заданий с бд
             courseData.setActiveCourse(r.serverData.active)
             courseData.setCourses(r.courses)
             end()
