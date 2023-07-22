@@ -20,6 +20,7 @@ import {Context} from "../../index";
 import TaskFile from "./TaskFile";
 import TaskInfo from "./TaskInfo";
 import Solution from "./Solution";
+import LoaderTask from "../loaders/LoaderTask";
 
 const Task = () => {
     const {courseData} = useContext(Context)
@@ -39,6 +40,17 @@ const Task = () => {
             if (course_id === c.course_id)
                 return c.courseMaterials
     }
+
+    const findTaskName = () => {
+        let taskId = Number(localStorage.getItem('taskId'))
+        if (!taskId) return ''
+        for (let c of courseData.courses)
+            for(let t of c.tasks)
+                if(taskId === t.courseTaskID)
+                    return t.nameTask
+        return ''
+    }
+
 
     /* Загружает/обновляет все денные о задании */
     const loadingTaskData = () => {
@@ -71,12 +83,11 @@ const Task = () => {
 
     useEffect(loadingTaskData, [localStorage.getItem('taskId')])
 
-    if (isLoading) return <div className="block"/>
+    console.log(findTaskName())
     console.log('currentData: ', currentData)
     console.log('detailData: ', detailData)
 
     const back = () => {
-        // console.log('back:', )
         navigate(-1)
     }
 
@@ -90,6 +101,14 @@ const Task = () => {
     // --------SolutionModal
     // ----Materials
     // >xd<
+
+    if (isLoading) return <div className="block">
+        <div className="title_container back_container" onClick={back}>
+            <CaretLeft weight="bold" className="icon_mid"/>
+            <h2>{findTaskName()}</h2>
+        </div>
+        <LoaderTask/>
+    < /div>
 
     return (
         <div className="block">

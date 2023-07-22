@@ -6,6 +6,7 @@ import ScheduleController from "./ScheduleController";
 import ScheduleWeek from "./ScheduleWeek";
 import {parserDateNow} from "../../managers/timeManager";
 import {sch_parser} from "../../managers/schManager";
+import LoaderSchedule from "../loaders/LoaderSchedule";
 
 const Schedule = () => {
 
@@ -55,7 +56,12 @@ const Schedule = () => {
 
 
     if (isLoading)
-        return <div className="block"></div>
+        return <div className="block">
+            <div className="title_container">
+                <h1>Расписание</h1>
+            </div>
+            <LoaderSchedule/>
+        </div>
 
     return (
         <div className="block">

@@ -30,22 +30,23 @@ const Course = observer(() => {
 
         // ну тут просто юзер *тык*нул на курсик
         setCourse(courseData.courses.find(item => item.course_id === courseData.activeCourse))
-    }, [])
+    }, [courseData.activeCourse])
+
+    const toCourses = () =>
+        navigate('/course')
 
     // ждем-с
     if (course === null) return <div className="block"/>
 
 
-
-
     return (
         <div className="block">
 
-            <div className="title_container desktop_only">
+            <div onClick={toCourses} className="title_container desktop_only">
                 <h1>{course.course_name}</h1>
             </div>
 
-            <div onClick={() => navigate('/courses')} className="title_container back_container tablet">
+            <div onClick={toCourses} className="title_container back_container tablet">
                 <CaretLeft weight="bold" className="icon_mid"/>
                 <h2>{course.course_name}</h2>
             </div>

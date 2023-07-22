@@ -25,6 +25,7 @@ import useApp from "./hooks/useApp";
 import PrivacyUnAuth from "./components/privacy_block/PrivacyUnAuth";
 import FaqUnAuth from "./components/faq_block/FaqUnAuth";
 import {observer} from "mobx-react-lite"
+import Loader from "./components/loaders/Loader";
 
 const App = observer(() => {
 

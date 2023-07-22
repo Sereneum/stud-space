@@ -1,4 +1,4 @@
-import {PushPin, PushPinSlash} from "@phosphor-icons/react";
+import {CaretLeft, GearFine, PushPin, PushPinSlash} from "@phosphor-icons/react";
 import FixedCourse from "./FixedCourse";
 import LooseCourse from "./LooseCourse";
 import {useContext, useEffect, useState} from "react";
@@ -6,6 +6,8 @@ import {Context} from "../../index";
 import {epoch_fetchConfigurableCourses, epoch_updateActiveCourses} from "../../http/epochServer";
 import {preEpoch_saveCourses} from "../../http/preEpoch";
 import {observer} from "mobx-react-lite";
+import {NavLink, useNavigate} from "react-router-dom";
+import LoaderSettings from "../loaders/LoaderSettings";
 
 const Settings = observer(() => {
 
@@ -18,6 +20,7 @@ const Settings = observer(() => {
     // const [isSaveLoading, setIsSaveLoading] = useState(0)
 
     const id = user.userData.anotherID
+    const navigate = useNavigate()
 
     useEffect(() => {
         epoch_fetchConfigurableCourses(id)
@@ -30,21 +33,13 @@ const Settings = observer(() => {
     }, [id])
 
     useEffect(() => {
-        if(pureActive === active) {
+        if(JSON.stringify(pureActive) === JSON.stringify(active)) {
             if(isDirty) setIsDirty(false)
         } else {
             if(!isDirty) setIsDirty(true)
         }
     }, [active])
 
-
-    if (isLoading) return <>
-        <div className="block settings_block">
-            <div className="title_container">
-                <h1>Настройка курсов</h1>
-            </div>
-        </div>
-    </>
 
     // const clickOnActive = useCallback(item => {
     //     setPassive([active[item], ...passive])
@@ -79,6 +74,8 @@ const Settings = observer(() => {
     }
 
     const save = () => {
+        setIsDirty(false)
+        setPureActive(active)
         // setIsSaveLoading(2)
         preEpoch_saveCourses(courseData.courses, active)
             .then(r => {
@@ -93,11 +90,20 @@ const Settings = observer(() => {
     }
 
 
+    if (isLoading) return <div className="block settings_block">
+        <div className="title_container back_container" onClick={() => navigate(-1)}>
+            <CaretLeft weight="bold" className="icon_mid"/>
+            <h2>Настройка курсов</h2>
+        </div>
+        <LoaderSettings/>
+    </div>
+
     return (
         <div className="block settings_block">
             {/*TITLE*/}
-            <div className="title_container">
-                <h1>Настройка курсов</h1>
+            <div className="title_container back_container" onClick={() => navigate(-1)}>
+                <CaretLeft weight="bold" className="icon_mid"/>
+                <h2>Настройка курсов</h2>
             </div>
 
             {/*FIXED COURSES BLOCK*/}

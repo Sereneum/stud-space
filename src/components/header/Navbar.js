@@ -6,7 +6,10 @@ import {useEffect} from "react";
 const Navbar = () => {
 
 
-    const customLink = (link, icon) => <NavLink to={link} className="nav_elem_container nav_bar_mobile_container">
+    const customLink = (link, icon, isDes=false) => <NavLink
+        to={link}
+        className={`nav_elem_container nav_bar_mobile_container ${isDes && 'nav_tablet'}`}
+    >
         {icon}
     </NavLink>
 
@@ -23,8 +26,8 @@ const Navbar = () => {
 
             <div className="nav_bar nav_bar_mobile">
                 {customLink("/", <CalendarBlank weight="bold" className="icon_nav icon_nav_mobile"/>)}
-                {customLink("/courses", <StarFour weight="bold" className="icon_nav icon_nav_mobile"/>)}
-                {customLink("/deadlines", <ClockCountdown weight="bold" className="icon_nav icon_nav_mobile"/>)}
+                {customLink("/courses", <StarFour weight="bold" className="icon_nav icon_nav_mobile"/>, true)}
+                {customLink("/deadlines", <ClockCountdown weight="bold" className="icon_nav icon_nav_mobile"/>, true)}
                 {customLink("/menu", <List weight="bold" className="icon_nav icon_nav_mobile"/>)}
             </div>
         </nav>
