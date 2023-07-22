@@ -179,10 +179,9 @@ p {
 }
 
 .project_title {
-    font-size: 50px;
-    margin-bottom: 8px;
+    font-size: 46px;
+    margin-bottom: 6px;
     user-select: none;
-    cursor: pointer;
 }
 
 .icon_nav {
@@ -305,7 +304,7 @@ body {
 
 .header_container {
     width: 100%;
-    height: 165px;
+    height: 130px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -830,6 +829,24 @@ a {
     padding: 0;
 }
 
+.input-big {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    width: 100%;
+    background-color: transparent;
+    color: var(--var-text-and-icons);
+    outline: none;
+    border: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: none;
+    height: auto;
+    overflow: hidden;
+}
+
 .solo_block {
     margin: 0 auto;
 }
@@ -872,11 +889,13 @@ input::placeholder {
     background-color: var(--var-hover);
     width: 100px;
     height: 24px;
+    opacity: 0.4;
 }
 
 .loader_anim {
     animation: opacity 1.5s infinite ease-in-out;
     background-color: var(--var-hover);
+    opacity: 0.4;
 }
 
 
@@ -887,6 +906,9 @@ input::placeholder {
 }
 
 @media (max-width: 1280px) {
+    .header_container {
+        height: 145px;
+    }
     .content_container {
         justify-content: center;
     }
@@ -914,7 +936,7 @@ input::placeholder {
 
 }
 
-@media (min-width: 601px) {
+@media (min-width: 1281px) {
     @media (pointer: fine) {
         .nav_elem_container:hover {
             background-color: var(--var-hover);
@@ -923,6 +945,17 @@ input::placeholder {
 
     .nav_elem_container:active {
         background-color: var(--var-push);
+    }
+}
+
+@media (min-width: 601px) {
+    .loader_selector {
+        width: 245px;
+        height: 46px;
+        padding: 0px 20px 0px 20px;
+        position: absolute;
+        top: 41px;
+        right: 30px;
     }
 }
 
@@ -936,7 +969,8 @@ input::placeholder {
     }
 
     .project_title {
-        font-size: 40px;
+        font-size: 38px;
+        letter-spacing: -0.3px;
     }
 
     .block {
@@ -1009,15 +1043,15 @@ input::placeholder {
 
 @keyframes opacity {
     0% {
-        opacity: 1;
-    }
-
-    50% {
         opacity: 0.4;
     }
 
-    100% {
+    50% {
         opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
     }
 }
 

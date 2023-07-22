@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {PencilSimple, PushPinSlash} from "@phosphor-icons/react";
+import TextareaAutosize from 'react-textarea-autosize';
 
 const FixedCourse = ({item, choose, localIndex, rename}) => {
 
@@ -22,19 +23,23 @@ const FixedCourse = ({item, choose, localIndex, rename}) => {
     }
 
     useEffect(() => {
-        if (isInputMode) ref.current.focus()
-    }, [isInputMode]);
-
+        if (isInputMode) {
+          const textarea = ref.current;
+          textarea.focus();
+          textarea.setSelectionRange(input.length, input.length);
+        }
+      }, [isInputMode, input]);
+      
     return (
         <div className="content_cover">
             <div className="content_elem_column">
                 {
                     isInputMode
                         ?
-                        <input
+                        <TextareaAutosize
                             value={input}
                             onChange={change}
-                            className="rename"
+                            className="input-big"
                             ref={ref}
                             onBlur={handleBlur}
                             name="rename"
