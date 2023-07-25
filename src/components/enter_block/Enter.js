@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import {useContext, useState} from "react";
 import {authCheck, login} from "../../http/userApi";
 import {Context} from "../../index";
+import {configHost} from "../../http";
 
 const Enter = ({firstAuth}) => {
 
@@ -17,7 +18,7 @@ const Enter = ({firstAuth}) => {
                 console.log(data)
                 if(data.state) {
                     localStorage.setItem('token', data.accessToken)
-                    firstAuth()
+                    window.location.reload()
                 }
             })
     }

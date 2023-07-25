@@ -6,14 +6,14 @@ import {epoch_courseData, epoch_fetchServerData} from "../http/epochServer";
 import {API_COURSE, API_DUTY} from "../http/consts";
 import {$authHost} from "../http";
 
-
-const next = (id, end, courseData) => {
+const next = (id, end, courseData, localConfig) => {
     loadingCourses(id)
         .then(r => {
             console.log('courses: ', r.courses)
             // список заданий с бд
             courseData.setActiveCourse(r.serverData.active)
             courseData.setCourses(r.courses)
+            loadingLocalConfig(localConfig)
             end()
         })
         .catch(err => console.log(err))
@@ -32,9 +32,25 @@ const loadingCourses = async (id) => new Promise((upperRes, upperRej) => {
         .catch(err => upperRej(err))
 })
 
+/* получение локальных конфигураций */
+const loadingLocalConfig = (localConfig) => {
+    const check = key => localStorage.getItem(key) !== null && Boolean(Number(localStorage.getItem(key)))
+    localConfig.setSky({
+        text: localConfig.sky.text,
+        key: localConfig.sky.key,
+        value: check(localConfig.sky.key)
+    })
+
+    localConfig.setMsg({
+        text: localConfig.msg.text,
+        key: localConfig.msg.key,
+        value: check(localConfig.msg.key)
+    })
+}
+
 
 const useApp = () => {
-    const {user, courseData} = useContext(Context)
+    const {user, courseData, localConfig} = useContext(Context)
 
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(true)
@@ -56,7 +72,7 @@ const useApp = () => {
                 if(isFirstAuth)
                     $authHost.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
                 /* загрузка курсов */
-                next(id, () => setIsLoading(false), courseData)
+                next(id, () => setIsLoading(false), courseData, localConfig)
             })
             .catch(err => {
                 if (err.response.status === 401) {

@@ -1,10 +1,32 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import {useMediaQuery} from "react-responsive";
 
 const Sky = () => {
     const isMobile = useMediaQuery({query: '(max-width: 1300px)'})
     const radius = isMobile ? 0.1 : 0.25
     const canvasRef = useRef(null);
+
+    const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches
+
+    const lightTheme = {
+        bg: '#EDEDED',
+        star: opacity => `rgba(0, 0, 0, ${opacity})`
+    }
+
+    const darkTheme = {
+        bg: '#000000',
+        star: opacity => `rgba(255, 255, 255, ${opacity})`
+    }
+
+
+    const [colors, setColors] = useState(
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+            ?
+            darkTheme
+            :
+            lightTheme
+    )
+
 
 
     useEffect(() => {
@@ -35,11 +57,12 @@ const Sky = () => {
 
         const drawStars = (stars) => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#000';
+            ctx.fillStyle = colors.bg
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             stars.forEach((star) => {
                 ctx.beginPath();
-                ctx.fillStyle = `rgba(255, 255, 255, ${opacityController(star.life, star.fullLifeTime)})`
+                // ctx.fillStyle = `rgba(255, 255, 255, ${opacityController(star.life, star.fullLifeTime)})`
+                ctx.fillStyle = colors.star(opacityController(star.life, star.fullLifeTime))
                 ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
                 ctx.fill();
             });
