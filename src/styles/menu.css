@@ -69,6 +69,13 @@
     overflow: visible;
     position: relative;
     border-radius: 80px;
+
+    transition: transform 0.423s ease;
+    transform: translateX(0%);
+}
+
+.active-switcher {
+    transform: translateX(100%);
 }
 
 .exit_button {

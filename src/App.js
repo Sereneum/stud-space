@@ -1,8 +1,8 @@
 import "./styles/main.css";
 import "./styles/schedule.css";
 
-import {BrowserRouter as Router, Routes, Route, useLocation, Navigate} from "react-router-dom";
-import {useState, useEffect, useContext} from "react";
+import {Routes, Route, useLocation, Navigate} from "react-router-dom";
+import {useContext} from "react";
 
 import ScrollToTop from "./components/scroll_to_top/ScrollToTop";
 
@@ -30,7 +30,7 @@ import Loader from "./components/loaders/Loader";
 const App = observer(() => {
 
 
-    const {user, courseData} = useContext(Context)
+    const {user, courseData, localConfig} = useContext(Context)
     const location = useLocation();
 
 
@@ -41,6 +41,8 @@ const App = observer(() => {
         <div className="App">
 
             <ScrollToTop/>
+
+            {localConfig.sky.value && <Sky/>}
 
             <div className="main_container">
 
@@ -77,7 +79,7 @@ const App = observer(() => {
 
                         {/* auth */}
                         <Route path="/" element={<Schedule/>}/>
-                        <Route path="/menu" element={<Menu />}/>
+                        <Route path="/menu" element={<Menu/>}/>
                         <Route path="/course" element={<Course/>}/>
                         <Route path="/courses" element={<CoursesTablet/>}/>
                         <Route path="/deadlines" element={<DeadlineTablet/>}/>

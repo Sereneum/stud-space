@@ -1,0 +1,31 @@
+import React, {useContext, useEffect, useState} from 'react';
+import {NavLink} from "react-router-dom";
+import {EnvelopeSimple} from "@phosphor-icons/react";
+import {epoch_checkerMail} from "../../http/epochServer";
+import {Context} from "../../index";
+import {observer} from "mobx-react-lite";
+
+const Messages = observer(() => {
+    const {localConfig} = useContext(Context)
+    const access = localConfig.msg.value
+    const [msg, setMsg] = useState(0)
+
+    useEffect(() => {
+        if (access)
+            epoch_checkerMail()
+                .then(r => setMsg(r.data.count))
+    }, [])
+
+
+    return (
+        <div className="nav_bar">
+            <NavLink to="https://stud.mgri.ru/WebApp/#/mail/all" target="_blank" rel="noreferrer"
+                     className="nav_elem_container ">
+                <EnvelopeSimple weight="bold" className="icon_nav"/>
+                {access && msg ? <div className='messages'>{msg}</div> : ''}
+            </NavLink>
+        </div>
+    );
+})
+
+export default Messages;

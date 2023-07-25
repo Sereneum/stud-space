@@ -13,6 +13,12 @@ const $authHost = axios.create({
     }
 })
 
+const configHost = token => {
+    // $authHost.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    $authHost.defaults.headers.common['Authorization'] = 'Bearer !_!'
+    $authHost.defaults.headers.get['Authorization'] = 'Bearer !_!'
+    $authHost.defaults.headers.post['Authorization'] = 'Bearer !_!'
+}
 
 const $authServerHost = axios.create({
     baseURL: const_url,
@@ -27,5 +33,6 @@ const $authServerHost = axios.create({
 export {
     $host,
     $authHost,
-    $authServerHost
+    $authServerHost,
+    configHost
 }

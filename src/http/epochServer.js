@@ -1,5 +1,13 @@
 import {$authHost} from "./index";
-import {API_ALL_COURSES, API_COURSE, API_DELETE_FILE, API_DUTY, API_MORE_INFO, API_UPLOAD_FILE} from "./consts";
+import {
+    API_ALL_COURSES,
+    API_CHECKER_MAIL,
+    API_COURSE,
+    API_DELETE_FILE,
+    API_DUTY,
+    API_MORE_INFO,
+    API_UPLOAD_FILE
+} from "./consts";
 import axios from "axios";
 import {preEpoch_mergeCourseData, preEpoch_division} from "./preEpoch";
 import {parserDateNow} from "../managers/timeManager";
@@ -146,7 +154,12 @@ export const epoch_schedule = ({groupID, weekID = parserDateNow(), isCalendar}) 
             .then(r => resolve(r))
     })
 
-
+/* кол-во сообщений */
+export const epoch_checkerMail = () => new Promise((resolve, reject) => {
+    $authHost.get(API_CHECKER_MAIL)
+        .then(d => resolve(d.data))
+        .catch(e => e)
+})
 
 
 
