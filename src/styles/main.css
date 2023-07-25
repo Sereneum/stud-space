@@ -16,8 +16,8 @@
     --var-active-element: #919191;
     --var-switcher-bg: #C9C9C9;
     --var-red: #E34A4A;
-    --var-hover: #b8b8b85a;
-    --var-push: #b8b8b885;
+    --var-hover: #e8e8e8;
+    --var-push: #dcdcdc;
     --var-modal-bg: #ffffff;
 }
 
@@ -32,8 +32,8 @@
         --var-active-element: #2B2B2B;
         --var-switcher-bg: #3D3D3D;
         --var-red: #E34A4A;
-        --var-hover: #2b2b2b94;
-        --var-push: #2b2b2bbc;
+        --var-hover: #242424;
+        --var-push: #2a2a2a;
         --var-modal-bg: #121212;
     }
 }
@@ -1013,7 +1013,7 @@ input::placeholder {
         bottom: 20px;
         left: 13%;
         right: auto;
-        z-index: 3;
+        z-index: 4;
         animation: enter 1s cubic-bezier(0, 1.07, 0, 0.99);
     }
 

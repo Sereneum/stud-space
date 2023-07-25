@@ -14,10 +14,10 @@ const ScheduleController = ({weekID, updateWeek, calendar}) => {
 
     return (
         <>
-            <div className="calendar_block" onClick={modalControl}>
-                <CalendarBlank weight="bold" className="icon_mid"/>
+            <div className="calendar_block select" onClick={modalControl}>
+                <CalendarBlank weight="bold" className="icon_min"/>
                 <h4 className="date">{slashToPoint(weekID)}</h4>
-                <CaretDown weight="bold" className="icon_mid"/>
+                <CaretDown weight="bold" className="icon_min"/>
             </div>
 
             <ScheduleCalendar

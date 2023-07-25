@@ -91,7 +91,7 @@ const ScheduleCalendar = ({weekID, updateWeek, isVisible, setIsVisible, calendar
     }
 
     return (
-        <CSSTransition in={isVisible} timeout={200} classNames={'my-node'} mountOnEnter>
+        <CSSTransition in={isVisible} timeout={200} classNames={'my-node'} unmountOnExit>
             <div
                 className="calendar"
             >
@@ -116,6 +116,7 @@ const ScheduleCalendar = ({weekID, updateWeek, isVisible, setIsVisible, calendar
                         {`${toTextFormatMonth(month)}, ${year}`}
                     </div>
                     <CaretDown
+                        weight="bold"
                         className={`"arrow" ${!nextMonth() && "passiveArrow"}`}
                         style={{rotate: '270deg'}}
                         onClick={() => {
@@ -128,7 +129,7 @@ const ScheduleCalendar = ({weekID, updateWeek, isVisible, setIsVisible, calendar
                     &&
                     <table className="calendar_box">
                         <thead className="days">
-                        <tr>
+                        <tr className='days-container'>
                             {['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
                                 .map((i, ind) => <th key={i + ind}>{i}</th>)}
                         </tr>
