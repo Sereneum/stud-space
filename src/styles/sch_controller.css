@@ -35,6 +35,32 @@
     transform: translateY(-30px);
 }
 
+.arrow-animation-enter {
+    rotate: 0deg;
+}
+
+.arrow-animation-enter-active {
+    rotate: -180deg;
+    transition: all 0.3s cubic-bezier(0.42, 0, 0.42, 1.35);
+}
+
+.arrow-animation-enter-done {
+    rotate: -180deg;
+}
+
+.arrow-animation-exit {
+    rotate: -180deg;
+    transition: all 0.3s cubic-bezier(0.42, 0, 0.42, 1.35);
+}
+
+.arrow-animation-exit-active {
+    rotate: 0deg;
+}
+
+.arrow-animation-exit-done {
+    rotate: 0deg;
+}
+
 
 .calendar {
     position: absolute;

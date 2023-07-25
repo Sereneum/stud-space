@@ -83,9 +83,11 @@ const Task = () => {
 
     useEffect(loadingTaskData, [localStorage.getItem('taskId')])
 
-    console.log(findTaskName())
     console.log('currentData: ', currentData)
     console.log('detailData: ', detailData)
+
+    // const w = window.innerWidth
+    // console.log(w)
 
     const back = () => {
         navigate(-1)
