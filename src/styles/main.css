@@ -156,17 +156,17 @@ p {
 }
 
 .messages {
-    color: var(--var-text-and-icons);
-    font-size: 14px;
+    color: var(--var-bg);
+    font-size: 12px;
     font-weight: 600;
     height: min-content;
     position: absolute;
-    background-color: var(--var-active-element);
-    padding: 5px 10px;
-    border-radius: 16px;
-    opacity: 1;
-    margin-bottom: 40px;
-    margin-left: 10px;
+    background-color: var(--var-text-and-icons);
+    padding: 5.5px 8px 5px 8px;
+    border-radius: 18px;
+    margin-bottom: 52px;
+    margin-left: 42px;
+    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.4);
 }
 
 .text_back {

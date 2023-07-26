@@ -1,13 +1,13 @@
-import {GearFine, CaretRight,} from "@phosphor-icons/react";
+import { GearFine, CaretRight, Plus, } from "@phosphor-icons/react";
 
-import {NavLink, useNavigate} from "react-router-dom";
-import {useContext} from "react";
-import {Context} from "../../index";
-import {observer} from "mobx-react-lite";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../index";
+import { observer } from "mobx-react-lite";
 
 const CoursesInner = observer(() => {
 
-    const {courseData} = useContext(Context)
+    const { courseData } = useContext(Context)
     const navigate = useNavigate()
 
     const toCourse = (course_id) => {
@@ -22,7 +22,7 @@ const CoursesInner = observer(() => {
         key={course_id}
     >
         <h3>{name}</h3>
-        <CaretRight weight="bold" className="icon_min"/>
+        <CaretRight weight="bold" className="icon_min" />
     </div>
 
     return (
@@ -30,14 +30,20 @@ const CoursesInner = observer(() => {
             <div className="title_container">
                 <h1>Курсы</h1>
                 <NavLink to="/settings" className="button_cover">
-                    <GearFine weight="bold" className="icon_mid"/>
+                    <GearFine weight="bold" className="icon_mid" />
                 </NavLink>
             </div>
             <div className="course_list_container">
                 {
                     courseData.courses.map(item => course(item.course_name, item.course_id))
                 }
-            </div>
+
+                <NavLink to="/settings" className="course_list_item select">
+                    <h3>Добавить</h3>
+                    <Plus weight="bold" className="icon_min" />
+                </NavLink>
+
+            </div >
 
         </>
     );

@@ -70,8 +70,8 @@
     position: relative;
     border-radius: 80px;
 
-    transition: transform 0.423s ease;
-    transform: translateX(0%);
+    transition: transform 0.25s ease;
+    transform: translateX(3%);
 }
 
 .active-switcher {

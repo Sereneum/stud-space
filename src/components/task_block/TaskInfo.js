@@ -54,7 +54,7 @@ const TaskInfo = ({status, teacher, dateAdded, periodRealization, statusID, nota
                         </div>
                         <div className="container_row_start extended_gap">
                             <CalendarBlank weight="bold" className="icon_min"/>
-                            <p>{`${normalizationDate(periodRealization)} - ${normalizationDate(dateAdded)}`}</p>
+                            <p>{`${normalizationDate(dateAdded)} – ${normalizationDate(periodRealization)}`}</p>
                         </div>
                     </div>
                 </div>

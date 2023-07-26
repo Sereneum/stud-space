@@ -1,15 +1,15 @@
-import {CaretLeft} from "@phosphor-icons/react";
+import { CaretLeft, XCircle } from "@phosphor-icons/react";
 
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Materials from "../materials/Materials";
-import {useContext, useEffect, useState} from "react";
-import {Context} from "../../index";
-import {observer} from "mobx-react-lite";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../../index";
+import { observer } from "mobx-react-lite";
 import CourseItem from "./CourseItem";
 
 
 const Course = observer(() => {
-    const {courseData} = useContext(Context)
+    const { courseData } = useContext(Context)
     const [course, setCourse] = useState(null)
     const navigate = useNavigate()
     const [loading, setLoading] = useState(true)
@@ -53,7 +53,7 @@ const Course = observer(() => {
         </div>
 
         <div onClick={toCourses} className="title_container back_container tablet">
-            <CaretLeft weight="bold" className="icon_mid"/>
+            <CaretLeft weight="bold" className="icon_mid" />
             <h2>{pre_course_name}</h2>
         </div>
 
@@ -73,7 +73,7 @@ const Course = observer(() => {
             </div>
 
             <div onClick={toCourses} className="title_container back_container tablet">
-                <CaretLeft weight="bold" className="icon_mid"/>
+                <CaretLeft weight="bold" className="icon_mid" />
                 <h2>{course.course_name}</h2>
             </div>
 
@@ -82,7 +82,12 @@ const Course = observer(() => {
                     <h3>Задания</h3>
                 </div>
                 {
-                    !course.tasks.length && <div>Нет доступных</div>
+                    !course.tasks.length && <div className="content_cover">
+                        <div className="content_elem_row">
+                            <XCircle weight="bold" className="icon_min" />
+                            <p>Нет доступных</p>
+                        </div>
+                    </div>
                 }
                 <div className="content_cover">
                     {
@@ -96,7 +101,7 @@ const Course = observer(() => {
                 </div>
             </div>
 
-            <Materials items={course.courseMaterials}/>
+            <Materials items={course.courseMaterials} />
         </div>
     );
 })

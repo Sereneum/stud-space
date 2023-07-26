@@ -1,10 +1,11 @@
-import {useContext, useEffect, useState} from "react";
-import {Context} from "../../index";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../../index";
 import DeadlineItem from "./DeadlineItem";
-import {observer} from "mobx-react-lite";
+import { observer } from "mobx-react-lite";
+import { Check } from "@phosphor-icons/react";
 
 const DeadlineInner = observer(() => {
-    const {courseData} = useContext(Context)
+    const { courseData } = useContext(Context)
 
     const [tasks, setTasks] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -36,7 +37,7 @@ const DeadlineInner = observer(() => {
         <div className="title_container">
             <h1>Ближайшие дедлайны</h1>
         </div>
-        <div className="deadline_row_container"/>
+        <div className="deadline_row_container" />
     </>
 
     return (
@@ -47,8 +48,16 @@ const DeadlineInner = observer(() => {
 
             <div className="deadline_row_container">
                 {
-                    tasks.map(item => <DeadlineItem item={item} key={'d' + item.courseTaskID}/>)
+                    tasks.map(item => <DeadlineItem item={item} key={'d' + item.courseTaskID} />)
                 }
+
+                <div className="content_cover">
+                    <div className="content_elem_row">
+                        <Check weight="bold" className="icon_min" />
+                        <p>Нет доступных</p>
+                    </div>
+                </div>
+
             </div>
         </>
     );
