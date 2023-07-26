@@ -7,7 +7,7 @@ const Material = ({item, isBreaker}) => {
         <>
             <div className="content_elem_row select" onClick={() => handleDownload(item.nameFile, item?.link)}>
                 {assignorIcon(item.nameFile)}
-                <p className="text_file">{item.nameFile ? item.nameFile: item?.nameLink}</p>
+                <p className="text_file">{item.nameFile ? item.nameFile : item.nameLink ? item.nameLink : 'Безымянная ссылка'}</p>
                 {assignorIconDownload(item.nameFile)}
             </div>
 

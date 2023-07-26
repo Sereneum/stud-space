@@ -16,11 +16,16 @@ const ScheduleCalendar = ({weekID, updateWeek, isVisible, setIsVisible, calendar
 
     const [table, setTable] = useState([])
 
+    const getDaysInCurrentMonth = () =>
+        new Date(validDate.getFullYear(), validDate.getMonth() + 1, 0).getDate();
+
+
     const fillTable = (calendar) => {
         let firstDay = new Date(year, month, 1).getDay()
+        let days = getDaysInCurrentMonth()
         let offset = firstDay === 0 ? 6 : firstDay - 1
         let value = 0
-        let mx = 31
+        let mx = days - 1
 
         const isNow = (d1, d2) =>
             d1.getFullYear() === d2.getFullYear()
@@ -110,7 +115,6 @@ const ScheduleCalendar = ({weekID, updateWeek, isVisible, setIsVisible, calendar
                         className={`"arrow" ${!previousMonth() && "passiveArrow"}`}
                         style={{rotate: '90deg'}}
                         onClick={() => previousMonth() && clickOnArrow(-1)}
-                        // className="icon_mid"
                     />
                     <div className="month">
                         {`${toTextFormatMonth(month)}, ${year}`}

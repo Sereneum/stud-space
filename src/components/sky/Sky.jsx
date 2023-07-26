@@ -10,23 +10,24 @@ const Sky = () => {
 
     const lightTheme = {
         bg: '#EDEDED',
-        star: opacity => `rgba(0, 0, 0, ${opacity})`
+        star: opacity => `rgba(0, 0, 0, ${opacity})`,
+        life: 0.5
     }
 
     const darkTheme = {
         bg: '#000000',
-        star: opacity => `rgba(255, 255, 255, ${opacity})`
+        star: opacity => `rgba(255, 255, 255, ${opacity})`,
+        life: 0.9
     }
 
-
-    const [colors, setColors] = useState(
-        window.matchMedia("(prefers-color-scheme: dark)").matches
+    const getCurrentColors = () =>
+        getCurrentTheme()
             ?
             darkTheme
             :
             lightTheme
-    )
 
+    const colors = getCurrentColors()
 
 
     useEffect(() => {
@@ -52,7 +53,7 @@ const Sky = () => {
         };
 
         const opacityController = (life, full) => {
-            return life / full > 0.5 ? life / full : 1 - life / full
+            return life / full > colors.life ? life / full : 1 - life / full
         }
 
         const drawStars = (stars) => {
