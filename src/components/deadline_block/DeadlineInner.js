@@ -3,6 +3,8 @@ import { Context } from "../../index";
 import DeadlineItem from "./DeadlineItem";
 import { observer } from "mobx-react-lite";
 import { Check } from "@phosphor-icons/react";
+import {checkDeadline} from "../../managers/timeManager";
+import {deadlinesManager} from "../../managers/deadlinesManager";
 
 const DeadlineInner = observer(() => {
     const { courseData } = useContext(Context)
@@ -10,23 +12,9 @@ const DeadlineInner = observer(() => {
     const [tasks, setTasks] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
-    // тута рабочий отбор, но нужно посортить и отбирать до ~5 + а, ну и статусы проверить :D
-    // ищем
-    // useEffect(() => {
-    //     let list = []
-    //     for (let tl of courseData.courses)
-    //         for (let t of tl.tasks)
-    //             if (checkDeadline(t.periodRealization))
-    //                 list.push(t)
-    //
-    //     setTasks(list)
-    //     setIsLoading(false)
-    // }, [])
 
     useEffect(() => {
-        let v = []
-        v.push(courseData.courses[0].tasks[0])
-        setTasks(v)
+        setTasks(deadlinesManager(courseData.courses))
         setIsLoading(false)
         return () => setIsLoading(true)
     }, [courseData.courses])
@@ -51,12 +39,18 @@ const DeadlineInner = observer(() => {
                     tasks.map(item => <DeadlineItem item={item} key={'d' + item.courseTaskID} />)
                 }
 
-                <div className="content_cover">
-                    <div className="content_elem_row">
-                        <Check weight="bold" className="icon_min" />
-                        <p>Нет доступных</p>
+                {
+                    !tasks.length
+                    &&
+                    <div className="content_cover">
+                        <div className="content_elem_row">
+                            <Check weight="bold" className="icon_min"/>
+                            <p>Нет доступных</p>
+                        </div>
                     </div>
-                </div>
+                }
+
+
 
             </div>
         </>

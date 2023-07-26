@@ -1,12 +1,22 @@
 import React from 'react';
-import {GraduationCap, MapPin} from "@phosphor-icons/react";
+import {GraduationCap, MapPin, XCircle} from "@phosphor-icons/react";
 import ScheduleDay from "./ScheduleDay";
 
 const ScheduleWeek = ({weekData}) => {
 
+
     return (
         <>
             {weekData.map(day => <ScheduleDay key={day.dayIndex} day={day}/>)}
+            {!weekData.length
+                &&
+                <div className="content_cover">
+                    <div className="content_elem_row">
+                        <XCircle weight="bold" className="icon_min"/>
+                        <p>Расписание отсутствует</p>
+                    </div>
+                </div>
+            }
         </>
     );
 };

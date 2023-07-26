@@ -1,12 +1,12 @@
-import React, {useRef, useEffect, useState} from 'react';
+import React, {useRef, useEffect, useState, useContext} from 'react';
 import {useMediaQuery} from "react-responsive";
+import {Context} from "../../index";
 
-const Sky = () => {
+const Sky = ({isDark}) => {
     const isMobile = useMediaQuery({query: '(max-width: 1300px)'})
     const radius = isMobile ? 0.1 : 0.25
     const canvasRef = useRef(null);
 
-    const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches
 
     const lightTheme = {
         bg: '#EDEDED',
@@ -17,20 +17,14 @@ const Sky = () => {
     const darkTheme = {
         bg: '#000000',
         star: opacity => `rgba(255, 255, 255, ${opacity})`,
-        life: 0.9
+        life: 0.5
     }
 
-    const getCurrentColors = () =>
-        getCurrentTheme()
-            ?
-            darkTheme
-            :
-            lightTheme
-
-    const colors = getCurrentColors()
+    let colors = null
 
 
     useEffect(() => {
+        colors = isDark ? darkTheme : lightTheme
         const canvas = canvasRef.current;
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
@@ -101,9 +95,9 @@ const Sky = () => {
         return () => {
             cancelAnimationFrame(animationFrameId);
         };
-    }, []);
+    }, [isDark]);
 
     return <canvas ref={canvasRef} className={'sky'}/>;
-};
+}
 
 export default Sky;

@@ -20,6 +20,7 @@ import {epoch_getMinorUserData} from "../../http/epochServer";
 import MenuCheckBoxItem from "./MenuCheckBoxItem";
 import MenuThemeBlock from "./MenuThemeBlock";
 import MenuCheckBoxBlock from "./MenuCheckBoxBlock";
+import LoaderMenu from "../loaders/LoaderMenu";
 
 
 const Menu = () => {
@@ -27,6 +28,8 @@ const Menu = () => {
     const {user} = useContext(Context)
     const id = user.userData.anotherID
     const [isLoading, setIsLoading] = useState(true)
+
+
 
     const logout = () => {
         user.setIsAuth(false)
@@ -51,6 +54,7 @@ const Menu = () => {
         <div className="title_container">
             <h1>Меню</h1>
         </div>
+        <LoaderMenu />
     </div>
 
     return (

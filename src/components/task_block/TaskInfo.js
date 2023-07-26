@@ -21,6 +21,8 @@ const TaskInfo = ({status, teacher, dateAdded, periodRealization, statusID, nota
 
     const deadline = timeManager(periodRealization)
 
+    console.log(dateAdded, periodRealization)
+
     return (
         <div className="element_container">
 
@@ -32,7 +34,6 @@ const TaskInfo = ({status, teacher, dateAdded, periodRealization, statusID, nota
                 <div className="content_elem_column">
                     <div className="container_row_start">
                         <div className={`lighter ${getStatusIcon(statusID).color}`}>
-                            {/*<PencilSimple weight="bold" className="icon_min text_lighter"/>*/}
                             {getStatusIcon(statusID).icon}
                             <p className="text_lighter">{status}</p>
                         </div>
@@ -48,14 +49,26 @@ const TaskInfo = ({status, teacher, dateAdded, periodRealization, statusID, nota
                     </div>
 
                     <div className="column_container_mini">
-                        <div className="container_row_start extended_gap">
-                            <GraduationCap weight="bold" className="icon_min"/>
-                            <p>{teacher}</p>
-                        </div>
+                        {
+                            teacher
+                            &&
+                            <div className="container_row_start extended_gap">
+                                <GraduationCap weight="bold" className="icon_min"/>
+                                <p>{teacher}</p>
+                            </div>
+                        }
+
                         <div className="container_row_start extended_gap">
                             <CalendarBlank weight="bold" className="icon_min"/>
-                            <p>{`${normalizationDate(dateAdded)} – ${normalizationDate(periodRealization)}`}</p>
+                            {
+                                dateAdded
+                                    ?
+                                    <p>{`${normalizationDate(dateAdded)} – ${normalizationDate(periodRealization)}`}</p>
+                                    :
+                                    <p>{`${normalizationDate(periodRealization)}`}</p>
+                            }
                         </div>
+
                     </div>
                 </div>
             </div>

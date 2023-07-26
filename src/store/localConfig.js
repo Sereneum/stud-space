@@ -3,7 +3,7 @@ import {makeAutoObservable} from "mobx";
 
 export default class LocalConfig {
     constructor() {
-        this._theme = {}
+        this._theme = null
         this._sky = {
             text: 'Анимированный фон',
             key: 'animBg',

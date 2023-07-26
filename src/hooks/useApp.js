@@ -5,6 +5,7 @@ import {Context} from "../index";
 import {epoch_courseData, epoch_fetchServerData} from "../http/epochServer";
 import {API_COURSE, API_DUTY} from "../http/consts";
 import {$authHost} from "../http";
+import {themeManager} from "../managers/themeManager";
 
 const next = (id, end, courseData, localConfig) => {
     loadingCourses(id)
@@ -14,6 +15,7 @@ const next = (id, end, courseData, localConfig) => {
             courseData.setActiveCourse(r.serverData.active)
             courseData.setCourses(r.courses)
             loadingLocalConfig(localConfig)
+            loadingTheme(localConfig)
             end()
         })
         .catch(err => console.log(err))
@@ -48,6 +50,11 @@ const loadingLocalConfig = (localConfig) => {
     })
 }
 
+/*  */
+const loadingTheme = (localConfig) => {
+    themeManager(localConfig).setStore(null)
+    themeManager(localConfig).setStyle()
+}
 
 const useApp = () => {
     const {user, courseData, localConfig} = useContext(Context)

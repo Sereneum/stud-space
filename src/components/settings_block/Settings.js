@@ -8,6 +8,7 @@ import {preEpoch_saveCourses} from "../../http/preEpoch";
 import {observer} from "mobx-react-lite";
 import {NavLink, useNavigate} from "react-router-dom";
 import LoaderSettings from "../loaders/LoaderSettings";
+import Loader from "../loaders/Loader";
 
 const Settings = observer(() => {
 
@@ -17,7 +18,7 @@ const Settings = observer(() => {
     const [isDirty, setIsDirty] = useState(false)
     const [passive, setPassive] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    // const [isSaveLoading, setIsSaveLoading] = useState(0)
+    const [isSaveLoading, setIsSaveLoading] = useState(0)
 
     const id = user.userData.anotherID
     const navigate = useNavigate()
@@ -30,13 +31,13 @@ const Settings = observer(() => {
                 setPassive(r.passive)
                 setIsLoading(false)
             })
-    }, [id])
+    }, [])
 
     useEffect(() => {
-        if(JSON.stringify(pureActive) === JSON.stringify(active)) {
-            if(isDirty) setIsDirty(false)
+        if (JSON.stringify(pureActive) === JSON.stringify(active)) {
+            if (isDirty) setIsDirty(false)
         } else {
-            if(!isDirty) setIsDirty(true)
+            if (!isDirty) setIsDirty(true)
         }
     }, [active])
 
@@ -76,19 +77,18 @@ const Settings = observer(() => {
     const save = () => {
         setIsDirty(false)
         setPureActive(active)
-        // setIsSaveLoading(2)
+        setIsSaveLoading(2)
         preEpoch_saveCourses(courseData.courses, active)
             .then(r => {
                 courseData.setCourses(r)
-                // setIsSaveLoading(prev => prev - 1)
+                setIsSaveLoading(prev => prev - 1)
             })
 
         epoch_updateActiveCourses(id, active)
             .then(r => {
-                // setIsSaveLoading(prev => prev - 1)
+                setIsSaveLoading(prev => prev - 1)
             })
     }
-
 
     if (isLoading) return <div className="block settings_block">
         <div className="title_container back_container" onClick={() => navigate(-1)}>
@@ -154,9 +154,15 @@ const Settings = observer(() => {
             <div
                 className="save_button"
                 onClick={save}
-                style={{"display": `${isDirty ? '' : 'none'}`}}
+                style={{"display": `${isDirty || isSaveLoading ? '' : 'none'}`}}
             >
-                <h4 className="text_lighter">Сохранить изменения</h4>
+                {
+                    isSaveLoading
+                        ?
+                        <Loader/>
+                        :
+                        <h4 className="text_lighter">Сохранить изменения</h4>
+                }
             </div>
         </div>
     );

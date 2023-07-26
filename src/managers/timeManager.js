@@ -53,6 +53,9 @@ export const parserDateNow = (date=null) => {
 export const slashToPoint = date =>
      moment(date).format('DD.MM.YYYY')
 
+export const pointToSlash = date =>
+    moment(date).format('YYYY-MM-DD')
+
 export const isSameDate = (begin, end) =>
     moment().isSameOrAfter(begin) && moment().isSameOrBefore(end)
 
