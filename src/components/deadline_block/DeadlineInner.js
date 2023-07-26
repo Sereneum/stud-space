@@ -3,8 +3,8 @@ import { Context } from "../../index";
 import DeadlineItem from "./DeadlineItem";
 import { observer } from "mobx-react-lite";
 import { Check } from "@phosphor-icons/react";
-import {checkDeadline} from "../../managers/timeManager";
-import {deadlinesManager} from "../../managers/deadlinesManager";
+import { checkDeadline } from "../../managers/timeManager";
+import { deadlinesManager } from "../../managers/deadlinesManager";
 
 const DeadlineInner = observer(() => {
     const { courseData } = useContext(Context)
@@ -42,11 +42,9 @@ const DeadlineInner = observer(() => {
                 {
                     !tasks.length
                     &&
-                    <div className="content_cover">
-                        <div className="content_elem_row">
-                            <Check weight="bold" className="icon_min"/>
-                            <p>Нет доступных</p>
-                        </div>
+                    <div className="course_list_item">
+                        <Check weight="bold" className="icon_min" />
+                        <p>Нет доступных</p>
                     </div>
                 }
 

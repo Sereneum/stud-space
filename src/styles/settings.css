@@ -1,3 +1,26 @@
+.save-button-anim-enter {
+    transform: translateY(150%);
+}
+
+.save-button-anim-enter-active {
+    transform: translateY(0);
+    transition: all 1s cubic-bezier(0, 1, 0, 1);
+    opacity: 1;
+}
+  
+.save-button-anim-exit {
+    transform: translateY(0);
+}
+
+.save-button-anim-exit-active {
+    transition: all 1s cubic-bezier(1, 0, 1, 0);
+    transform: translateY(130%);
+}
+
+.save-button-anim-exit-done {
+}
+
+
 .settings_block {
     margin-bottom: 20px;
 }
@@ -80,7 +103,7 @@
     bottom: 30px;
     margin-left: 100px;
 
-    animation: enter 1s cubic-bezier(0, 1.07, 0, 0.99);
+    /* animation: enter 1s cubic-bezier(0, 1.07, 0, 0.99); */
 }
 
 .rename {

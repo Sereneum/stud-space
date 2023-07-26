@@ -1,18 +1,19 @@
-import {CaretLeft, GearFine, PushPin, PushPinSlash} from "@phosphor-icons/react";
+import { CaretLeft, GearFine, PushPin, PushPinSlash, CircleNotch } from "@phosphor-icons/react";
 import FixedCourse from "./FixedCourse";
 import LooseCourse from "./LooseCourse";
-import {useContext, useEffect, useState} from "react";
-import {Context} from "../../index";
-import {epoch_fetchConfigurableCourses, epoch_updateActiveCourses} from "../../http/epochServer";
-import {preEpoch_saveCourses} from "../../http/preEpoch";
-import {observer} from "mobx-react-lite";
-import {NavLink, useNavigate} from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../../index";
+import { epoch_fetchConfigurableCourses, epoch_updateActiveCourses } from "../../http/epochServer";
+import { preEpoch_saveCourses } from "../../http/preEpoch";
+import { observer } from "mobx-react-lite";
+import { NavLink, useNavigate } from "react-router-dom";
 import LoaderSettings from "../loaders/LoaderSettings";
 import Loader from "../loaders/Loader";
+import { CSSTransition } from "react-transition-group";
 
 const Settings = observer(() => {
 
-    const {user, courseData} = useContext(Context)
+    const { user, courseData } = useContext(Context)
     const [active, setActive] = useState([])
     const [pureActive, setPureActive] = useState([])
     const [isDirty, setIsDirty] = useState(false)
@@ -70,7 +71,7 @@ const Settings = observer(() => {
 
     const rename = (value, localIndex) => {
         setActive(active.map((i, mapIndex) =>
-            mapIndex === localIndex ? {...i, course_name: value} : i
+            mapIndex === localIndex ? { ...i, course_name: value } : i
         ))
     }
 
@@ -92,17 +93,17 @@ const Settings = observer(() => {
 
     if (isLoading) return <div className="block settings_block">
         <div className="title_container back_container" onClick={() => navigate(-1)}>
-            <CaretLeft weight="bold" className="icon_mid"/>
+            <CaretLeft weight="bold" className="icon_mid" />
             <h2>Настройка курсов</h2>
         </div>
-        <LoaderSettings/>
+        <LoaderSettings />
     </div>
 
     return (
         <div className="block settings_block">
             {/*TITLE*/}
             <div className="title_container back_container" onClick={() => navigate(-1)}>
-                <CaretLeft weight="bold" className="icon_mid"/>
+                <CaretLeft weight="bold" className="icon_mid" />
                 <h2>Настройка курсов</h2>
             </div>
 
@@ -111,7 +112,7 @@ const Settings = observer(() => {
 
                 {/*FIXED COURSES - TITLE*/}
                 <div className="title_container">
-                    <PushPin weight="fill" className="icon_min"/>
+                    <PushPin weight="fill" className="icon_min" />
                     <h3>Закреплено</h3>
                 </div>
 
@@ -132,7 +133,7 @@ const Settings = observer(() => {
 
                 {/*LOOSE COURSES - TITLE*/}
                 <div className="title_container">
-                    <PushPinSlash weight="fill" className="icon_min"/>
+                    <PushPinSlash weight="fill" className="icon_min" />
                     <h3>Не закреплено</h3>
                 </div>
 
@@ -151,19 +152,22 @@ const Settings = observer(() => {
             </div>
 
             {/* SAVE */}
-            <div
-                className="save_button"
-                onClick={save}
-                style={{"display": `${isDirty || isSaveLoading ? '' : 'none'}`}}
-            >
-                {
-                    isSaveLoading
-                        ?
-                        <Loader/>
-                        :
-                        <h4 className="text_lighter">Сохранить изменения</h4>
-                }
-            </div>
+            <CSSTransition in={isDirty} classNames={'save-button-anim'} timeout={1000} unmountOnExit>
+                <div
+                    className="save_button"
+                    onClick={save}
+                    // style={{ "display": `${isDirty || isSaveLoading ? '' : 'none'}` }}
+                >
+                    {
+                        isSaveLoading
+                            ?
+                            <CircleNotch weight="bold" className="icon_min loader text_lighter" />
+                            :
+                            <h4 className="text_lighter">Сохранить изменения</h4>
+                    }
+                </div>
+            </CSSTransition>
+
         </div>
     );
 })
