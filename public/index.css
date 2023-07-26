@@ -4,11 +4,15 @@
     --var-bg: #EDEDED;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --var-bg: #000000;
-    }
+.dark-theme {
+    --var-bg: #000000;
 }
+
+/*@media (prefers-color-scheme: dark) {*/
+/*    :root {*/
+/*        --var-bg: #000000;*/
+/*    }*/
+/*}*/
 
 #root {
     box-sizing: border-box;

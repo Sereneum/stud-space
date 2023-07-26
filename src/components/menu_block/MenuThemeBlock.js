@@ -1,7 +1,23 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Moon, StarAndCrescent, Sun} from "@phosphor-icons/react";
+import {Context} from "../../index";
+import {observer} from "mobx-react-lite";
+import {themeManager} from "../../managers/themeManager";
 
-const MenuThemeBlock = () => {
+const MenuThemeBlock = observer(() => {
+
+    const {localConfig} = useContext(Context)
+
+    const setTheme = newTheme => {
+        themeManager(localConfig).setStore(newTheme)
+        themeManager(localConfig).setStyle()
+    }
+
+    const invBg = theme =>
+        localConfig.theme === theme ? 'enabled_invert' : ''
+
+    const invTxt = theme =>
+        localConfig.theme === theme ? 'theme_enabled_text' : ''
 
     return (
         <div className="content_cover">
@@ -9,31 +25,33 @@ const MenuThemeBlock = () => {
                 <p>Оформление</p>
                 <div className="container_row_start">
 
-                    <div className="theme_item_container">
-                        <div className="theme_circle">
+                    {/*  LIGHT  */}
+                    <div className="theme_item_container" onClick={() => setTheme('light')}>
+                        <div className={`theme_circle ${invBg('light')}`}>
                             <Sun weight="bold" className="icon_big"/>
                         </div>
-                        <p className="theme_text">Светлое</p>
+                        <p className={`theme_text ${invTxt('light')}`}>Светлое</p>
                     </div>
-
-                    <div className="theme_item_container">
-                        <div className="theme_circle">
+                    {/*  DARK  */}
+                    <div className="theme_item_container" onClick={() => setTheme('dark')}>
+                        <div className={`theme_circle ${invBg('dark')}`}>
                             <Moon weight="bold" className="icon_big"/>
                         </div>
-                        <p className="theme_text">Тёмное</p>
+                        <p className={`theme_text ${invTxt('dark')}`}>Темное</p>
                     </div>
 
-                    <div className="theme_item_container">
-                        <div className="theme_circle enabled_invert">
+                    {/*  SYSTEM  */}
+                    <div className="theme_item_container" onClick={() => setTheme('system')}>
+                        <div className={`theme_circle ${invBg('system')}`}>
                             <StarAndCrescent weight="bold" className="icon_big"/>
                         </div>
-                        <p className="theme_text theme_enabled_text">Системное</p>
+                        <p className={`theme_text ${invTxt('system')}`}>Системное</p>
                     </div>
 
                 </div>
             </div>
         </div>
     );
-};
+})
 
 export default MenuThemeBlock;

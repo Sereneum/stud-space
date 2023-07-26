@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../../index";
 import { observer } from "mobx-react-lite";
 import CourseItem from "./CourseItem";
+import LoaderCourse from "../loaders/LoaderCourse";
 
 
 const Course = observer(() => {
@@ -56,13 +57,13 @@ const Course = observer(() => {
             <CaretLeft weight="bold" className="icon_mid" />
             <h2>{pre_course_name}</h2>
         </div>
-
-        <div className="element_container">
-            <div className="title_container">
-                <h3>Задания</h3>
-                {'\n\n'}
-            </div>
-        </div>
+        <LoaderCourse />
+        {/*<div className="element_container">*/}
+        {/*    <div className="title_container">*/}
+        {/*        <h3>Задания</h3>*/}
+        {/*        {'\n\n'}*/}
+        {/*    </div>*/}
+        {/*</div>*/}
     </div>
 
     return (

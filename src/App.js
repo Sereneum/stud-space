@@ -26,6 +26,7 @@ import PrivacyUnAuth from "./components/privacy_block/PrivacyUnAuth";
 import FaqUnAuth from "./components/faq_block/FaqUnAuth";
 import {observer} from "mobx-react-lite"
 import Loader from "./components/loaders/Loader";
+import {themeManager} from "./managers/themeManager";
 
 const App = observer(() => {
 
@@ -42,7 +43,7 @@ const App = observer(() => {
 
             <ScrollToTop/>
 
-            {localConfig.sky.value && <Sky/>}
+            {localConfig.sky.value && <Sky isDark={themeManager(localConfig).isDark()}/>}
 
             <div className="main_container">
 

@@ -10,11 +10,13 @@ const Messages = observer(() => {
     const access = localConfig.msg.value
     const [msg, setMsg] = useState(0)
 
+
+
     useEffect(() => {
         if (access)
             epoch_checkerMail()
                 .then(r => setMsg(r.data.count))
-    }, [])
+    }, [localConfig.msg.value])
 
 
     return (
