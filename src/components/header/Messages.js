@@ -19,8 +19,7 @@ const Messages = observer(() => {
 
     return (
         <div className="nav_bar">
-            <NavLink to="https://stud.mgri.ru/WebApp/#/mail/all" target="_blank" rel="noreferrer"
-                     className="nav_elem_container ">
+            <NavLink to="https://stud.mgri.ru/WebApp/#/mail/all" target="_blank" rel="noreferrer" className="nav_elem_container ">
                 <EnvelopeSimple weight="bold" className="icon_nav"/>
                 {access && msg ? <div className='messages'>{msg}</div> : ''}
             </NavLink>

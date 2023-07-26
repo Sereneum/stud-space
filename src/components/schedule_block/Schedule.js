@@ -1,16 +1,16 @@
-import {CalendarBlank, CaretDown, GraduationCap, MapPin} from "@phosphor-icons/react";
-import {useContext, useEffect, useState} from "react";
-import {Context} from "../../index";
-import {epoch_getMinorUserData, epoch_schedule} from "../../http/epochServer";
+import { CalendarBlank, CaretDown, GraduationCap, MagnifyingGlassMinus, MapPin, X, XCircle } from "@phosphor-icons/react";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../../index";
+import { epoch_getMinorUserData, epoch_schedule } from "../../http/epochServer";
 import ScheduleController from "./ScheduleController";
 import ScheduleWeek from "./ScheduleWeek";
-import {parserDateNow} from "../../managers/timeManager";
-import {sch_parser} from "../../managers/schManager";
+import { parserDateNow } from "../../managers/timeManager";
+import { sch_parser } from "../../managers/schManager";
 import LoaderSchedule from "../loaders/LoaderSchedule";
 
 const Schedule = () => {
 
-    const {user} = useContext(Context)
+    const { user } = useContext(Context)
     const [weekData, setWeekData] = useState({})
     const [weekID, setWeekID] = useState('2023-06-07')
     const [isLoading, setIsLoading] = useState(true)
@@ -31,7 +31,7 @@ const Schedule = () => {
         console.log(user.minorUserData)
         const groupID = user.minorUserData.group.item2
 
-        await epoch_schedule({groupID, weekID, isCalendar})
+        await epoch_schedule({ groupID, weekID, isCalendar })
             .then(r => {
                 console.log(r)
                 if (!isCalendar) user.setCalendar(r[1])
@@ -60,7 +60,7 @@ const Schedule = () => {
             <div className="title_container">
                 <h1>Расписание</h1>
             </div>
-            <LoaderSchedule/>
+            <LoaderSchedule />
         </div>
 
     return (
@@ -70,6 +70,7 @@ const Schedule = () => {
                 <h1>Расписание</h1>
             </div>
 
+
             {/* SCHEDULE CONTROL BLOCK */}
             <ScheduleController
                 weekID={weekID}
@@ -78,7 +79,15 @@ const Schedule = () => {
             />
 
             {/* SCHEDULE WEEK BLOCK */}
-            <ScheduleWeek weekData={weekData}/>
+            <ScheduleWeek weekData={weekData} />
+
+
+            <div className="content_cover">
+                <div className="content_elem_row">
+                    <XCircle weight="bold" className="icon_min" />
+                    <p>Расписание отсутствует</p>
+                </div>
+            </div>
 
 
             {/*<div className="element_container">*/}

@@ -157,11 +157,16 @@ p {
 
 .messages {
     color: var(--var-text-and-icons);
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
-    height: auto;
-    padding: 0;
-    margin-left: 2px;
+    height: min-content;
+    position: absolute;
+    background-color: var(--var-active-element);
+    padding: 5px 10px;
+    border-radius: 16px;
+    opacity: 1;
+    margin-bottom: 40px;
+    margin-left: 10px;
 }
 
 .text_back {
