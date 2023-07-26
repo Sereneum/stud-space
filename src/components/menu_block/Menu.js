@@ -177,7 +177,7 @@ const Menu = () => {
             </div>
 
             <div onClick={logout} className="exit_button">
-                <h3 className="exit_text">Выйти</h3>
+                <h4 className="exit_text">Выйти</h4>
             </div>
 
         </div>

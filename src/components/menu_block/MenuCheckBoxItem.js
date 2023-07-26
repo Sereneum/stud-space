@@ -8,7 +8,7 @@ const MenuCheckBoxItem = ({item, isLast, set}) => {
     const style = () =>
         item.value
             ?
-            {"backgroundColor": "rgba(80, 169, 50, 0.7)"}
+            {"backgroundColor": "rgb(82, 181, 58)"}
             :
             null
 
