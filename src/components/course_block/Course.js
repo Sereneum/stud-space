@@ -84,7 +84,7 @@ const Course = observer(() => {
                 </div>
                 {
                     !course.tasks.length && <div className="content_cover">
-                        <div className="content_elem_row">
+                        <div className="content_elem_row low_opacity">
                             <XCircle weight="bold" className="icon_min" />
                             <p>Нет доступных</p>
                         </div>

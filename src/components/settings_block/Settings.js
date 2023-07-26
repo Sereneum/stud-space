@@ -1,4 +1,4 @@
-import { CaretLeft, GearFine, PushPin, PushPinSlash, CircleNotch } from "@phosphor-icons/react";
+import { CaretLeft, GearFine, PushPin, PushPinSlash, CircleNotch, WarningCircle } from "@phosphor-icons/react";
 import FixedCourse from "./FixedCourse";
 import LooseCourse from "./LooseCourse";
 import { useContext, useEffect, useState } from "react";
@@ -116,6 +116,13 @@ const Settings = observer(() => {
                     <h3>Закреплено</h3>
                 </div>
 
+                <div className="content_cover">
+                    <div className="content_elem_row low_opacity">
+                        <WarningCircle weight="bold" className="icon_min" />
+                        <p className="">Закреплённые курсы отсутствуют</p>
+                    </div>
+                </div>
+
                 {/*FIXED COURSES - ITEMS LIST*/}
                 {
                     active.map((item, index) => <FixedCourse
@@ -156,7 +163,7 @@ const Settings = observer(() => {
                 <div
                     className="save_button"
                     onClick={save}
-                    // style={{ "display": `${isDirty || isSaveLoading ? '' : 'none'}` }}
+                // style={{ "display": `${isDirty || isSaveLoading ? '' : 'none'}` }}
                 >
                     {
                         isSaveLoading

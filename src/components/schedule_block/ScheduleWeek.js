@@ -11,7 +11,7 @@ const ScheduleWeek = ({weekData}) => {
             {!weekData.length
                 &&
                 <div className="content_cover">
-                    <div className="content_elem_row">
+                    <div className="content_elem_row low_opacity">
                         <XCircle weight="bold" className="icon_min"/>
                         <p>Расписание отсутствует</p>
                     </div>

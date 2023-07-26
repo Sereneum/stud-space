@@ -81,13 +81,6 @@ const Schedule = () => {
             <ScheduleWeek weekData={weekData} />
 
 
-            {/*<div className="content_cover">*/}
-            {/*    <div className="content_elem_row">*/}
-            {/*        <XCircle weight="bold" className="icon_min" />*/}
-            {/*        <p>Расписание отсутствует</p>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-
             {/* end block */}
         </div>
     );

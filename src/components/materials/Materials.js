@@ -34,7 +34,7 @@ const Materials = ({items}) => {
                 {
                     !items.length
                     &&
-                    <div className="content_elem_row">
+                    <div className="content_elem_row low_opacity">
                         <XCircle weight="bold" className="icon_min"/>
                         <p>Материалы отсутствуют</p>
                     </div>

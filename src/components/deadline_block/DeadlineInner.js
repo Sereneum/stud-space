@@ -43,8 +43,8 @@ const DeadlineInner = observer(() => {
                     !tasks.length
                     &&
                     <div className="course_list_item">
-                        <Check weight="bold" className="icon_min" />
-                        <p>Нет доступных</p>
+                        <Check weight="bold" className="icon_min low_opacity" />
+                        <p className="low_opacity">Нет доступных</p>
                     </div>
                 }
 
