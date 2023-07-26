@@ -27,6 +27,7 @@ import FaqUnAuth from "./components/faq_block/FaqUnAuth";
 import {observer} from "mobx-react-lite"
 import Loader from "./components/loaders/Loader";
 import {themeManager} from "./managers/themeManager";
+import useThemeDetector from "./hooks/useThemeDetector";
 
 const App = observer(() => {
 
@@ -34,6 +35,7 @@ const App = observer(() => {
     const {user, courseData, localConfig} = useContext(Context)
     const location = useLocation();
 
+    useThemeDetector()
 
     const {isLoading, isAuth, firstAuth} = useApp()
     if (isLoading) return <></>
