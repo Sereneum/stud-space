@@ -870,14 +870,6 @@ input::placeholder {
     opacity: 0.6;
 }
 
-.select-invert {
-    background-color: var(--var-text-and-icons);
-}
-
-.select-invert-text {
-    color: var(--var-bg);
-}
-
 .red {
     color: var(--var-red);
 }
