@@ -31,11 +31,11 @@ import useThemeDetector from "./hooks/useThemeDetector";
 
 const App = observer(() => {
 
-
     const {user, courseData, localConfig} = useContext(Context)
     const location = useLocation();
 
-    useThemeDetector()
+    const {isThemeDetector} = useThemeDetector()
+
 
     const {isLoading, isAuth, firstAuth} = useApp()
     if (isLoading) return <></>
