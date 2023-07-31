@@ -427,6 +427,7 @@ a {
     flex-wrap: nowrap;
     gap: 45px;
     border-radius: 23px;
+    overflow: hidden;
 }
 
 .edge_block {
