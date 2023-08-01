@@ -12,8 +12,6 @@ const isDark = theme => {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 }
 
-const statusBarStyle = isDark ? 'black-translucent' : 'black';
-
 export const themeManager = localConfig => {
     return {
 
