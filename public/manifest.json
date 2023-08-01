@@ -20,5 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": null
+  "theme_color": null,
+  "background_color": null
 }
