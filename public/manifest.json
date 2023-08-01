@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme": "#000000",
-  "background": "#000000"
+  "theme": "#00000000",
+  "background": "#00000000"
 }
