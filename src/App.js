@@ -2,7 +2,7 @@ import "./styles/main.css";
 import "./styles/schedule.css";
 
 import {Routes, Route, useLocation, Navigate} from "react-router-dom";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 
 import ScrollToTop from "./components/scroll_to_top/ScrollToTop";
 
@@ -30,6 +30,19 @@ import {themeManager} from "./managers/themeManager";
 import useThemeDetector from "./hooks/useThemeDetector";
 
 const App = observer(() => {
+
+    useEffect(() => {
+        const addMetaTheme = document.createElement('meta');
+        addMetaTheme.name = 'theme-color';
+        addMetaTheme.content = getComputedStyle(document.documentElement).getPropertyValue('--var-bg');
+        document.head.appendChild(addMetaTheme);
+    
+        return () => {
+          document.head.removeChild(addMetaTheme);
+        };
+        
+    }, []);
+    
 
     const {user, courseData, localConfig} = useContext(Context)
     const location = useLocation();
