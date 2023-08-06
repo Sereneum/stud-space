@@ -63,7 +63,7 @@ const Schedule = () => {
         </div>
 
     return (
-        <div className="block">
+        <div className="block" style={{overflow: 'visible'}}>
             {/* TITLE */}
             <div className="title_container">
                 <h1>Расписание</h1>
