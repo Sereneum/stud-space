@@ -5,6 +5,7 @@ import { observer } from "mobx-react-lite";
 import { Check } from "@phosphor-icons/react";
 import { checkDeadline } from "../../managers/timeManager";
 import { deadlinesManager } from "../../managers/deadlinesManager";
+import {useMediaQuery} from "react-responsive";
 
 const DeadlineInner = observer(() => {
     const { courseData } = useContext(Context)
@@ -12,9 +13,10 @@ const DeadlineInner = observer(() => {
     const [tasks, setTasks] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
+    const isSmallDevice = useMediaQuery({ maxWidth: 1280 })
 
     useEffect(() => {
-        setTasks(deadlinesManager(courseData.courses))
+        setTasks(deadlinesManager(courseData.courses, isSmallDevice))
         setIsLoading(false)
         return () => setIsLoading(true)
     }, [courseData.courses])

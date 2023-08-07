@@ -1,5 +1,5 @@
-import { Plus } from "@phosphor-icons/react";
-import React, { useState } from "react";
+import {Plus} from "@phosphor-icons/react";
+import React, {useState} from "react";
 
 const Accordion = (props) => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -13,7 +13,7 @@ const Accordion = (props) => {
             <div className={`accordion ${isExpanded ? "expanded" : ""}`}>
                 <div className="accordion-toggle">
                     <span className={`accordion-icon ${isExpanded ? "rotate" : ""}`}>
-                        <Plus weight="bold" className="icon_min low_opacity" />
+                        <Plus weight="bold" className="icon_min low_opacity"/>
                     </span>
                     <h4>{props.title}</h4>
                 </div>
@@ -22,7 +22,8 @@ const Accordion = (props) => {
                 </div>
             </div>
         </div>
-    );
+    )
+
 }
 
 export default Accordion;

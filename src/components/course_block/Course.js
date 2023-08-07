@@ -17,7 +17,7 @@ const Course = observer(() => {
 
     const findCourseName = () => {
         let course_id = Number(localStorage.getItem('activeCourse'))
-        if (!course_id) return ''
+        if (!course_id || !courseData.courses.length)  return ''
         for (let c of courseData.courses)
             if (course_id === c.course_id)
                 return c.course_name
@@ -26,6 +26,7 @@ const Course = observer(() => {
 
     // подгрузОчка курса
     useEffect(() => {
+        if(!courseData.courses.length) navigate('/')
         // пользователь изначально зашел на курс
         if (courseData.activeCourse === 0) {
             // есть запись о том, какой курс пользователь смотрел ранее

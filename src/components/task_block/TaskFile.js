@@ -1,10 +1,12 @@
 import React from 'react';
-import {DownloadSimple, FileZip} from "@phosphor-icons/react";
+import {assignorIcon, assignorIconDownload} from "../../managers/files_manager";
 
 const TaskFile = ({taskFile}) => {
 
     let name = taskFile.slice(taskFile.lastIndexOf(`\\`) + 1)
     const download = () => window.open('https://stud.mgri.ru/' + taskFile, '_blank')
+
+    console.log(name)
 
     return (
         <div className="element_container" onClick={download}>
@@ -14,9 +16,9 @@ const TaskFile = ({taskFile}) => {
 
             <div className="content_cover">
                 <div className="content_elem_row select">
-                    <FileZip weight="bold" className="icon_mid" />
+                    {assignorIcon(name)}
                     <p className="text_file">{name}</p>
-                    <DownloadSimple weight="bold" className="icon_mid" />
+                    {assignorIconDownload(name)}
                 </div>
             </div>
         </div>
