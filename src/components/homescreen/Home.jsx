@@ -9,11 +9,11 @@ const Home = () => {
 	useEffect(() => {
 		const headerButton = document.querySelector('.header-button')
 		window.addEventListener('scroll', handleScroll)
-	
+
 		function handleScroll() {
 			const scrollY = window.scrollY
 			const windowWidth = window.innerWidth
-	
+
 			if (windowWidth >= 1220) {
 				if (scrollY >= 600 && scrollY <= 3800) {
 					headerButton.classList.add('visible')
@@ -29,7 +29,7 @@ const Home = () => {
 				}
 			}
 		}
-	
+
 		return () => {
 			window.removeEventListener('scroll', handleScroll)
 		}
@@ -108,7 +108,7 @@ const Home = () => {
 					<div className='content-part'>
 						<h4 className='content-title'>Новое видение курсов</h4>
 						<p className='small-letters low_opacity text-center'>
-							Два действия чтобы увидеть статус выполнения всех заданий. Space
+							Два нажатия, чтобы увидеть статус выполнения заданий. Space
 							переизобретает пользовательский опыт stud.
 						</p>
 					</div>
@@ -133,7 +133,7 @@ const Home = () => {
 					</div>
 					<div
 						className='content-part schedule-break left-pos course-break'
-						style={{ 'justify-content': 'start'}}
+						style={{ 'justify-content': 'start' }}
 					>
 						<div className='fader'></div>
 						<CoursePreview />
