@@ -4,7 +4,7 @@ import {Context} from "../../index";
 
 const DarkSky = () => {
     const isMobile = useMediaQuery({query: '(max-width: 1300px)'})
-    const radius = isMobile ? 0.1 : 0.25
+    const radius = isMobile ? 0.05 : 0.25
     const canvasRef = useRef(null);
 
     let colors = {
@@ -25,7 +25,7 @@ const DarkSky = () => {
         const createStars = () => {
             const stars = [];
             let fullLifeTime = 300
-            for (let i = 0; i < 200; i++) {
+            for (let i = 0; i < 75; i++) {
                 stars.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,

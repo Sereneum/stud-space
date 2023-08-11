@@ -24,7 +24,7 @@ const LightStars = () => {
         const createStars = () => {
             const stars = [];
             let fullLifeTime = 300
-            for (let i = 0; i < 200; i++) {
+            for (let i = 0; i < 75; i++) {
                 stars.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
