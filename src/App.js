@@ -37,6 +37,7 @@ const App = observer(() => {
 	const { isThemeDetector } = useThemeDetector()
 
 	const { isLoading, isAuth, firstAuth } = useApp()
+
 	if (isLoading) return <>   <Preloader />    </>
 
     	// Получение значения из localStorage

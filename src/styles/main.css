@@ -77,7 +77,7 @@
 
 *::-webkit-scrollbar-track {
 	overflow: overlay;
-	background: var(--var-bg);
+	background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
