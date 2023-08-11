@@ -28,6 +28,7 @@ import { observer } from 'mobx-react-lite'
 import Loader from './components/loaders/Loader'
 import { themeManager } from './managers/themeManager'
 import useThemeDetector from './hooks/useThemeDetector'
+import Preloader from './components/preloader/Preloader'
 
 const App = observer(() => {
 	const { user, courseData, localConfig } = useContext(Context)
@@ -36,7 +37,33 @@ const App = observer(() => {
 	const { isThemeDetector } = useThemeDetector()
 
 	const { isLoading, isAuth, firstAuth } = useApp()
-	if (isLoading) return <></>
+	if (isLoading) return <>   <Preloader />    </>
+
+    	// Получение значения из localStorage
+		const theme = localStorage.getItem('theme')
+
+		// Проверка значения и изменение theme-color
+		if (theme === 'light') {
+			document
+				.querySelector('meta[name="theme-color"]')
+				.setAttribute('content', '#ededed')
+		} else if (theme === 'dark') {
+			document
+				.querySelector('meta[name="theme-color"]')
+				.setAttribute('content', 'black')
+		} else if (theme === 'system') {
+			// Если значение 'system', изменить на основе темы устройства
+			const mediaQuery = window.matchMedia('(prefers-color-scheme: light)')
+			if (mediaQuery.matches) {
+				document
+					.querySelector('meta[name="theme-color"]')
+					.setAttribute('content', '#ededed')
+			} else {
+				document
+					.querySelector('meta[name="theme-color"]')
+					.setAttribute('content', 'black')
+			}
+		}
 
 	return (
 		<div className='App'>

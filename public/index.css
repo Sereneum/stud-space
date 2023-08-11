@@ -8,9 +8,6 @@
     --var-bg: #000000;
 }
 
-.meta-theme {
-    background-color: var(--var-bg);
-}
 
 /*@media (prefers-color-scheme: dark) {*/
 /*    :root {*/

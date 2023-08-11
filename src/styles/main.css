@@ -925,6 +925,39 @@ input::placeholder {
 	opacity: 0.4;
 }
 
+.preloader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background: #000000;
+	z-index: 99999;
+	transition: all 0.3s ease-in-out;
+}
+
+.preloader_logo {
+	position: absolute;
+	top: calc(50% - 60px);
+	left: calc(50% - 43px);
+	width: 90px;
+	height: 90px;
+	z-index: 100001;
+}
+.preloader_logo_back{
+	position: absolute;
+	top: calc(50% - 80px);
+	left: calc(50% - 63px);
+	width: 130px;
+	height: 130px;
+	z-index: 100000;
+	filter: blur(30px);
+	-webkit-filter:blur(30px);
+	animation-delay: 2s;
+	opacity: 1;
+	animation: flick 2s cubic-bezier(1, -0.01, 0.58, 1);
+}
+
 @media (max-width: 1360px) {
 	.main_container {
 		width: 100%;
