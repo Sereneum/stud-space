@@ -18,7 +18,7 @@ const CoursesInner = observer(() => {
 
     const course = (name, course_id) => <div
         onClick={() => toCourse(course_id)}
-        className="course_list_item select"
+        className="course_list_item select-zoom"
         key={course_id}
     >
         <h3>{name}</h3>
@@ -42,7 +42,7 @@ const CoursesInner = observer(() => {
                         }
                     </div>
                     :
-                    <NavLink to="/settings" className="course_list_item select">
+                    <NavLink to="/settings" className="course_list_item select-zoom">
                         <h3>Добавить</h3>
                         <Plus weight="bold" className="icon_min"/>
                     </NavLink>

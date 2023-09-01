@@ -21,7 +21,7 @@ const DeadlineItem = ({item}) => {
 
 
     return (
-        <div className="content_cover select" onClick={toTask}>
+        <div className="content_cover select-zoom" onClick={toTask}>
             <div className="content_elem_row">
                 <div className="content_inner_column">
                     <h3>{item.courseName}</h3>

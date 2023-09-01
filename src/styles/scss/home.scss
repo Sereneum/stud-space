@@ -24,7 +24,6 @@
 	background-color: var(--var-text-and-icons);
 
 	transform: translateY(-100px);
-	opacity: 0;
 	transition: transform 0.3s ease, opacity 0.3s ease;
 
 	.header-button-text {
@@ -45,31 +44,44 @@
 	align-items: center;
 	flex-direction: column;
 	gap: 10px;
-	padding-top: 7vh;
+	padding-top: 6vh;
 
 	overflow: hidden;
 }
 
 .big-letters {
-	// width: min-content;
 	text-align: center;
-	font-size: 90px;
+	font-size: 86px;
 	font-weight: 800;
 	background-clip: text;
 	color: var(--var-text-and-icons);
-
-	animation: changeColor 10s ease infinite;
-	animation-delay: 1s;
 	letter-spacing: -1px;
+	width: 90%;
+
+	@media (max-width: 1340px) {
+		font-size: 6vw;
+	}
+
+	@media (max-width: 600px) {
+		font-size: 6vh;
+		width: 100%;
+	}
 }
 
-.big-letters:first-child {
+.big-letters-first {
 	background-image: linear-gradient(195deg, #ff4100, #ff9900);
+	width: min-content;
+	animation: changeColor 6s ease infinite;
+	animation-delay: 1s;
+	display: inline;
 }
 
-.big-letters:last-child {
+.big-letters-second {
 	background-image: linear-gradient(143deg, #ff00ab, #9000ff);
-	animation-delay: 5s;
+	width: min-content;
+	animation: changeColor 6s ease infinite;
+	display: inline;
+	animation-delay: 3.5s;
 }
 
 .small-letters-wrapper {
@@ -95,6 +107,63 @@
 
 .action-button-container {
 	width: 300px;
+}
+
+@mixin flex($gap: 0px, $direction: column, $align: center, $justify: start) {
+	width: 100%;
+	height: min-content;
+	display: flex;
+	flex-direction: $direction;
+	gap: $gap;
+	align-items: $align;
+	justify-content: $justify;
+}
+
+.geolabs-container {
+	@include flex(1px, row, center, start);
+	height: 37px;
+	width: min-content;
+	border: 3px solid var(--var-text-and-icons);
+	border-radius: 100px;
+	padding: 1px 4px 0px 6px;
+
+	.geolabs-icon {
+		height: 93%;
+		width: auto;
+		color: var(--var-text-and-icons);
+		padding-bottom: 1px;
+	}
+
+	> h2 {
+		color: var(--var-text-and-icons);
+		font-size: 15px;
+		font-weight: 800;
+	}
+}
+
+.geolabs-in-container {
+	@include flex(5px, row, center, start);
+	height: 37px;
+	width: min-content;
+	background-color: #f6651c;
+	border: 3px solid #f6651c;
+	border-radius: 100px;
+	padding: 1px 0px 0px 6px;
+	margin-right: 8px;
+	box-shadow: 0px 2.5px 10px 0px #ff66006d;
+
+	.geolabs-icon {
+		height: 93%;
+		width: auto;
+		color: white;
+		padding-bottom: 1px;
+	}
+
+	> h2 {
+		color: white;
+		font-size: 15px;
+		font-weight: 800;
+	}
 }
 
 .vert-line {
@@ -140,7 +209,6 @@
 .under-title {
 	margin-top: 40px;
 	align-items: start;
-
 }
 
 .right-pos {
@@ -171,7 +239,11 @@
 	height: 150px;
 	position: absolute;
 	bottom: 0;
-	background: linear-gradient(to top, var(--var-bg), hsla(264, 63.18%, 45.88%, 0));
+	background: linear-gradient(
+		to top,
+		var(--var-bg),
+		hsla(264, 63.18%, 45.88%, 0)
+	);
 	z-index: 5;
 }
 
@@ -188,10 +260,7 @@
 	}
 }
 
-
 @media (max-width: 1220px) {
-
-
 	.content-element {
 		flex-direction: column;
 		padding-top: 0px;
@@ -218,19 +287,7 @@
 @media (max-width: 600px) {
 	.big-letters-wrapper {
 		gap: 20px;
-		padding-top: 20px;
-	}
-
-	.big-letters {
-		width: 100%;
-		text-align: center;
-		font-size: 54px;
-		font-weight: 800;
-		background-clip: text;
-		color: var(--var-text-and-icons);
-
-		animation: changeColor 10s ease infinite;
-		animation-delay: 1s;
+		padding-top: 0px;
 	}
 
 	.small-letters-wrapper {
@@ -252,7 +309,7 @@
 		font-weight: 700;
 		text-align: center;
 	}
-	
+
 	.under-title {
 		margin-top: 0px;
 	}

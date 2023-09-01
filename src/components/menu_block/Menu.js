@@ -93,8 +93,8 @@ const Menu = () => {
 
                 <MenuCheckBoxBlock/>
 
-                <div className="content_cover">
-                    <NavLink to="/settings" className="content_elem_row select">
+                <div className="content_cover select-zoom">
+                    <NavLink to="/settings" className="content_elem_row">
                         <GearFine weight="bold" className="icon_mid"/>
                         <p>Настроить курсы</p>
                         <CaretRight weight="bold" className="icon_mid"/>
@@ -142,38 +142,6 @@ const Menu = () => {
                     </NavLink>
 
                 </div>
-            </div>
-
-            <div className="element_container">
-                <div className="title_container">
-                    <h3>Авторы</h3>
-                </div>
-
-                <div className="content_cover">
-
-                    <div className="content_elem_column">
-                        <div className="container_column_start">
-                            <p>Романов Максим</p>
-                            <p className="low_opacity">Backend, Frontend Developing</p>
-                        </div>
-                    </div>
-
-                    <div className="breaker"></div>
-
-                    <div className="content_elem_column">
-                        <div className="container_column_start">
-                            <p>Могильников Михаил</p>
-                            <p className="low_opacity">Web-design, UI/UX, Frontend Developing</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div className="title_container">
-                    <p className="bottom_text">Группа: ПИ-20 <br/> Кафедра информатики и геоинформационных систем <br/>
-                        <br/> Российский государственный геологоразведочный университет имени Серго Орджоникидзе</p>
-                </div>
-
             </div>
 
             <div onClick={logout} className="exit_button">

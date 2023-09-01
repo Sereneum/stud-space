@@ -76,8 +76,8 @@
     align-items: center;
     justify-content: center;
     background: var(--var-elements);
-    border-bottom-right-radius: 13px;
-    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
     box-shadow: 0 7px 15px 0 rgba(0, 0, 0, 0.25);
     padding-bottom: 8px;
 }
@@ -161,6 +161,8 @@ td.isOk {
     display: flex;
     margin-top: 30px;
     margin-bottom: 20px;
+    width: 180px;
+    justify-content: space-between;
 }
 
 .calendar_box {
