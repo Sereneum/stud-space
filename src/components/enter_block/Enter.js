@@ -1,4 +1,4 @@
-import {AsteriskSimple, CaretRight, Question} from "@phosphor-icons/react";
+import {AsteriskSimple, CaretRight, Code, Question} from "@phosphor-icons/react";
 import {NavLink} from "react-router-dom";
 import {useContext, useState} from "react";
 import {authCheck, login} from "../../http/userApi";
@@ -87,6 +87,14 @@ const Enter = () => {
                         <p>Помощь и возможности</p>
                         <CaretRight weight="bold" className="icon_mid"/>
                     </NavLink>
+
+                    <div className='breaker'></div>
+
+					<NavLink to='/credits' className='content_elem_row select'>
+						<Code weight='bold' className='icon_mid' />
+						<p>Авторы</p>
+						<CaretRight weight='bold' className='icon_mid' />
+					</NavLink>
 
                     <div className="breaker"></div>
 

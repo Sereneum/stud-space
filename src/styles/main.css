@@ -420,8 +420,13 @@ a {
 	gap: 45px;
 	border-radius: 24px;
 	overflow: hidden;
+	will-change: opacity;
 
-	animation: enterBlock 1.5s cubic-bezier(0, 1, 0, 1), enterOpacity 0.2s linear;
+	animation: enterBlock 1.2s cubic-bezier(0, 1, 0, 1), enterOpacity 0.2s ease-in-out;
+}
+
+.course-animation {
+	animation: enterBlock 1s cubic-bezier(0, 1, 0, 1);
 }
 
 .edge_block {
