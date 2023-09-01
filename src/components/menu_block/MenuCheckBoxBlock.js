@@ -8,8 +8,10 @@ const MenuCheckBoxBlock = observer(() => {
     const {localConfig} = useContext(Context)
     const config = [
         {obj: {...localConfig.sky}, setter: obj => localConfig.setSky(obj)},
-        {obj: {...localConfig.msg}, setter: obj => localConfig.setMsg(obj)}
+        {obj: {...localConfig.msg}, setter: obj => localConfig.setMsg(obj)},
+        // {obj: {...localConfig.smoothTs}, setter: obj => localConfig.setSmoothTs(obj)},
     ]
+
 
     const set = index => {
         let newValue = !config[index].obj.value

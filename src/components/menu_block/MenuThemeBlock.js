@@ -10,32 +10,6 @@ const MenuThemeBlock = observer(() => {
 	const setTheme = newTheme => {
 		themeManager(localConfig).setStore(newTheme)
 		themeManager(localConfig).setStyle()
-
-		// Получение значения из localStorage
-		const theme = localStorage.getItem('theme')
-
-		// Проверка значения и изменение theme-color
-		if (theme === 'light') {
-			document
-				.querySelector('meta[name="theme-color"]')
-				.setAttribute('content', '#ededed')
-		} else if (theme === 'dark') {
-			document
-				.querySelector('meta[name="theme-color"]')
-				.setAttribute('content', 'black')
-		} else if (theme === 'system') {
-			// Если значение 'system', изменить на основе темы устройства
-			const mediaQuery = window.matchMedia('(prefers-color-scheme: light)')
-			if (mediaQuery.matches) {
-				document
-					.querySelector('meta[name="theme-color"]')
-					.setAttribute('content', '#ededed')
-			} else {
-				document
-					.querySelector('meta[name="theme-color"]')
-					.setAttribute('content', 'black')
-			}
-		}
 	}
 
 	const invBg = theme => (localConfig.theme === theme ? 'enabled_invert' : '')

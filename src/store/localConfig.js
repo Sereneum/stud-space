@@ -15,6 +15,11 @@ export default class LocalConfig {
             key: 'msgCnt',
             value: null
         }
+        // this._smoothTs = {
+        //     text: 'Плавные переходы',
+        //     key: 'smoothTs',
+        //     value: null
+        // }
         makeAutoObservable(this)
     }
 
@@ -30,6 +35,12 @@ export default class LocalConfig {
         this._msg = msg
     }
 
+    // setSmoothTs(smoothTs) {
+    //     this._smoothTs = smoothTs
+    // }
+
+
+
     get theme() {
         return this._theme
     }
@@ -41,4 +52,8 @@ export default class LocalConfig {
     get msg() {
         return this._msg
     }
+
+    // get smoothTs() {
+    //     return this._smoothTs
+    // }
 }

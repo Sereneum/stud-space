@@ -59,12 +59,6 @@ const Course = observer(() => {
             <h2>{pre_course_name}</h2>
         </div>
         <LoaderCourse />
-        {/*<div className="element_container">*/}
-        {/*    <div className="title_container">*/}
-        {/*        <h3>Задания</h3>*/}
-        {/*        {'\n\n'}*/}
-        {/*    </div>*/}
-        {/*</div>*/}
     </div>
 
     return (
