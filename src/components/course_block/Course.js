@@ -68,7 +68,7 @@ const Course = observer(() => {
     </div>
 
     return (
-        <div className="block">
+        <div className="block course-animation">
 
             <div className="title_container desktop_only">
                 <h1>{course.course_name}</h1>
