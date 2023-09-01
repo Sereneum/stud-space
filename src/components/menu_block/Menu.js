@@ -10,7 +10,8 @@ import {
     AsteriskSimple,
     Question,
     LinkSimple,
-    GlobeSimple
+    GlobeSimple,
+    Code
 } from "@phosphor-icons/react";
 
 import {NavLink} from "react-router-dom";
@@ -115,6 +116,14 @@ const Menu = () => {
                         <p>Помощь и возможности</p>
                         <CaretRight weight="bold" className="icon_mid"/>
                     </NavLink>
+
+                    <div className='breaker'></div>
+
+					<NavLink to='/credits' className='content_elem_row select'>
+						<Code weight='bold' className='icon_mid' />
+						<p>Авторы</p>
+						<CaretRight weight='bold' className='icon_mid' />
+					</NavLink>
 
                     <div className="breaker"></div>
 
