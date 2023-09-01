@@ -6,7 +6,7 @@ import {Context} from "../../index";
 import {configHost} from "../../http";
 import Loader from "../loaders/Loader";
 
-const Enter = ({firstAuth}) => {
+const Enter = () => {
 
     const [inputMail, setInputMail] = useState('')
     const [inputPassword, setInputPassword] = useState('')

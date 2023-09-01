@@ -12,6 +12,25 @@ const isDark = theme => {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 }
 
+const turnOnLightTheme = () => {
+    document
+        .querySelector('meta[name="theme-color"]')
+        .setAttribute('content', '#ededed');
+    document
+        .querySelector('html')
+        .classList.remove('dark-theme');
+}
+
+const turnOnDarkTheme = () => {
+    document
+        .querySelector('meta[name="theme-color"]')
+        .setAttribute('content', 'black');
+    document
+        .querySelector('html')
+        .classList.add('dark-theme');
+}
+
+
 export const themeManager = localConfig => {
     return {
 
@@ -29,10 +48,10 @@ export const themeManager = localConfig => {
 
         setStyle:
             () => {
-                const htmlElement = document.querySelector('html')
-                const light = () => htmlElement.classList.remove('dark-theme')
-                const dark = () => htmlElement.classList.add('dark-theme')
-                isDark(localConfig.theme) ? dark() : light()
+                const light = () => turnOnLightTheme();
+                const dark = () => turnOnDarkTheme();
+
+                isDark(localConfig.theme) ? dark() : light();
             }
     }
 }

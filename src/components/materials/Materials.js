@@ -14,7 +14,9 @@ import {
 } from "@phosphor-icons/react";
 import Material from "./Material";
 
-const Materials = ({items}) => {
+const Materials = ({items = []}) => {
+
+    console.log('Materials: ', items)
 
 
     return (
@@ -24,8 +26,11 @@ const Materials = ({items}) => {
             </div>
 
             <div className="content_cover">
-
                 {
+                    items
+                    &&
+                    items.length > 0
+                    &&
                     items.map((item, index) => <Material
                         item={item}
                         isBreaker={index !== items.length - 1}

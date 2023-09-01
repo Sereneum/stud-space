@@ -39,8 +39,8 @@ const Home = () => {
 	}, [])
 
 	return (
-		<div to={'/enter'} className='home-container'>
-			<NavLink to={'/enter'} className='header-button'>
+		<div className='home-container'>
+			<NavLink to={'/login'} className='header-button'>
 				<h4 className='header-button-text'>Войти</h4>
 			</NavLink>
 			<div className='big-letters-wrapper'>
@@ -59,7 +59,7 @@ const Home = () => {
 
 			<div className='action-button-wrapper'>
 				<div className='action-button-container'>
-					<NavLink to={'/enter'} className='button_main'>
+					<NavLink to={'/login'} className='button_main'>
 						<h4 className='text_button_main'>Начать работу</h4>
 					</NavLink>
 				</div>
@@ -204,7 +204,7 @@ const Home = () => {
 			</div>
 			<div className='action-button-wrapper' style={{ paddingBottom: '70px' }}>
 				<div className='action-button-container'>
-					<NavLink to={'/enter'} className='button_main'>
+					<NavLink to={'/login'} className='button_main'>
 						<h4 className='text_button_main'>Войти</h4>
 					</NavLink>
 				</div>

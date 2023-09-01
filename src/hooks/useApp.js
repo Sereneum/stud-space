@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {authCheck} from "../http/userApi";
 import {Context} from "../index";
 import {epoch_courseData, epoch_fetchServerData} from "../http/epochServer";
@@ -56,18 +56,19 @@ const loadingTheme = (localConfig) => {
     themeManager(localConfig).setStyle()
 }
 
+const navigateAfterBadTryLogin = (navigate, path) => {
+    if(path !== '/login')
+        navigate('/home')
+}
+
+
 const useApp = () => {
     const {user, courseData, localConfig} = useContext(Context)
 
     const navigate = useNavigate()
+    const location = useLocation()
     const [isLoading, setIsLoading] = useState(true)
-    const [isFirstAuth, setIsFirstAuth] = useState(false)
 
-
-    const firstAuth = () => {
-        if(!isLoading) setIsLoading(true)
-        setIsFirstAuth(true)
-    }
     const mainPreloadingDate = () => {
         authCheck()
             .then(r => {
@@ -76,8 +77,8 @@ const useApp = () => {
                 user.setUserData(r.data.data.user)
                 let id = r.data.data.user.anotherID
                 console.log(id, r.data.data.user)
-                if(isFirstAuth)
-                    $authHost.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
+                // if(isFirstAuth)
+                //     $authHost.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
                 /* загрузка курсов */
                 next(id, () => setIsLoading(false), courseData, localConfig)
             })
@@ -85,15 +86,16 @@ const useApp = () => {
                 if (err.response.status === 401) {
                     // пользователь не авторизован
                     if (user.isAuth) user.setIsAuth(false)
-                    navigate('/login')
+                    // navigate('/login')
+                    navigateAfterBadTryLogin(navigate, location.pathname)
                     setIsLoading(false)
                 }
             })
     }
 
-    useEffect(mainPreloadingDate, [isFirstAuth])
+    useEffect(mainPreloadingDate, [])
 
-    return {isLoading, isAuth: user.isAuth, firstAuth}
+    return {isLoading, isAuth: user.isAuth}
 }
 
 export default useApp
