@@ -57,7 +57,7 @@ const loadingTheme = (localConfig) => {
 }
 
 const navigateAfterBadTryLogin = (navigate, path) => {
-    if(path !== '/login')
+    if(path !== '/login' || path !== '/credits')
         navigate('/home')
 }
 
@@ -77,8 +77,6 @@ const useApp = () => {
                 user.setUserData(r.data.data.user)
                 let id = r.data.data.user.anotherID
                 console.log(id, r.data.data.user)
-                // if(isFirstAuth)
-                //     $authHost.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
                 /* загрузка курсов */
                 next(id, () => setIsLoading(false), courseData, localConfig)
             })
@@ -86,7 +84,6 @@ const useApp = () => {
                 if (err.response.status === 401) {
                     // пользователь не авторизован
                     if (user.isAuth) user.setIsAuth(false)
-                    // navigate('/login')
                     navigateAfterBadTryLogin(navigate, location.pathname)
                     setIsLoading(false)
                 }

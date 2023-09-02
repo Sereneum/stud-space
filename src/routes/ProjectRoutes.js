@@ -13,6 +13,9 @@ import CoursesTablet from "../components/courses_block/CoursesTablet";
 import DeadlineTablet from "../components/deadline_block/DeadlineTablet";
 import Task from "../components/task_block/Task";
 import Settings from "../components/settings_block/Settings";
+import CreditsContent from "../components/credits_block/CreditsContent";
+import CreditsLogged from "../components/credits_block/CreditsLogged";
+import CreditsUnlogged from "../components/credits_block/CreditsUnlogged";
 
 const ProjectRoutes = ({isAuth}) => {
     return (
@@ -55,6 +58,13 @@ const ProjectRoutes = ({isAuth}) => {
             <Route path='/deadlines' element={<DeadlineTablet/>}/>
             <Route path='/task' element={<Task/>}/>
             <Route path='/settings' element={<Settings/>}/>
+            {
+                isAuth
+                ?
+                    (<Route path='/credits' element={<CreditsLogged />} />)
+                    :
+                    <Route path='/credits' element={<CreditsUnlogged />} />
+            }
         </Routes>
     );
 };

@@ -16,8 +16,6 @@ import Material from "./Material";
 
 const Materials = ({items = []}) => {
 
-    console.log('Materials: ', items)
-
 
     return (
         <div className="element_container">
