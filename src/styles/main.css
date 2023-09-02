@@ -66,7 +66,7 @@
 
 *::-webkit-scrollbar-track {
 	overflow: overlay;
-	background: transparent;
+	background-color: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -420,7 +420,6 @@ a {
 	gap: 45px;
 	border-radius: 24px;
 	overflow: hidden;
-	will-change: opacity;
 
 	animation: enterBlock 1.2s cubic-bezier(0, 1, 0, 1), enterOpacity 0.2s ease-in-out;
 }
@@ -801,9 +800,6 @@ a {
 	display: flex;
 	padding: 7px 10px 0px 10px;
 	cursor: pointer;
-}
-
-.visible {
 }
 
 .hidden {
@@ -1261,4 +1257,3 @@ input::placeholder {
 		transform: translateX(0);
 	}
 }
-

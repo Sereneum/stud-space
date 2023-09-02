@@ -100,8 +100,6 @@
 
 	bottom: 30px;
 	margin-left: 100px;
-
-
 }
 
 .rename {
@@ -137,7 +135,7 @@
 }
 
 .save_button:active {
-    transition: transform 0.2s;
+	transition: transform 0.2s;
 	transform: scale(0.95);
 }
 
