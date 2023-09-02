@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('menu.css');
 @import url('modal.css');
 @import url('settings.css');
@@ -1005,6 +1005,11 @@ input::placeholder {
 	color: white;
 }
 
+.loader-flick {
+	animation: opacity 1s infinite;
+	position: absolute;
+}
+
 @media (max-width: 1360px) {
 	.main_container {
 		width: 100%;
@@ -1078,7 +1083,7 @@ input::placeholder {
 	}
 
 	.project_title {
-		font-size: 38px;
+		font-size: 36px;
 		letter-spacing: -0.3px;
 	}
 
@@ -1216,3 +1221,44 @@ input::placeholder {
 		opacity: 100%;
 	}
 }
+
+.reject-animation {
+  animation: reject 2s, shake 0.4s linear;
+}
+
+@keyframes reject {
+	0% {
+		background-color: rgb(169, 22, 22);
+	}
+
+	100% {
+		background-color: var(--var-text-and-icons);
+	}
+}
+
+@keyframes shake {
+	0% {
+		transform: translateX(0%);
+	}
+
+	20% {
+		transform: translateX(-2%);
+	}
+
+	40% {
+		transform: translateX(2%);
+	}
+
+	60% {
+		transform: translateX(-1%);
+	}
+
+	80% {
+		transform: translateX(1%);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
