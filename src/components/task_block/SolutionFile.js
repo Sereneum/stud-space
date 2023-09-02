@@ -19,8 +19,6 @@ const SolutionFile = ({file, isSuccess, loadingTaskData, isLast}) => {
             .catch(err => console.log(err))
     }
 
-    console.log(file.nameFile ? file.nameFile : file.nameLink, isLast)
-
 
 
     return (

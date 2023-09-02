@@ -22,7 +22,7 @@ const App = observer(() => {
     const {localConfig} = useContext(Context)
 
 
-    const {isThemeDetector} = useThemeDetector()
+    // const {isThemeDetector} = useThemeDetector()
 
     const {isLoading, isAuth} = useApp()
 
