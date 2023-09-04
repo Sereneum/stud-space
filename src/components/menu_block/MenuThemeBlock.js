@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Moon, StarAndCrescent, Sun } from '@phosphor-icons/react'
+import { Devices, Moon, Sun } from '@phosphor-icons/react'
 import { Context } from '../../index'
 import { observer } from 'mobx-react-lite'
 import { themeManager } from '../../managers/themeManager'
@@ -49,7 +49,7 @@ const MenuThemeBlock = observer(() => {
 						onClick={() => setTheme('system')}
 					>
 						<div className={`theme_circle ${invBg('system')}`}>
-							<StarAndCrescent weight='bold' className='icon_big' />
+							<Devices weight='bold' className='icon_big' />
 						</div>
 						<p className={`theme_text ${invTxt('system')}`}>Системное</p>
 					</div>

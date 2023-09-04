@@ -1,0 +1,11 @@
+.theme-selector-wrapper{
+	display: flex;
+	flex-direction: row;
+	gap: 4px;
+	margin-bottom: 2px;
+
+	.theme-selector-item {
+		padding: 7px 7px 3px 7px;
+		border-radius: 100%;
+	}
+}

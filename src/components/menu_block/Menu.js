@@ -59,7 +59,7 @@ const Menu = () => {
     </div>
 
     return (
-        <div className="block">
+        <div className="block solo_block">
             <div className="title_container">
                 <h1>Меню</h1>
             </div>

@@ -77,9 +77,9 @@ const SolutionModal = ({isModal, setModal, loadingTaskData, parameters}) => {
                         {/* DROPZONE */} {/* + для мобилок переделать */}
                         <Dropzone onDrop={onDrop}>
                             {({getRootProps, getInputProps, onDropAccepted}) => (
-                                <div {...getRootProps()} className="attach_cover desktop_only">
+                                <div {...getRootProps()} className="attach_cover desktop_only select-zoom">
                                     <input {...getInputProps()} />
-                                    <div className="attach_container select">
+                                    <div className="attach_container">
                                         <CloudArrowUp weight="bold" className="icon_big" size={"40px"}/>
                                         <p>Выберите файл с устройства или перетащите его в это окно</p>
                                     </div>
@@ -92,7 +92,7 @@ const SolutionModal = ({isModal, setModal, loadingTaskData, parameters}) => {
                             {({getRootProps, getInputProps, onDropAccepted}) => (
                                 <div {...getRootProps()} className="content_cover tablet">
                                     <input {...getInputProps()} />
-                                    <div className="content_elem_row select">
+                                    <div className="content_elem_row select-zoom">
                                         <CloudArrowUp weight="bold" className="icon_mid" />
                                         <p>Загрузить с устройства</p>
                                         <Plus weight="bold" className="icon_mid" />

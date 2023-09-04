@@ -1,7 +1,7 @@
 import './styles/main.css'
 import './styles/schedule.css'
 
-import {useContext} from 'react'
+import {useContext, useEffect} from 'react'
 
 import ScrollToTop from './components/scroll_to_top/ScrollToTop'
 
@@ -25,6 +25,21 @@ const App = observer(() => {
     // const {isThemeDetector} = useThemeDetector()
 
     const {isLoading, isAuth} = useApp()
+
+    const updateThemeColor = (color) => {
+        const metaThemeColor = document.querySelector('meta[name=theme-color]')
+        if (metaThemeColor) {
+            metaThemeColor.setAttribute('content', color)
+        }
+    }
+
+    useEffect(() => {
+        if (isLoading) {
+            updateThemeColor('black')
+        } else {
+            updateThemeColor(themeManager(localConfig).isDark() ? '#000000' : '#ededed')
+        }
+    }, [isLoading, localConfig])
 
     if (isLoading)
         return (

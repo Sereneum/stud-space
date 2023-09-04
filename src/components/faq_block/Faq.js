@@ -1,10 +1,8 @@
 import {CaretLeft} from "@phosphor-icons/react";
 import {NavLink, useNavigate} from "react-router-dom";
-import PrivacyContent from "./PrivacyContent";
+import FaqContent from "./FaqContent";
 
-
-const PrivacyUnAuth = () => {
-
+export const Faq = () => {
     const navigate = useNavigate()
     const back = () => navigate(-1)
 
@@ -13,13 +11,11 @@ const PrivacyUnAuth = () => {
 
             <div onClick={back} className="title_container back_container">
                 <CaretLeft weight="bold" className="icon_mid"/>
-                <h2>Политика конфиденциальности</h2>
+                <h2>Помощь и возможности</h2>
             </div>
 
-            <PrivacyContent/>
+            <FaqContent/>
 
         </div>
     );
 }
-
-export default PrivacyUnAuth;

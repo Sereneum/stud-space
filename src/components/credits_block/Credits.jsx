@@ -2,7 +2,7 @@ import { CaretLeft } from '@phosphor-icons/react'
 import { useNavigate } from 'react-router-dom'
 import CreditsContent from './CreditsContent'
 
-const CreditsUnlogged = () => {
+export const Credits = () => {
 	const navigate = useNavigate()
 
 	return (
@@ -19,5 +19,3 @@ const CreditsUnlogged = () => {
 		</div>
 	)
 }
-
-export default CreditsUnlogged
