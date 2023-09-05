@@ -4,21 +4,12 @@ const checkLocalStorage = () => {
     return s
 }
 
-const isDark = theme => {
-    if (theme === 'light') return false
-    if (theme === 'dark') return true
-
+const isLight = theme => {
+    if (theme === 'light') return true
+    if (theme === 'dark') return false
+    
     // 'system'
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-}
-
-const turnOnLightTheme = () => {
-    document
-        .querySelector('meta[name="theme-color"]')
-        .setAttribute('content', '#ededed');
-    document
-        .querySelector('html')
-        .classList.remove('dark-theme');
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches
 }
 
 const turnOnDarkTheme = () => {
@@ -27,7 +18,16 @@ const turnOnDarkTheme = () => {
         .setAttribute('content', 'black');
     document
         .querySelector('html')
-        .classList.add('dark-theme');
+        .classList.remove('light-theme');
+}
+
+const turnOnLightTheme = () => {
+    document
+        .querySelector('meta[name="theme-color"]')
+        .setAttribute('content', '#ededed');
+    document
+        .querySelector('html')
+        .classList.add('light-theme');
 }
 
 
@@ -44,14 +44,14 @@ export const themeManager = localConfig => {
                 localStorage.setItem('theme', value)
             },
 
-        isDark: () => isDark(localConfig.theme),
+        isLight: () => isLight(localConfig.theme),
 
         setStyle:
             () => {
                 const light = () => turnOnLightTheme();
                 const dark = () => turnOnDarkTheme();
 
-                isDark(localConfig.theme) ? dark() : light();
+                isLight(localConfig.theme) ? light() : dark();
             }
     }
 }

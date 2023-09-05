@@ -9,6 +9,26 @@
 @import url('normalize.css');
 
 :root {
+	--var-bg: #000000;
+	--var-block: #121212;
+	--var-text-and-icons: #ffffff;
+	--var-elements: #1d1d1d;
+	--var-deadline-button: #383838;
+	--var-mobile-nav-bar: #000000b3;
+	--var-active-element: #2b2b2b;
+	--var-switcher-bg: #3d3d3d;
+	--var-red: #e34a4a;
+	--var-hover: #242424;
+	--var-push: #2a2a2a;
+	--var-modal-bg: #121212;
+	--var-shadow: #ffffff45;
+	--bonus-icon: rgba(255, 255, 255, 0.07);
+	--shop-bg: rgba(0, 0, 0, 0.28);
+	--shop-back: rgba(0, 0, 0, 0.5);
+
+}
+
+.light-theme {
 	--var-bg: #ededed;
 	--var-block: #ffffff;
 	--var-text-and-icons: #000000;
@@ -28,30 +48,13 @@
 	--shop-back: rgba(255, 255, 255, 0.5);
 }
 
-.dark-theme {
-	--var-bg: #000000;
-	--var-block: #121212;
-	--var-text-and-icons: #ffffff;
-	--var-elements: #1d1d1d;
-	--var-deadline-button: #383838;
-	--var-mobile-nav-bar: #000000b3;
-	--var-active-element: #2b2b2b;
-	--var-switcher-bg: #3d3d3d;
-	--var-red: #e34a4a;
-	--var-hover: #242424;
-	--var-push: #2a2a2a;
-	--var-modal-bg: #121212;
-	--var-shadow: #ffffff45;
-	--bonus-icon: rgba(255, 255, 255, 0.07);
-	--shop-bg: rgba(0, 0, 0, 0.28);
-	--shop-back: rgba(0, 0, 0, 0.5);
-}
-
 * {
 	font-family: 'Inter', Arial, Helvetica, sans-serif;
 	letter-spacing: 0em;
 	line-height: 1.2;
 	font-style: normal;
+
+	transition: background-color 0.08s;
 
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 	-webkit-tap-highlight-color: transparent;
@@ -289,12 +292,21 @@ p {
 	width: 100vw;
 	height: 100vh;
 	top: 0;
+	transition: opacity 1s; 
+}
+
+.sky-light {
+  opacity: 1;
+}
+
+.sky-dark {
+  opacity: 0;
 }
 
 body {
 	padding: 0;
 	margin: 0;
-	background-color: var(--var-bg);
+	background-color: var(--var-bg) !important;
 	width: 100%;
 	height: min-content;
 	box-sizing: border-box;

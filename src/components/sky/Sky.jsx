@@ -5,10 +5,10 @@ import DarkSky from "./DarkSky";
 import LightSky from "./LightSky";
 import LightStars from './LightStars'
 
-const Sky = ({isDark}) => {
+const Sky = ({isLight}) => {
 
     return <>
-        {isDark ? <DarkSky/> : <LightStars/>}
+        {isLight ? <LightStars/> : <DarkSky/>}
     </>
 }
 

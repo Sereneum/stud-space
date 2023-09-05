@@ -1,21 +1,25 @@
 import {
+	ArrowSquareOut,
 	CalendarBlank,
 	CaretLeft,
 	ChatCircle,
 	Clock,
 	DownloadSimple,
+	FilePdf,
 	FileZip,
 	GraduationCap,
 	PencilSimple,
 	Plus,
 	Trash,
 } from '@phosphor-icons/react'
-import Materials from '../materials/Materials'
 
 const TaskPreview = () => {
 	return (
 		<div className='block'>
-			<div className='title_container back_container' style={{'cursor': 'default'}}>
+			<div
+				className='title_container back_container'
+				style={{ cursor: 'default' }}
+			>
 				<CaretLeft weight='bold' className='icon_mid' />
 				<h2>3ЛР Механические колебания</h2>
 			</div>
@@ -41,7 +45,7 @@ const TaskPreview = () => {
 
 				<div className='content_cover'>
 					<div className='content_elem_column'>
-						<div className='container_row_start'>
+						<div className='container_row_start' style={{ flexWrap: 'wrap' }}>
 							<div className='lighter pract'>
 								<PencilSimple weight='bold' className='icon_min text_lighter' />
 								<p className='text_lighter'>На доработке</p>
@@ -103,7 +107,27 @@ const TaskPreview = () => {
 					</div>
 				</div>
 			</div>
-			<Materials />
+			<div className='element_container'>
+				<div className='title_container'>
+					<h3>Материалы курса</h3>
+				</div>
+
+				<div className='content_cover'>
+					<div className='content_elem_row select'>
+						<FilePdf weight='bold' className='icon_mid' />
+						<p className='text_file'>Оформление работ_2023_исправления.pdf</p>
+						<ArrowSquareOut weight='bold' className='icon_mid' />
+					</div>
+
+					<div className='breaker'></div>
+
+					<div className='content_elem_row select'>
+						<FilePdf weight='bold' className='icon_mid' />
+						<p className='text_file'>test.pdf</p>
+						<ArrowSquareOut weight='bold' className='icon_mid' />
+					</div>
+				</div>
+			</div>
 		</div>
 	)
 }

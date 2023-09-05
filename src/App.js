@@ -37,7 +37,7 @@ const App = observer(() => {
         if (isLoading) {
             updateThemeColor('black')
         } else {
-            updateThemeColor(themeManager(localConfig).isDark() ? '#000000' : '#ededed')
+            updateThemeColor(themeManager(localConfig).isLight() ? '#ededed' : '#000000')
         }
     }, [isLoading, localConfig])
 
@@ -53,13 +53,12 @@ const App = observer(() => {
             </CSSTransition>
         )
 
-
     return (
         <div className='App'>
             <ScrollToTop/>
 
             {localConfig.sky.value && (
-                <Sky isDark={themeManager(localConfig).isDark()}/>
+                <Sky isLight={themeManager(localConfig).isLight()}/>
             )}
 
             <div className='main_container'>
