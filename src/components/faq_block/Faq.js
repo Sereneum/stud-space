@@ -1,5 +1,6 @@
 import {CaretLeft} from "@phosphor-icons/react";
-import {NavLink, useNavigate} from "react-router-dom";
+import '../../styles/faq.css'
+import {useNavigate} from "react-router-dom";
 import FaqContent from "./FaqContent";
 
 export const Faq = () => {

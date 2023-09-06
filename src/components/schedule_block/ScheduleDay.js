@@ -1,37 +1,31 @@
-import React from 'react';
-import ScheduleLesson from "./ScheduleLesson";
-import {slashToPoint} from "../../managers/timeManager";
+import ScheduleLesson from './ScheduleLesson'
 
-const ScheduleDay = ({day}) => {
-    console.log(day)
-    return (
-        <>
-            <div className="element_container">
+const ScheduleDay = ({ day }) => {
+	console.log(day)
+	return (
+		<>
+			<div className='element_container'>
+				{/*TITLE DAY*/}
+				<div className='title_container'>
+					<h3>{day.day}</h3>
+					<h4 className='date'>{day.date}</h4>
+				</div>
 
-                {/*TITLE DAY*/}
-                <div className="title_container">
-                    <h3>{day.day}</h3>
-                    <h4 className="date">{day.date}</h4>
-                </div>
+				{/*LESSONS BLOCK*/}
+				<div className='content_cover'>
+					{day.lessons.map((i, index) => (
+						<ScheduleLesson
+							lesson={i}
+							key={i['код']}
+							isLast={index === day.lessons.length - 1}
+						/>
+					))}
+				</div>
+			</div>
 
-                {/*LESSONS BLOCK*/}
-                <div className="content_cover">
-                    {
-                        day.lessons.map(
-                            (i, index) =>
-                                <ScheduleLesson
-                                    lesson={i}
-                                    key={i['код']}
-                                    isLast={index === day.lessons.length - 1}
-                                />
-                        )
-                    }
-                </div>
-            </div>
+			{/*<div className="breaker"></div>*/}
+		</>
+	)
+}
 
-            {/*<div className="breaker"></div>*/}
-        </>
-    );
-};
-
-export default ScheduleDay;
+export default ScheduleDay

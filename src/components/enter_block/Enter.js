@@ -1,17 +1,14 @@
 import {
 	AsteriskSimple,
 	CaretRight,
-	CircleNotch,
 	Code,
 	GitDiff,
 	Question,
 } from '@phosphor-icons/react'
 import { NavLink } from 'react-router-dom'
-import { useContext, useState, useEffect } from 'react'
-import { authCheck, login } from '../../http/userApi'
+import { useContext, useState } from 'react'
+import { login } from '../../http/userApi'
 import { Context } from '../../index'
-import { configHost } from '../../http'
-import Loader from '../loaders/Loader'
 
 const Enter = () => {
 	const [inputMail, setInputMail] = useState('')
@@ -90,7 +87,7 @@ const Enter = () => {
 						<GitDiff
 							weight='bold'
 							className='icon_min loader-flick text_button_main'
-                            size='40px'
+							size='40px'
 						/>
 					) : (
 						<h4 className='text_button_main'>Войти</h4>

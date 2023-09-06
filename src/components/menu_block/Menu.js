@@ -1,9 +1,6 @@
 import {
     UsersThree,
     At,
-    Sun,
-    Moon,
-    StarAndCrescent,
     GearFine,
     CaretRight,
     ArrowSquareOut,
@@ -13,12 +10,12 @@ import {
     GlobeSimple,
     Code
 } from "@phosphor-icons/react";
+import '../../styles/menu.css'
 
 import {NavLink} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "../../index";
 import {epoch_getMinorUserData} from "../../http/epochServer";
-import MenuCheckBoxItem from "./MenuCheckBoxItem";
 import MenuThemeBlock from "./MenuThemeBlock";
 import MenuCheckBoxBlock from "./MenuCheckBoxBlock";
 import LoaderMenu from "../loaders/LoaderMenu";

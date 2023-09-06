@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { Devices, Moon, Sun } from '@phosphor-icons/react'
 import { Context } from '../../index'
 import { observer } from 'mobx-react-lite'

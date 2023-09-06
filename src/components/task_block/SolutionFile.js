@@ -1,5 +1,4 @@
-import React from 'react';
-import {DownloadSimple, FileZip, Trash} from "@phosphor-icons/react";
+import {Trash} from "@phosphor-icons/react";
 import {assignorIcon, assignorIconDownload, handleDownload} from "../../managers/files_manager";
 import {epoch_deleteFile} from "../../http/epochServer";
 
