@@ -9,6 +9,10 @@
 	padding: 0;
 	align-content: center;
 	flex-wrap: nowrap;
+
+	@media (max-width: 1280px) {
+		height: 145px;
+	}
 }
 
 .project_title {
