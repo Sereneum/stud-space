@@ -202,19 +202,6 @@ p {
 	line-height: 1.5;
 }
 
-.project_title {
-	font-size: 46px;
-	margin-bottom: 6px;
-	user-select: none;
-}
-
-.icon_nav {
-	font-size: 26px;
-	width: 26px;
-	height: 26px;
-	color: var(--var-text-and-icons);
-}
-
 .icon_big {
 	font-size: 30px;
 	width: 30px;
@@ -325,19 +312,6 @@ body {
 	gap: 0;
 }
 
-.header_container {
-	width: 100%;
-	height: 130px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	position: relative;
-	padding: 0;
-	align-content: center;
-	flex-wrap: nowrap;
-}
-
 .content_container {
 	width: 100%;
 	height: min-content;
@@ -349,58 +323,6 @@ body {
 	padding: 0;
 	align-content: flex-start;
 	flex-wrap: nowrap;
-}
-
-.nav_bar_container {
-	width: min-content;
-	height: min-content;
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
-	align-content: center;
-	flex-wrap: nowrap;
-	gap: 15px;
-}
-
-.nav_bar {
-	width: min-content;
-	height: min-content;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	background-color: var(--var-block);
-	align-content: center;
-	border-radius: 16px;
-	overflow: hidden;
-}
-
-.nav_elem_container {
-	box-sizing: border-box;
-	width: min-content;
-	height: min-content;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	padding: 8px 18px 8px 18px;
-	align-content: center;
-	cursor: pointer;
-	text-decoration-line: none;
-	opacity: 0.6;
-	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-	-webkit-tap-highlight-color: transparent;
-}
-
-.nav_tablet {
-	display: none;
-}
-
-.nav-mgri-logo {
-	width: 56px;
-	height: auto;
-	fill: var(--var-text-and-icons);
 }
 
 a {
@@ -1028,10 +950,6 @@ input::placeholder {
 		gap: 20px;
 	}
 
-	.nav_tablet {
-		display: flex;
-	}
-
 	.edge_block {
 		display: none;
 	}
@@ -1047,18 +965,6 @@ input::placeholder {
 
 	.tablet {
 		display: flex;
-	}
-}
-
-@media (min-width: 1281px) {
-	@media (pointer: fine) {
-		.nav_elem_container:hover {
-			background-color: var(--var-hover);
-		}
-	}
-
-	.nav_elem_container:active {
-		background-color: var(--var-push);
 	}
 }
 
@@ -1082,72 +988,10 @@ input::placeholder {
 		padding-bottom: 94px;
 	}
 
-	.project_title {
-		font-size: 36px;
-		letter-spacing: -0.3px;
-	}
-
 	.block {
 		width: 100%;
 		padding: 35px 20px 20px 20px;
 	}
-
-	.nav_bar_mobile {
-		width: 74%;
-		height: 54px;
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-start;
-		align-items: center;
-		-webkit-backdrop-filter: blur(25px);
-		backdrop-filter: blur(25px);
-		box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
-		background-color: var(--var-mobile-nav-bar);
-		overflow: hidden;
-		padding: 0;
-		align-content: center;
-		flex-wrap: nowrap;
-		gap: 0;
-		border-radius: 18px;
-		position: fixed;
-		bottom: 20px;
-		left: 13%;
-		right: auto;
-		z-index: 4;
-		animation: enter 1s cubic-bezier(0, 1.07, 0, 0.99);
-	}
-
-	.nav_bar_mobile_container {
-		flex-shrink: 0;
-		flex: 1 0 0px;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: 5px;
-		justify-content: center;
-		align-items: center;
-		position: relative;
-		padding: 0;
-		align-content: center;
-		flex-wrap: nowrap;
-		cursor: pointer;
-		text-align: center;
-	}
-
-	.nav-mgri-logo {
-		width: 46px;
-		margin-bottom: 1px;
-	}
-
-	.icon_nav_mobile {
-		font-size: 28px;
-		color: var(--var-text-and-icons);
-	}
-
-	.nav-text-mini{
-		font-size: 10px;
-		}
 
 	.preloader_logo {
 		margin-bottom: 70px;
