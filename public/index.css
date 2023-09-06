@@ -1,19 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    --var-bg: #EDEDED;
+    --var-bg: #000000;
 }
 
 .dark-theme {
     --var-bg: #000000;
 }
-
-
-/*@media (prefers-color-scheme: dark) {*/
-/*    :root {*/
-/*        --var-bg: #000000;*/
-/*    }*/
-/*}*/
 
 #root {
     box-sizing: border-box;
