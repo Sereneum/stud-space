@@ -20,15 +20,18 @@ const Solution = ({ files, parameters, loadingTaskData, isSuccess }) => {
 
 			<div className='content_cover'>
 				{/* Прикрепленные файлы */}
-				{files.map((file, index) => (
-					<SolutionFile
-						file={file}
-						key={file.fileID}
-						isSuccess={isSuccess}
-						loadingTaskData={loadingTaskData}
-						isLast={index === files.length - 1}
-					/>
-				))}
+				{files
+					.slice() // Создаем копию массива
+					.reverse() // Переворачиваем копию массива
+					.map((file, index) => (
+						<SolutionFile
+							file={file}
+							key={file.fileID}
+							isSuccess={isSuccess}
+							loadingTaskData={loadingTaskData}
+							isLast={index === files.length - 1}
+						/>
+					))}
 
 				{/* Открыть модалку */}
 				{!isSuccess && (
