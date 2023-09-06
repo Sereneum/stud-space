@@ -7,7 +7,6 @@ import TaskPreview from './TaskPreview'
 
 import '../../styles/scss/home.scss'
 import GeoLabs from './Geolabs'
-import { ThemeSelector } from '../header/ThemeSelector'
 
 const Home = () => {
 	useEffect(() => {

@@ -21,25 +21,9 @@ import ProjectRoutes from "./routes/ProjectRoutes";
 const App = observer(() => {
     const {localConfig} = useContext(Context)
 
-
-    // const {isThemeDetector} = useThemeDetector()
+    const {isThemeDetector} = useThemeDetector()
 
     const {isLoading, isAuth} = useApp()
-
-    const updateThemeColor = (color) => {
-        const metaThemeColor = document.querySelector('meta[name=theme-color]')
-        if (metaThemeColor) {
-            metaThemeColor.setAttribute('content', color)
-        }
-    }
-
-    useEffect(() => {
-        if (isLoading) {
-            updateThemeColor('black')
-        } else {
-            updateThemeColor(themeManager(localConfig).isLight() ? '#ededed' : '#000000')
-        }
-    }, [isLoading, localConfig])
 
     if (isLoading)
         return (
@@ -49,7 +33,7 @@ const App = observer(() => {
                 classNames='preloader'
                 unmountOnExit
             >
-                <Preloader/>
+                <Preloader isLoading={isLoading} isThemeDetector={isThemeDetector}/>
             </CSSTransition>
         )
 

@@ -25,7 +25,7 @@
 	--bonus-icon: rgba(255, 255, 255, 0.07);
 	--shop-bg: rgba(0, 0, 0, 0.28);
 	--shop-back: rgba(0, 0, 0, 0.5);
-
+	--decline: rgb(255, 146, 146);
 }
 
 .light-theme {
@@ -46,6 +46,7 @@
 	--bonus-icon: rgba(0, 0, 0, 0.07);
 	--shop-bg: rgba(255, 255, 255, 0.3);
 	--shop-back: rgba(255, 255, 255, 0.5);
+	--decline: rgb(172, 25, 25);
 }
 
 * {
@@ -292,15 +293,6 @@ p {
 	width: 100vw;
 	height: 100vh;
 	top: 0;
-	transition: opacity 1s; 
-}
-
-.sky-light {
-  opacity: 1;
-}
-
-.sky-dark {
-  opacity: 0;
 }
 
 body {
@@ -1236,11 +1228,13 @@ input::placeholder {
 
 @keyframes reject {
 	0% {
-		background-color: rgb(169, 22, 22);
+		background-color: var(--decline);
+		box-shadow: 0px 5px 10px 0px rgba(199, 29, 29, 0.25)
 	}
 
 	100% {
 		background-color: var(--var-text-and-icons);
+		box-shadow: 0px 5px 10px 0px var(--var-shadow);
 	}
 }
 

@@ -4,7 +4,7 @@ const checkLocalStorage = () => {
     return s
 }
 
-const isLight = theme => {
+export const isLight = theme => {
     if (theme === 'light') return true
     if (theme === 'dark') return false
     
@@ -48,9 +48,9 @@ export const themeManager = localConfig => {
 
         setStyle:
             () => {
-                const light = () => turnOnLightTheme();
                 const dark = () => turnOnDarkTheme();
-
+                const light = () => turnOnLightTheme();
+                
                 isLight(localConfig.theme) ? light() : dark();
             }
     }
