@@ -19,8 +19,10 @@
     border-radius: 16px;
     top: 41px;
     right: 30px;
-}
 
+    cursor: pointer;
+    user-select: none;
+}
 
 @media (max-width: 600px) {
     .calendar_block {
