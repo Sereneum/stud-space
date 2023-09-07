@@ -6,9 +6,9 @@ import { observer } from 'mobx-react-lite'
 const MenuCheckBoxBlock = observer(() => {
 	const { localConfig } = useContext(Context)
 	const config = [
-		{ obj: { ...localConfig.sky }, setter: obj => localConfig.setSky(obj) },
-		{ obj: { ...localConfig.msg }, setter: obj => localConfig.setMsg(obj) },
-		// {obj: {...localConfig.smoothTs}, setter: obj => localConfig.setSmoothTs(obj)},
+		{obj: {...localConfig.sky}, setter: obj => localConfig.setSky(obj)},
+		{obj: {...localConfig.msg}, setter: obj => localConfig.setMsg(obj)},
+		{obj: {...localConfig.smoothTs}, setter: obj => localConfig.setSmoothTs(obj)},
 	]
 
 	const set = index => {

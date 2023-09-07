@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { CalendarBlank, GraduationCap, PencilSimple, PushPinSlash } from '@phosphor-icons/react'
 import TextareaAutosize from 'react-textarea-autosize'
+import {slashToPoint} from "../../managers/timeManager";
 
 const FixedCourse = ({ item, choose, localIndex, rename }) => {
 	const [isInputMode, setIsInputMode] = useState(false)
@@ -49,11 +50,11 @@ const FixedCourse = ({ item, choose, localIndex, rename }) => {
 					<div className='column_container_mini low_opacity'>
 						<div className='container_row_start'>
 							<GraduationCap weight='bold' className='icon_min' />
-							<p>Преподаватель</p>
+							<p>{item.userName}</p>
 						</div>
 						<div className='container_row_start'>
 							<CalendarBlank weight='bold' className='icon_min' />
-							<p>Дата</p>
+							<p>{slashToPoint(item.dateCreate)}</p>
 						</div>
 					</div>
 				</div>

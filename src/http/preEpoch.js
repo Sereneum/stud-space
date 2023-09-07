@@ -68,6 +68,8 @@ export const preEpoch_division = (active, all) => {
         for (let j of active) {
             if (i.course_id === j.course_id) {
                 isPresent = true;
+                j.dateCreate = i.dateCreate;
+                j.userName = i.userName
                 break
             }
         }

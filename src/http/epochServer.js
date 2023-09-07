@@ -32,9 +32,25 @@ const conv = data => {
 /* Загрузка всех курсов со студа */
 const fetchAllCourses = async (id) => new Promise((resolve, reject) => {
     $authHost(API_ALL_COURSES)
-        .then(d =>
-            resolve(d.data.data.listCourse.reverse()
-                .map(i => ({course_id: i.courseID, course_name: i.discipline}))))
+        .then(d => {
+
+            // console.log(d
+            //     .data
+            //     .data
+            //     .listCourse)
+
+            resolve(d
+                .data
+                .data
+                .listCourse
+                .sort((a, b) => new Date(b.dateCreate) - new Date(a.dateCreate))
+                .map(i => ({
+                    course_id: i.courseID,
+                    course_name: i.discipline,
+                    dateCreate: i.dateCreate,
+                    userName: i.userName
+                })))
+        })
         .catch(err => reject(err))
 })
 

@@ -39,6 +39,7 @@ const loadingLocalConfig = localConfig => {
 	const check = key =>
 		localStorage.getItem(key) !== null &&
 		Boolean(Number(localStorage.getItem(key)))
+
 	localConfig.setSky({
 		text: localConfig.sky.text,
 		key: localConfig.sky.key,
@@ -49,6 +50,12 @@ const loadingLocalConfig = localConfig => {
 		text: localConfig.msg.text,
 		key: localConfig.msg.key,
 		value: check(localConfig.msg.key),
+	})
+
+	localConfig.setSmoothTs({
+		text: localConfig.smoothTs.text,
+		key: localConfig.smoothTs.key,
+		value: check(localConfig.smoothTs.key),
 	})
 }
 

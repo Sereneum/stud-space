@@ -1,4 +1,5 @@
 import { CalendarBlank, GraduationCap, PushPin } from '@phosphor-icons/react'
+import {slashToPoint} from "../../managers/timeManager";
 
 const LooseCourse = ({ item, isLast, choose }) => {
 	return (
@@ -19,11 +20,11 @@ const LooseCourse = ({ item, isLast, choose }) => {
 						<div className='column_container_mini low_opacity'>
 							<div className='container_row_start'>
 								<GraduationCap weight='bold' className='icon_min' />
-								<p>Преподаватель</p>
+								<p>{item.userName}</p>
 							</div>
 							<div className='container_row_start'>
 								<CalendarBlank weight='bold' className='icon_min' />
-								<p>Дата</p>
+								<p>{slashToPoint(item.dateCreate)}</p>
 							</div>
 						</div>
 					</div>
