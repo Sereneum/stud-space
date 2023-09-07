@@ -1,4 +1,4 @@
-import { PushPin } from '@phosphor-icons/react'
+import { CalendarBlank, GraduationCap, PushPin } from '@phosphor-icons/react'
 
 const LooseCourse = ({ item, isLast, choose }) => {
 	return (
@@ -13,7 +13,21 @@ const LooseCourse = ({ item, isLast, choose }) => {
 				//     }
 				// )}
 			>
-				<p>{item.course_name}</p>
+				<div className='content_inner_column'>
+					<h4>{item.course_name}</h4>
+					<div className='container_row_start'>
+						<div className='column_container_mini low_opacity'>
+							<div className='container_row_start'>
+								<GraduationCap weight='bold' className='icon_min' />
+								<p>Преподаватель</p>
+							</div>
+							<div className='container_row_start'>
+								<CalendarBlank weight='bold' className='icon_min' />
+								<p>Дата</p>
+							</div>
+						</div>
+					</div>
+				</div>
 				<PushPin weight='bold' className='icon_min' />
 			</div>
 

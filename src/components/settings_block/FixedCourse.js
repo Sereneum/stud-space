@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { PencilSimple, PushPinSlash } from '@phosphor-icons/react'
+import { CalendarBlank, GraduationCap, PencilSimple, PushPinSlash } from '@phosphor-icons/react'
 import TextareaAutosize from 'react-textarea-autosize'
 
 const FixedCourse = ({ item, choose, localIndex, rename }) => {
@@ -44,6 +44,19 @@ const FixedCourse = ({ item, choose, localIndex, rename }) => {
 				) : (
 					<h3>{item.course_name}</h3>
 				)}
+
+				<div className='container_row_start'>
+					<div className='column_container_mini low_opacity'>
+						<div className='container_row_start'>
+							<GraduationCap weight='bold' className='icon_min' />
+							<p>Преподаватель</p>
+						</div>
+						<div className='container_row_start'>
+							<CalendarBlank weight='bold' className='icon_min' />
+							<p>Дата</p>
+						</div>
+					</div>
+				</div>
 
 				<div className='container_row_start'>
 					{/* change */}
