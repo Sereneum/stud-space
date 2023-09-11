@@ -13,6 +13,8 @@ import TaskInfo from './TaskInfo'
 import Solution from './Solution'
 import LoaderTask from '../loaders/LoaderTask'
 
+
+
 const Task = () => {
 	const { courseData } = useContext(Context)
 	const navigate = useNavigate()
@@ -71,8 +73,8 @@ const Task = () => {
 
 	useEffect(loadingTaskData, [localStorage.getItem('taskId')])
 
-	console.log('currentData: ', currentData)
-	console.log('detailData: ', detailData)
+	//console.log('currentData: ', currentData)
+	//console.log('detailData: ', detailData)
 
 	// const w = window.innerWidth
 	// console.log(w)
@@ -94,7 +96,7 @@ const Task = () => {
 
 	if (isLoading)
 		return (
-			<div className='block'>
+			<div className={`block`}>
 				<div className='title_container back_container' onClick={back}>
 					<CaretLeft weight='bold' className='icon_mid' />
 					<h2>{findTaskName()}</h2>

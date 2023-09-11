@@ -3,14 +3,14 @@ import {useNavigate} from "react-router-dom";
 import PrivacyContent from "./PrivacyContent";
 
 
-export const Privacy = () => {
+
+const Privacy = () => {
 
     const navigate = useNavigate()
     const back = () => navigate(-1)
 
     return (
-        <div className="block solo_block">
-
+        <div className={`block solo_block`}>
             <div onClick={back} className="title_container back_container">
                 <CaretLeft weight="bold" className="icon_mid"/>
                 <h2>Политика конфиденциальности</h2>
@@ -21,3 +21,5 @@ export const Privacy = () => {
         </div>
     );
 }
+
+export default Privacy

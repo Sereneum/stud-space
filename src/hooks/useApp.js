@@ -4,6 +4,7 @@ import { authCheck } from '../http/userApi'
 import { Context } from '../index'
 import { epoch_courseData, epoch_fetchServerData } from '../http/epochServer'
 import { themeManager } from '../managers/themeManager'
+import {smoothTsManager} from "../managers/smoothTsManager";
 
 const next = (id, end, courseData, localConfig) => {
 	loadingCourses(id)
@@ -63,6 +64,11 @@ const loadingLocalConfig = localConfig => {
 const loadingTheme = localConfig => {
 	themeManager(localConfig).setStore(null)
 	themeManager(localConfig).setStyle()
+}
+
+const loadingSmoothTs = localConfig => {
+	smoothTsManager(localConfig).setStore(null)
+
 }
 
 const navigateAfterBadTryLogin = (navigate, path) => {

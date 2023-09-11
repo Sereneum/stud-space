@@ -21,8 +21,9 @@ import { useNavigate } from 'react-router-dom'
 import LoaderSettings from '../loaders/LoaderSettings'
 import { CSSTransition } from 'react-transition-group'
 
+
 const Settings = observer(() => {
-	const { user, courseData } = useContext(Context)
+	const { user, courseData, localConfig} = useContext(Context)
 	const [active, setActive] = useState([])
 	const [pureActive, setPureActive] = useState([])
 	const [isDirty, setIsDirty] = useState(false)

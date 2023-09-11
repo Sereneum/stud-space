@@ -1,12 +1,14 @@
 import { CaretLeft } from '@phosphor-icons/react'
 import { useNavigate } from 'react-router-dom'
 import CreditsContent from './CreditsContent'
+import {useContext} from "react";
+import {Context} from "../../index";
 
-export const Credits = () => {
+const Credits = () => {
 	const navigate = useNavigate()
-
+	const { localConfig} = useContext(Context)
 	return (
-		<div className='block solo_block'>
+		<div className={`block solo_block`}>
 			<div
 				className='title_container back_container'
 				onClick={() => navigate(-1)}
@@ -19,3 +21,5 @@ export const Credits = () => {
 		</div>
 	)
 }
+
+export default Credits

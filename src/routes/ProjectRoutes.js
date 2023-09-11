@@ -2,7 +2,7 @@ import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Enter from '../components/enter_block/Enter'
 import Home from '../components/homescreen/Home'
-import { Privacy } from '../components/privacy_block/Privacy'
+import Privacy from '../components/privacy_block/Privacy'
 import { Faq } from '../components/faq_block/Faq'
 import Schedule from '../components/schedule_block/Schedule'
 import Menu from '../components/menu_block/Menu'
@@ -11,7 +11,7 @@ import CoursesTablet from '../components/courses_block/CoursesTablet'
 import DeadlineTablet from '../components/deadline_block/DeadlineTablet'
 import Task from '../components/task_block/Task'
 import Settings from '../components/settings_block/Settings'
-import { Credits } from '../components/credits_block/Credits'
+import Credits from '../components/credits_block/Credits'
 
 const ProjectRoutes = ({ isAuth }) => {
 	return (

@@ -6,9 +6,10 @@ import ScheduleWeek from './ScheduleWeek'
 import { pointToSlash } from '../../managers/timeManager'
 import { sch_parser } from '../../managers/schManager'
 import LoaderSchedule from '../loaders/LoaderSchedule'
+import {observer} from "mobx-react-lite";
 
-const Schedule = () => {
-	const { user } = useContext(Context)
+const Schedule = observer(() => {
+	const { user, localConfig} = useContext(Context)
 	const [weekData, setWeekData] = useState({})
 	const [weekID, setWeekID] = useState(pointToSlash(new Date()))
 	const [isLoading, setIsLoading] = useState(true)
@@ -60,7 +61,7 @@ const Schedule = () => {
 		)
 
 	return (
-		<div className='block' style={{ overflow: 'visible' }}>
+		<div className={`block`} style={{ overflow: 'visible' }}>
 			{/* TITLE */}
 			<div className='title_container'>
 				<h1>Расписание</h1>
@@ -79,6 +80,6 @@ const Schedule = () => {
 			{/* end block */}
 		</div>
 	)
-}
+})
 
 export default Schedule

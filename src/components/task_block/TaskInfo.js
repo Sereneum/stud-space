@@ -21,7 +21,7 @@ const TaskInfo = ({status, teacher, dateAdded, periodRealization, statusID, nota
 
     const deadline = timeManager(periodRealization)
 
-    console.log(dateAdded, periodRealization)
+    //console.log(dateAdded, periodRealization)
 
     return (
         <div className="element_container">

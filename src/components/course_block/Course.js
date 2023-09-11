@@ -9,8 +9,9 @@ import CourseItem from "./CourseItem";
 import LoaderCourse from "../loaders/LoaderCourse";
 
 
+
 const Course = observer(() => {
-    const { courseData } = useContext(Context)
+    const { courseData, localConfig} = useContext(Context)
     const [course, setCourse] = useState(null)
     const navigate = useNavigate()
     const [loading, setLoading] = useState(true)
@@ -62,7 +63,7 @@ const Course = observer(() => {
     </div>
 
     return (
-        <div className="block course-animation">
+        <div className='course-block'>
 
             <div className="title_container desktop_only">
                 <h1>{course.course_name}</h1>

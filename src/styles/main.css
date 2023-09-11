@@ -345,6 +345,26 @@ a {
 	overflow: hidden;
 }
 
+.course-block {
+	box-sizing: border-box;
+	position: relative;
+	flex-shrink: 0;
+	width: 560px;
+	height: min-content;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding: 45px 30px 30px 30px;
+	background-color: var(--var-block);
+	align-content: flex-start;
+	flex-wrap: nowrap;
+	gap: 45px;
+	border-radius: 24px;
+	overflow: hidden;
+}
+
+
 .block-animation {
 	animation: enterBlock 1.2s cubic-bezier(0, 1, 0, 1), enterOpacity 0.2s ease-in-out;
 }
