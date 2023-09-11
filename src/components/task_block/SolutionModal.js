@@ -90,9 +90,9 @@ const SolutionModal = ({isModal, setModal, loadingTaskData, parameters}) => {
                         {/* DROPZONE */} {/* + для мобилок переделать */}
                         <Dropzone onDrop={onDrop}>
                             {({getRootProps, getInputProps, onDropAccepted}) => (
-                                <div {...getRootProps()} className="content_cover tablet">
+                                <div {...getRootProps()} className="content_cover select-zoom tablet">
                                     <input {...getInputProps()} />
-                                    <div className="content_elem_row select-zoom">
+                                    <div className="content_elem_row">
                                         <CloudArrowUp weight="bold" className="icon_mid" />
                                         <p>Загрузить с устройства</p>
                                         <Plus weight="bold" className="icon_mid" />

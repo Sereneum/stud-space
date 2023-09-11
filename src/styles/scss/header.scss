@@ -16,10 +16,17 @@
 }
 
 .project_title {
+	font-weight: 700;
+	color: var(--var-text-and-icons);
+	padding: 0;
+	margin: 0;
+	width: max-content;
+	height: auto;
+	position: relative;
+	user-select: none;
 	font-size: 46px;
 	margin-bottom: 6px;
-	user-select: none;
-
+	
 	@media (max-width: 600px) {
 		font-size: 36px;
 		letter-spacing: -0.3px;

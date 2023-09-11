@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { ClockClockwise, FireSimple, PaintBrush, StarFour, PencilSimple, ClockCountdown, DownloadSimple, CloudArrowUp, ClockAfternoon, MoonStars, Files } from "@phosphor-icons/react";
+import { ClockClockwise, FireSimple, PaintBrush, PushPin, PencilSimple, ClockCountdown, DownloadSimple, CloudArrowUp, ClockAfternoon, MoonStars, Files } from "@phosphor-icons/react";
 
 const ListItemWrapper = styled.div`
 	width: 500px;
@@ -46,7 +46,7 @@ const ListItem = (props) => {
 				{props.icon && props.icon === 'FireSimple' && <FireSimple weight="bold" className="icon_mid low_opacity"/>}
 				{props.icon && props.icon === 'ClockClockwise' && <ClockClockwise weight="bold" className="icon_mid low_opacity"/>}
 				{props.icon && props.icon === 'PaintBrush' && <PaintBrush weight="bold" className="icon_mid low_opacity"/>}
-				{props.icon && props.icon === 'StarFour' && <StarFour weight="bold" className="icon_mid low_opacity"/>}
+				{props.icon && props.icon === 'PushPin' && <PushPin weight="bold" className="icon_mid low_opacity"/>}
 				{props.icon && props.icon === 'PencilSimple' && <PencilSimple weight="bold" className="icon_mid low_opacity"/>}
 				{props.icon && props.icon === 'ClockCountdown' && <ClockCountdown weight="bold" className="icon_mid low_opacity"/>}
 				{props.icon && props.icon === 'CloudArrowUp' && <CloudArrowUp weight="bold" className="icon_mid low_opacity"/>}

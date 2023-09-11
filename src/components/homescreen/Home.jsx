@@ -18,14 +18,14 @@ const Home = () => {
 			const windowWidth = window.innerWidth
 
 			if (windowWidth >= 1220) {
-				if (scrollY >= 600 && scrollY <= 3800) {
+				if (scrollY >= 700 && scrollY <= 3800) {
 					headerButton.classList.add('visible')
 				} else {
 					headerButton.classList.remove('visible')
 				}
 			} else {
 				// Старое условие для ширины экрана < 1360
-				if (scrollY >= 600 && scrollY <= 5900) {
+				if (scrollY >= 700 && scrollY <= 5900) {
 					headerButton.classList.add('visible')
 				} else {
 					headerButton.classList.remove('visible')
@@ -113,7 +113,7 @@ const Home = () => {
 					<div className='content-part'>
 						<h4 className='content-title'>Другое видение курсов</h4>
 						<p className='small-letters low_opacity text-center'>
-							Два нажатия, чтобы увидеть статус выполнения заданий. Space
+							Два действия, чтобы увидеть статус выполнения заданий. Space
 							переизобретает пользовательский опыт stud.
 						</p>
 					</div>
@@ -121,14 +121,14 @@ const Home = () => {
 				<div className='content-element under-title'>
 					<div className='content-part left-pos text-mid'>
 						<ListItem
-							icon='StarFour'
-							title='Ничего лишнего'
-							description='Закрепите только нужные курсы. Остальные будут скрыты.'
+							icon='PushPin'
+							title='Закреплённые курсы'
+							description='Отслеживайте только те курсы, которые необходимы в данный момент. Остальные будут скрыты.'
 						/>
 						<ListItem
 							icon='PencilSimple'
 							title='Меняйте, как удобно'
-							description='Переименуйте каждый закрепленный курс по своему вкусу. Больше никаких лишних символов.'
+							description='Переименуйте название каждого закрепленного курса лично под себя. Эти изменения видны только Вам.'
 						/>
 						<ListItem
 							icon='ClockCountdown'
@@ -181,15 +181,10 @@ const Home = () => {
 							title='Материалы курса'
 							description='Для удобства использования, добавленные преподавателями материалы доступны как в курсе, так и в любом задании.'
 						/>
-						{/* <ListItem
-							icon='ClockAfternoon'
-							title='Время не ограничено'
-							description='Если у задания не прошел срок выполнения – Space покажет время до его закрытия.'
-						/> */}
 						<ListItem
 							icon='MoonStars'
 							title='Оформление на свой вкус'
-							description='На выбор – светлая и тёмная тема, а так же возможность включать или отключать анимированный звёздный фон.'
+							description='На выбор – светлая и тёмная тема, а так же возможность включать или отключать анимированный звёздный фон и плавные переходы между вкладками.'
 						/>
 					</div>
 				</div>
