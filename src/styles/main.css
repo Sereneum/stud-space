@@ -1010,6 +1010,11 @@ input::placeholder {
 		padding: 35px 20px 20px 20px;
 	}
 
+	.course-block {
+		width: 100%;
+		padding: 35px 20px 20px 20px;
+	}
+
 	.preloader_logo {
 		margin-bottom: 70px;
 	}

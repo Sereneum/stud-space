@@ -17,7 +17,7 @@ import useThemeDetector from './hooks/useThemeDetector'
 import Preloader from './components/preloader/Preloader'
 import { CSSTransition } from 'react-transition-group'
 import ProjectRoutes from './routes/ProjectRoutes'
-import {smoothTsManager} from "./managers/smoothTsManager";
+import { smoothTsManager } from './managers/smoothTsManager'
 
 const App = observer(() => {
 	const { localConfig } = useContext(Context)
@@ -38,22 +38,9 @@ const App = observer(() => {
 			</CSSTransition>
 		)
 
-
-
 	return (
 		<div className='App'>
-
-			{/*<style>*/}
-			{/*	{`*/}
-			{/*		.block {*/}
-			{/*			animation: enterBlock 1.2s cubic-bezier(0, 1, 0, 1), enterOpacity 0.2s ease-in-out;*/}
-			{/*		}*/}
-			{/*	`}*/}
-			{/*</style>*/}
-
-			<style>
-				{smoothTsManager(localConfig).getStyle()}
-			</style>
+			<style>{smoothTsManager(localConfig).getStyle()}</style>
 
 			<ScrollToTop />
 
