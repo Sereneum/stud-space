@@ -76,6 +76,7 @@
 .big-letters-first {
 	background-image: linear-gradient(195deg, #ff4100, #ff9900);
 	background-clip: text;
+	-webkit-text-fill-color: transparent;
 	color: var(--var-text-and-icons);
 	width: min-content;
 	animation: changeColor 6s ease infinite;
@@ -96,18 +97,23 @@
 @keyframes changeColor {
 	0% {
 		color: var(--var-text-and-icons);
+		-webkit-text-fill-color: var(--var-text-and-icons);
 	}
 	10% {
 		color: transparent;
+		-webkit-text-fill-color: transparent;
 	}
 	40% {
 		color: transparent;
+		-webkit-text-fill-color: transparent;
 	}
 	50% {
 		color: var(--var-text-and-icons);
+		-webkit-text-fill-color: var(--var-text-and-icons);
 	}
 	100% {
 		color: var(--var-text-and-icons);
+		-webkit-text-fill-color: var(--var-text-and-icons);
 	}
 }
 

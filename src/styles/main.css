@@ -343,7 +343,9 @@ a {
 	gap: 45px;
 	border-radius: 24px;
 	overflow: hidden;
+}
 
+.block-animation {
 	animation: enterBlock 1.2s cubic-bezier(0, 1, 0, 1), enterOpacity 0.2s ease-in-out;
 }
 
