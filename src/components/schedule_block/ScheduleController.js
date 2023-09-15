@@ -3,7 +3,6 @@ import { CalendarBlank, CaretDown } from '@phosphor-icons/react'
 import { slashToPoint } from '../../managers/timeManager'
 import ScheduleCalendar from './ScheduleCalendar'
 import { CSSTransition } from 'react-transition-group'
-import '../../styles/sch_controller.css'
 
 const ScheduleController = ({ weekID, updateWeek, calendar }) => {
 	const [isVisible, setIsVisible] = useState(false)

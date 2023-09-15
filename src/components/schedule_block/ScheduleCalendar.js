@@ -4,7 +4,6 @@ import {
 	parserDateNow,
 	toTextFormatMonth,
 } from '../../managers/timeManager'
-import '../../styles/sch_controller.css'
 import { CSSTransition } from 'react-transition-group'
 import { CaretDown } from '@phosphor-icons/react'
 

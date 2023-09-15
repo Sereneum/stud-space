@@ -76,6 +76,7 @@
 .big-letters-first {
 	background-image: linear-gradient(195deg, #ff4100, #ff9900);
 	background-clip: text;
+
 	color: var(--var-text-and-icons);
 	width: min-content;
 	animation: changeColor 6s ease infinite;

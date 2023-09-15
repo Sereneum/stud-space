@@ -19,6 +19,7 @@
 	--shop-bg: rgba(0, 0, 0, 0.28);
 	--shop-back: rgba(0, 0, 0, 0.5);
 	--decline: rgb(255, 215, 215);
+	--calendar-active: #303030;
 }
 
 .light-theme {
@@ -40,6 +41,7 @@
 	--shop-bg: rgba(255, 255, 255, 0.3);
 	--shop-back: rgba(255, 255, 255, 0.5);
 	--decline: rgb(172, 25, 25);
+	--calendar-active: #e9e9e9;
 }
 
 * {
