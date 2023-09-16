@@ -1,5 +1,5 @@
 import './styles/main.css'
-import './styles/schedule.css'
+import './styles/schedule.scss'
 
 import { useContext } from 'react'
 

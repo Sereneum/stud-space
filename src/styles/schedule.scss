@@ -110,11 +110,30 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: var(--var-elements);
+
     border-bottom-right-radius: 16px;
     border-bottom-left-radius: 16px;
-    box-shadow: 0 7px 20px 6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 7px 20px 6px rgba(0, 0, 0, 0.15);
     padding-bottom: 8px;
+
+    backdrop-filter: blur(25px);
+
+    .calendar-fader {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 100%;
+		background: linear-gradient(
+			to bottom,
+			var(--var-elements) 10%,
+			var(--calendar-fade)
+		);
+		z-index: 0;
+
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+	}
 }
 
 .month {

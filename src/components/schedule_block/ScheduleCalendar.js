@@ -104,6 +104,7 @@ const ScheduleCalendar = ({
 			unmountOnExit
 		>
 			<div className='calendar'>
+				<div className='calendar-fader'></div>
 				<div className='head'>
 					{/*<img*/}
 					{/*    src={show_icon}*/}
