@@ -182,11 +182,6 @@ tbody {
     align-items: center;
 }
 
-td.isNow {
-    background-color: var(--calendar-active);
-    opacity: 1;
-}
-
 td {
     width: 28px;
     height: 28px;
@@ -199,17 +194,26 @@ td {
     font-weight: 600;
     color: var(--var-text-and-icons);
     font-size: 14px;
-    opacity: 0.3;
     flex: none;
     order: 5;
     flex-grow: 0;
     border-radius: 8px;
     cursor: default;
+
+    p {
+        font-size: 14px;
+        opacity: 0.3;
+    }
 }
 
-td.isOk {
+.isOk {
     opacity: 1;
     cursor: pointer;
+}
+
+td.isNow {
+    background-color: var(--calendar-active);
+    opacity: 1;
 }
 
 .head {

@@ -149,11 +149,18 @@ const ScheduleCalendar = ({
 										<td
 											key={`c${rowIndex * 7 + colmIndex}`}
 											className={`${
-												colm.isNow ? 'isNow' : colm.isOk ? 'isOk' : ''
+												colm.isNow ? 'isNow' : ''
 											}`}
 											onClick={() => click(colm)}
 										>
-											{colm.value}
+											<p
+												key={`c${rowIndex * 7 + colmIndex}`}
+												className={`${
+													colm.isOk ? 'isOk' : ''
+												}`}
+											>
+												{colm.value}
+											</p>
 										</td>
 									))}
 								</tr>
