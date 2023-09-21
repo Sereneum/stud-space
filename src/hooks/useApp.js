@@ -37,9 +37,12 @@ const loadingCourses = async id =>
 
 /* получение локальных конфигураций */
 const loadingLocalConfig = localConfig => {
-	const check = key =>
-		localStorage.getItem(key) !== null &&
-		Boolean(Number(localStorage.getItem(key)))
+	const check = key => {
+		let localKey = localStorage.getItem(key);
+		if(localKey === null) return true; // default value
+		return Boolean(Number(localStorage.getItem(key)));
+	}
+
 
 	localConfig.setSky({
 		text: localConfig.sky.text,

@@ -16,8 +16,19 @@ const Course = observer(() => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(true)
 
+    const findCourse = course_id => {
+        let flag = false
+        for (let c of courseData.courses) {
+            if(c.course_id === course_id) {
+                flag = true; break;
+            }
+        }
+        return flag
+    }
+
     const findCourseName = () => {
         let course_id = Number(localStorage.getItem('activeCourse'))
+        // let niceTry = true
         if (!course_id || !courseData.courses.length)  return ''
         for (let c of courseData.courses)
             if (course_id === c.course_id)
@@ -33,6 +44,10 @@ const Course = observer(() => {
             // есть запись о том, какой курс пользователь смотрел ранее
             if (localStorage.getItem('activeCourse')) {
                 let local = Number(localStorage.getItem('activeCourse'))
+                if(!findCourse(local)) {
+                    navigate('/'); // попытка попасть в удаленный курс
+                    return;
+                }
                 courseData.setActiveCourse(local)
                 setCourse(courseData.courses.find(item => item.course_id === local))
                 setLoading(false)
@@ -49,6 +64,7 @@ const Course = observer(() => {
         navigate('/courses')
 
     let pre_course_name = findCourseName()
+    console.log('pre_course_name', pre_course_name)
     // ждем-с
     if (course === null) return <div className="block">
         <div className="title_container desktop_only">

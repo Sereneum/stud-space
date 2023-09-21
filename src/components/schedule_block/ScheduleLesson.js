@@ -25,7 +25,7 @@ const ScheduleLesson = ({ lesson, isLast }) => {
 					</div>
 
 					{/* ACTIVE LESSON MODE*/}
-					{isSameDate() && <div className='lesson_active'></div>}
+					{isSameDate(lesson['начало'], lesson['конец']) && <div className='lesson_active'></div>}
 				</div>
 				{/* TITLE LESSON*/}
 				<h3>{lesson['дисциплина']}</h3>

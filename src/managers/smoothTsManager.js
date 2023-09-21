@@ -1,6 +1,6 @@
 const checkLocalStorage = () => {
-	if (localStorage.getItem('smoothTs') === null) return true
-	return Boolean(Number(localStorage.getItem('smoothTs')))
+	if (localStorage.getItem('smoothTs') === null) return true;
+	return Boolean(Number(localStorage.getItem('smoothTs')));
 }
 
 export const smoothTsManager = localConfig => {
