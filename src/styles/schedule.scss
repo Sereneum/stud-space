@@ -113,10 +113,12 @@
 
     border-bottom-right-radius: 16px;
     border-bottom-left-radius: 16px;
-    box-shadow: 0 7px 20px 6px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 7px 20px 6px var(--calendar-shadow);
     padding-bottom: 8px;
 
     backdrop-filter: blur(25px);
+    user-select: none;
+    cursor: default;
 
     .calendar-fader {
 		position: absolute;
@@ -146,6 +148,7 @@
     margin: 0;
     height: auto;
     position: relative;
+    margin-top: 1px;
 }
 
 .days {
@@ -191,7 +194,7 @@ td {
     margin: auto;
     text-align: center;
 
-    font-weight: 600;
+   
     color: var(--var-text-and-icons);
     font-size: 14px;
     flex: none;
@@ -203,12 +206,14 @@ td {
     p {
         font-size: 14px;
         opacity: 0.3;
+        font-weight: 500;
     }
 }
 
 .isOk {
     opacity: 1;
     cursor: pointer;
+    font-weight: 600;
 }
 
 td.isNow {
@@ -220,7 +225,7 @@ td.isNow {
     display: flex;
     margin-top: 30px;
     margin-bottom: 20px;
-    width: 180px;
+    width: 190px;
     justify-content: space-between;
 }
 
@@ -231,6 +236,10 @@ td.isNow {
 
 .days-container {
     height: 40px;
+    p {
+        font-weight: 500;
+        font-size: 14px;
+    }
 }
 
 
@@ -248,14 +257,15 @@ td.isNow {
 
 .arrow {
     color: var(--var-text-and-icons);
-    width: 14px;
-    margin-left: 20px;
-    margin-right: 20px;
+    width: 18px;
+    height: auto;
+    cursor: pointer;
 }
 
 .passiveArrow {
     color: var(--var-text-and-icons);
-    filter: opacity(.4);
+    opacity: 0.4;
+    cursor: default;
 }
 
 @media (max-width: 600px) {
@@ -266,7 +276,7 @@ td.isNow {
     }
 
     .head {
-        width: 60%;
+        width: 64%;
         justify-content: space-between;
         margin: 38px 0 22px 0;
     }
