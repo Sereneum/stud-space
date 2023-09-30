@@ -20,7 +20,7 @@ const CourseItem = ({ item, isBreaker }) => {
 					<h4>{item.nameTask}</h4>
 					<div className={`lighter ${getStatusIcon(item.statusID).color}`}>
 						{getStatusIcon(item.statusID).icon}
-						<p className='text_lighter'>{item.statusName}</p>
+						<p className={`${getStatusIcon(item.statusID).text}`}>{item.statusName}</p>
 					</div>
 				</div>
 				<CaretRight weight='bold' className='icon_mid' />

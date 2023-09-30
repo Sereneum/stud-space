@@ -109,14 +109,14 @@ const ScheduleCalendar = ({
 				<div className='head'>
 					<CaretDown
 						weight='bold'
-						className={`"arrow" ${!previousMonth() && 'passiveArrow'}`}
+						className={`arrow ${!previousMonth() && 'passiveArrow'}`}
 						style={{ rotate: '90deg' }}
 						onClick={() => previousMonth() && clickOnArrow(-1)}
 					/>
 					<div className='month'>{`${toTextFormatMonth(month)}, ${year}`}</div>
 					<CaretDown
 						weight='bold'
-						className={`"arrow" ${!nextMonth() && 'passiveArrow'}`}
+						className={`arrow ${!nextMonth() && 'passiveArrow'}`}
 						style={{ rotate: '270deg' }}
 						onClick={() => {
 							nextMonth() && clickOnArrow(+1)
@@ -129,7 +129,7 @@ const ScheduleCalendar = ({
 						<thead className='days'>
 							<tr className='days-container'>
 								{['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].map((i, ind) => (
-									<th key={i + ind}>{i}</th>
+									<th key={i + ind}><p>{i}</p></th>
 								))}
 							</tr>
 						</thead>
