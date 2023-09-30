@@ -64,7 +64,7 @@ const Course = observer(() => {
         navigate('/courses')
 
     let pre_course_name = findCourseName()
-    console.log('pre_course_name', pre_course_name)
+
     // ждем-с
     if (course === null) return <div className="block">
         <div className="title_container desktop_only">

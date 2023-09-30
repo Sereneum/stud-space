@@ -25,7 +25,7 @@ const ScheduleCalendar = ({
 	const [table, setTable] = useState([])
 
 	const getDaysInCurrentMonth = () =>
-		new Date(validDate.getFullYear(), validDate.getMonth() + 1, 0).getDate()
+		Number(new Date(year, month + 1, 0).getDate());
 
 	const fillTable = calendar => {
 		let firstDay = new Date(year, month, 1).getDay()
@@ -39,11 +39,12 @@ const ScheduleCalendar = ({
 			d1.getMonth() === d2.getMonth() &&
 			d1.getDate() === d2.getDate()
 
+		const rows = parseInt(((days + offset) / 7)) + (((days + offset) % 7) ? 1 : 0)
 		const table = []
-		for (let i = 0; i < 5; ++i) {
+		for (let i = 0; i < rows; ++i) {
 			table.push([])
 			for (let j = 0; j < 7; ++j) {
-				let cur = i * 5 + j
+				let cur = i * rows + j
 				if (!(cur >= offset && value <= mx)) {
 					table[i].push('')
 					continue
@@ -60,12 +61,12 @@ const ScheduleCalendar = ({
 				})
 			}
 		}
-
+		// console.log('table', table)
 		return table
 	}
 
 	useEffect(() => {
-		console.log('calendar: ', calendar)
+		// console.log('calendar: ', calendar)
 		calendar && setTable(fillTable(calendar))
 	}, [calendar, weekID, month, year])
 
@@ -106,15 +107,6 @@ const ScheduleCalendar = ({
 			<div className='calendar'>
 				<div className='calendar-fader'></div>
 				<div className='head'>
-					{/*<img*/}
-					{/*    src={show_icon}*/}
-					{/*    alt=""*/}
-					{/*    className={`${styles.arrow} ${!previousMonth() && styles.passiveArrow}`}*/}
-					{/*    style={{rotate: '90deg'}}*/}
-					{/*    onClick={() => {*/}
-					{/*        previousMonth() && clickOnArrow(-1)*/}
-					{/*    }}*/}
-					{/*/>*/}
 					<CaretDown
 						weight='bold'
 						className={`"arrow" ${!previousMonth() && 'passiveArrow'}`}

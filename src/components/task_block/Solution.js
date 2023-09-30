@@ -27,6 +27,7 @@ const Solution = ({ files, parameters, loadingTaskData, isSuccess }) => {
 						<SolutionFile
 							file={file}
 							key={file.fileID}
+							fileID={file.fileID}
 							isSuccess={isSuccess}
 							loadingTaskData={loadingTaskData}
 							isLast={index === files.length - 1}

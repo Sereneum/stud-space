@@ -56,8 +56,11 @@ export const slashToPoint = date =>
 export const pointToSlash = date =>
     moment(date).format('YYYY-MM-DD')
 
+// export const isSameDate = (begin, end) =>
+//     moment().isSameOrAfter(begin) && moment().isSameOrBefore(end)
+
 export const isSameDate = (begin, end) =>
-    moment().isSameOrAfter(begin) && moment().isSameOrBefore(end)
+    moment().isSameOrAfter(moment(begin, "HH:mm")) && moment().isSameOrBefore(moment(end, "HH:mm"))
 
 export const dateGetter = (str) => {
     let date = new Date(str)

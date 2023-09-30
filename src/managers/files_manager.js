@@ -65,10 +65,15 @@ export const assignorIcon = (fileName) => {
     }
 }
 
-export const handleDownload = (fileName, link) => {
+export const handleDownload = (fileName, link, fileID=null) => {
     if(!fileName) {
         window.open(link)
         return
+    } else {
+        const baseUrl = 'https://stud.mgri.ru';
+        const url = baseUrl + `/api/ElectronicEducation/Files/download?fileID=${fileID}`
+        window.open(url, '_blank')
+        return;
     }
 
     let url = `https://stud.mgri.ru${link}`

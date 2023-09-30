@@ -3,9 +3,9 @@ import {assignorIcon, assignorIconDownload, handleDownload} from "../../managers
 import {epoch_deleteFile} from "../../http/epochServer";
 
 /*Прикрепленный файл юзера в задании*/
-const SolutionFile = ({file, isSuccess, loadingTaskData, isLast}) => {
+const SolutionFile = ({file, isSuccess, loadingTaskData, isLast, fileID}) => {
 
-    const download = () => handleDownload(file.nameFile, file.link)
+    const download = () => handleDownload(file.nameFile, file.link, fileID)
 
     const deleteFile = () => {
         if (isSuccess) return

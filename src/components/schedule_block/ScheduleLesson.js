@@ -13,6 +13,8 @@ const ScheduleLesson = ({ lesson, isLast }) => {
 		return ''
 	}
 
+	console.log(lesson['начало'], lesson['конец'], isSameDate(lesson['начало'], lesson['конец']))
+
 	return (
 		<>
 			<div className='content_elem_column'>

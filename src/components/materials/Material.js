@@ -9,7 +9,7 @@ const Material = ({ item, isBreaker }) => {
 		<>
 			<div
 				className='content_elem_row select'
-				onClick={() => handleDownload(item.nameFile, item?.link)}
+				onClick={() => handleDownload(item.nameFile, item?.link, item?.fileID)}
 			>
 				{assignorIcon(item.nameFile)}
 				<p className='text_file'>
