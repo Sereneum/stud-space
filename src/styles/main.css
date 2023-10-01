@@ -50,6 +50,9 @@
 *::-webkit-scrollbar-thumb {
 	background-color: var(--var-active-element);
 }
+*::-webkit-scrollbar-track {
+  background-color: var(--var-bg);
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
