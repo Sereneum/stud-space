@@ -21,7 +21,7 @@ export const smoothTsManager = localConfig => {
 						animation: enterBlock 1.2s cubic-bezier(0, 1, 0, 1), enterOpacity 0.2s ease-in-out;
 					}
 					.course-block {
-					    animation: enterBlock 1s cubic-bezier(0, 1, 0, 1);
+					    animation: enterBlock 1s cubic-bezier(0, 1, 0, 1), enterOpacity 0.2s ease-in-out;
 					}
 				    `
 			} else {
