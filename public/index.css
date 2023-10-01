@@ -4,8 +4,6 @@ html,
 body {
   min-height: 100dvh;
   height: 100%;
-  overflow: auto;
-  overflow-y: scroll;
 }
 
 body {
