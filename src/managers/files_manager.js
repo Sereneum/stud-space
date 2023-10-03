@@ -65,14 +65,62 @@ export const assignorIcon = (fileName) => {
     }
 }
 
+const downloadFunc = (url) => {
+    const headers = new Headers({
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+    });
+    const options = {
+        method: 'GET',
+        headers,
+    };
+
+    fetch(url, options)
+        .then(response => {
+            if (response.status === 200) {
+                console.log('response', response);
+                // Получите имя файла из заголовка Content-Disposition
+                const contentDisposition = response.headers.get('Content-Disposition');
+                const fileNameMatch = contentDisposition.match(/filename="(.*?)"/);
+
+                if (fileNameMatch && fileNameMatch[1]) {
+                    const fileName = fileNameMatch[1];
+
+                    // Преобразуйте ответ в blob
+                    return response.blob().then(blob => {
+                        // Создайте временную ссылку для скачивания файла
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = fileName;
+
+                        // Добавьте ссылку на страницу и симулируйте клик
+                        document.body.appendChild(a);
+                        a.click();
+
+                        // Освободите ресурсы
+                        window.URL.revokeObjectURL(url);
+                    });
+                }
+            } else {
+                console.error('Ошибка при загрузке файла:', response.status);
+            }
+
+        })
+        .catch(error => {
+            // Обработка ошибки, если это необходимо
+            console.error(error);
+        });
+}
+
 export const handleDownload = (fileName, link, fileID=null) => {
     if(!fileName) {
         window.open(link)
         return
     } else {
         const baseUrl = 'https://stud.mgri.ru';
-        const url = baseUrl + `/api/ElectronicEducation/Files/download?fileID=${fileID}`
-        window.open(url, '_blank')
+        const url = baseUrl + `/api/ElectronicEducation/Files/download?fileID=${fileID}`;
+        window.open(url, '_blank');
+        // downloadFunc(url);
         return;
     }
 

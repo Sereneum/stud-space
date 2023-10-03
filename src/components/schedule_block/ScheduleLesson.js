@@ -1,5 +1,6 @@
 import { GraduationCap, MapPin } from '@phosphor-icons/react'
 import { isSameDate } from '../../managers/timeManager'
+import moment from "moment/moment";
 
 const ScheduleLesson = ({ lesson, isLast }) => {
 	console.log(lesson)
@@ -13,7 +14,13 @@ const ScheduleLesson = ({ lesson, isLast }) => {
 		return ''
 	}
 
-	console.log(lesson['начало'], lesson['конец'], isSameDate(lesson['начало'], lesson['конец']))
+
+
+	const checkActiveLesson = () => {
+		if (isSameDate(lesson['начало'], lesson['конец']))
+			return moment(lesson['датаНачала']).format('YYYY-MM-DD') === moment().format('YYYY-MM-DD');
+		else return false;
+	}
 
 	return (
 		<>
@@ -27,7 +34,7 @@ const ScheduleLesson = ({ lesson, isLast }) => {
 					</div>
 
 					{/* ACTIVE LESSON MODE*/}
-					{isSameDate(lesson['начало'], lesson['конец']) && <div className='lesson_active'></div>}
+					{checkActiveLesson() && <div className='lesson_active'></div>}
 				</div>
 				{/* TITLE LESSON*/}
 				<h3>{lesson['дисциплина']}</h3>
