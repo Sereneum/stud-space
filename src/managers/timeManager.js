@@ -69,6 +69,17 @@ export const dateGetter = (str) => {
         : date
 }
 
+export const firstDateIsEarlierForSort = (d1, d2) => {
+    // const _d1 = moment(d1); console.log('d1: ', d1, _d1);
+    // const _d2 = moment(d2); console.log('d2: ', d2, _d2);
+    // const r = moment(d1).isBefore(moment(d2));
+    // console.log(r);
+    const r = moment(d1).isBefore(moment(d2));
+    if(r) return -1;
+    else return 1;
+}
+
+
 export const toTextFormatMonth = (num, fullMode=true) => {
     switch (num) {
         case (0): return fullMode ? 'Январь' : 'янв.'

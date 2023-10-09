@@ -1,38 +1,39 @@
-import {checkDeadline} from "./timeManager";
+import {checkDeadline, firstDateIsEarlierForSort} from "./timeManager";
 
 // смешиваем
 const mixer = courses => {
-    const tasks = []
+    const tasks = [];
     for (let i of courses)
         for (let j of i.tasks)
-            tasks.push(j)
-    return tasks
+            tasks.push(j);
+    return tasks;
 }
 // отбираем по времени
 const selectionByTime = t => {
     const r = []
     for (let i of t)
         if (checkDeadline(i.periodRealization) > 0)
-            r.push(i)
+            r.push(i);
     return r
 }
 // отбираем по статусу
 const selectionByStatus = t => {
-    let r = []
-    // status = 2 -> в проверке, status = 0 -> не отправлено
+    let r = [];
+    // status = 3 -> на дороботке(?), status = 2 -> в проверке, status = 0 -> не отправлено
     for (let i of t)
-        if (i.statusID === 0 || i.statusID === 2)
-            r.push(i)
-    return r
+        if (i.statusID === 0 || i.statusID === 3)
+            r.push(i);
+    return r;
 }
 
 
 // сортируем и обрезаем
 const conv = (t, isSmallDevice) =>
     t
-        .sort((a, b) => b.periodRealization - a.periodRealization)
+        .sort((a, b) => firstDateIsEarlierForSort(b.periodRealization, a.periodRealization))
         .slice(isSmallDevice ? 0 : -3)
-        .sort((a, b) => a.periodRealization - b.periodRealization)
+        .sort((a, b) => firstDateIsEarlierForSort(a.periodRealization, b.periodRealization));
+
 
 export const deadlinesManager = (courses, isSmallDevice) =>
-    conv(selectionByStatus(selectionByTime(mixer(courses))), isSmallDevice)
+    conv(selectionByStatus(selectionByTime(mixer(courses))), isSmallDevice);

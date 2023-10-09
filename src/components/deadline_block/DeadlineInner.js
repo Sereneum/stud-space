@@ -16,7 +16,8 @@ const DeadlineInner = observer(() => {
     const isSmallDevice = useMediaQuery({ maxWidth: 1280 })
 
     useEffect(() => {
-        setTasks(deadlinesManager(courseData.courses, isSmallDevice))
+        const t = deadlinesManager(courseData.courses, isSmallDevice);
+        setTasks(t);
         setIsLoading(false)
         return () => setIsLoading(true)
     }, [courseData.courses])
