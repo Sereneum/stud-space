@@ -44,7 +44,7 @@ const TaskInfo = ({
 
       <div className="content_cover">
         <div className="content_elem_column">
-          <div className="container_row_start">
+          <div className="container_row_start" style={{flexWrap: 'wrap'}}>
             <div className={`lighter ${getStatusIcon(statusID).color}`}>
               {getStatusIcon(statusID).icon}
               <p className={`${getStatusIcon(statusID).text}`}>{status}</p>

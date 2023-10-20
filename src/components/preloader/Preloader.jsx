@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import logo from './space_logo.svg'
-import { CircleNotch } from '@phosphor-icons/react'
+import Reach from './Reach.jsx'
+import Unreach from './Unreach.jsx'
 
-const Preloader = ({isLoading, isThemeDetector}) => {
+const Preloader = ({ isLoading, isThemeDetector }) => {
 	const updateThemeColor = color => {
 		const metaThemeColor = document.querySelector('meta[name=theme-color]')
 		if (metaThemeColor) {
@@ -20,8 +20,8 @@ const Preloader = ({isLoading, isThemeDetector}) => {
 
 	return (
 		<div className='preloader'>
-			<img alt='' src={logo} className='preloader_logo' />
-			<img alt='' src={logo} className='preloader_logo_back' />
+			{/* <Reach /> */}
+			<Unreach />
 		</div>
 	)
 }
