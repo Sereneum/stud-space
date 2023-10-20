@@ -90,7 +90,7 @@ const useApp = () => {
 		authCheck()
 			.then(r => {
 				console.log('authCheck: ', r)
-				// if (!user.isAuth) user.setIsAuth(true)
+				if (!user.isAuth) user.setIsAuth(true)
 				user.setUserData(r.data.data.user)
 				let id = r.data.data.user.anotherID
 				// console.log(id, r.data.data.user)

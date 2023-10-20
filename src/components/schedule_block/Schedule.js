@@ -9,12 +9,19 @@ import LoaderSchedule from '../loaders/LoaderSchedule'
 import {observer} from "mobx-react-lite";
 
 const Schedule = observer(() => {
+
 	const { user, localConfig} = useContext(Context)
 	const [weekData, setWeekData] = useState({})
-	const [weekID, setWeekID] = useState(pointToSlash(new Date()))
+	const [weekID, setWeekID] = useState(pointToSlash(new Date())); // pointToSlash(new Date())
 	const [isLoading, setIsLoading] = useState(true)
+	// const [isState, setIsState] = useState(0);
+	//
+	// useEffect(() => {
+	// 	// console.log('isState -> ', isState);
+	// }, [isState]);
 
 	const id = user.userData.anotherID
+	// console.log('weekID = ', weekID)
 
 	/* проверяет доп. данные, загружает календарь и лекции выбранной недели */
 	const sequence = async () => {
@@ -39,16 +46,22 @@ const Schedule = observer(() => {
 	}
 
 	useEffect(() => {
+		// console.log('(useState) weekID = ', weekID)
+		// const week = weekID ? weekID : pointToSlash(new Date())
 		sequence(weekID).then(r => {
-			// console.log('конец sequence')
+			// console.log('вызвался sequence')
 		})
 	}, [weekID])
 
 	useEffect(() => {
-		console.log('weekData: ', weekData)
+		// console.log('weekData: ', weekData)
+
 	}, [isLoading])
 
-	const updateWeek = newWeekID => setWeekID(newWeekID)
+	const updateWeek = newWeekID => {
+		// console.log('updateWeek')
+		setWeekID(newWeekID)
+	}
 
 	if (isLoading)
 		return (

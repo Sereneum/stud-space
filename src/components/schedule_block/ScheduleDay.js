@@ -1,7 +1,6 @@
 import ScheduleLesson from './ScheduleLesson'
 
 const ScheduleDay = ({ day }) => {
-	console.log(day)
 	return (
 		<>
 			<div className='element_container'>
