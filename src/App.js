@@ -24,7 +24,8 @@ const App = observer(() => {
 
 	const { isThemeDetector } = useThemeDetector()
 
-	const { isLoading, isAuth } = useApp()
+	const { isLoading, isAuth, isError} = useApp()
+
 
 	if (isLoading)
 		return (

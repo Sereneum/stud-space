@@ -84,6 +84,7 @@ const useApp = () => {
 	const navigate = useNavigate()
 	const location = useLocation()
 	const [isLoading, setIsLoading] = useState(true)
+	const [isError, setIsError] = useState(false)
 
 	const mainPreloadingDate = () => {
 		authCheck()
@@ -97,18 +98,31 @@ const useApp = () => {
 				next(id, () => setIsLoading(false), courseData, localConfig)
 			})
 			.catch(err => {
-				if (err.response.status === 401) {
-					// пользователь не авторизован
-					if (user.isAuth) user.setIsAuth(false)
-					navigateAfterBadTryLogin(navigate, location.pathname)
-					setIsLoading(false)
+				// console.log('[ERROR] -> ', err);
+				// console.log(typeof(err), Object.getOwnPropertyNames(err));
+				// console.log(err.stack)
+				// console.log(err.message)
+				try {
+					if (err.response.status === 401) {
+						// пользователь не авторизован
+						if (user.isAuth) user.setIsAuth(false)
+						navigateAfterBadTryLogin(navigate, location.pathname)
+						setIsLoading(false)
+					} else {
+						console.log('Ошибка со статусом ' + err.response.status)
+						setIsError(true);
+					}
+				}
+				catch (catchErr) {
+					console.log('Непредвиденная ошибка');
+					setIsError(true);
 				}
 			})
 	}
 
 	useEffect(mainPreloadingDate, [])
 
-	return { isLoading, isAuth: user.isAuth }
+	return { isLoading, isAuth: user.isAuth, isError}
 }
 
 export default useApp
