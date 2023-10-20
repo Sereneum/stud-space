@@ -13,10 +13,10 @@ const Unreach = () => {
 		>
 			<LinkBreak
 				className='preloader_logo icon_big'
-				style={{ color: 'red', width: '60px', height: 'auto' }}
+				style={{ color: 'red', width: '60px', height: '60px', margin: '0' }}
 			/>
 			<p style={{ textAlign: 'center', color: 'white', lineHeight: '1.5' }}>
-				Не удалось синхронизироваться со stud.mgri.ru <br />
+				Не удалось установить связь со stud.mgri.ru <br />
 				Попробуйте войти позднее.
 			</p>
 		</div>
