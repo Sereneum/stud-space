@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import Reach from './Reach.jsx'
 import Unreach from './Unreach.jsx'
 
-const Preloader = ({ isLoading, isThemeDetector }) => {
+const Preloader = ({ isLoading, isThemeDetector, isError }) => {
 	const updateThemeColor = color => {
 		const metaThemeColor = document.querySelector('meta[name=theme-color]')
 		if (metaThemeColor) {
@@ -20,8 +20,16 @@ const Preloader = ({ isLoading, isThemeDetector }) => {
 
 	return (
 		<div className='preloader'>
-			{/* <Reach /> */}
-			<Unreach />
+			{
+				isError
+				?
+					<Unreach />
+					:
+					<Reach />
+
+			}
+			{/*/!* *!/*/}
+			{/*<Unreach />*/}
 		</div>
 	)
 }

@@ -61,12 +61,10 @@ const ScheduleCalendar = ({
 				})
 			}
 		}
-		// console.log('table', table)
 		return table
 	}
 
 	useEffect(() => {
-		// console.log('calendar: ', calendar)
 		calendar && setTable(fillTable(calendar))
 	}, [calendar, weekID, month, year])
 

@@ -27,17 +27,16 @@ const App = observer(() => {
 	const { isLoading, isAuth, isError} = useApp()
 
 
-	const trueLoading = isLoading
 
-	if (trueLoading)
+	if (isLoading)
 		return (
 			<CSSTransition
-				in={trueLoading}
+				in={isLoading}
 				timeout={300}
 				classNames='preloader'
 				unmountOnExit
 			>
-				<Preloader isLoading={trueLoading} isThemeDetector={isThemeDetector} />
+				<Preloader isLoading={isLoading} isThemeDetector={isThemeDetector} isError={isError}/>
 			</CSSTransition>
 		)
 

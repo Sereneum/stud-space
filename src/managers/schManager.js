@@ -1,9 +1,5 @@
 export const sch_parser = (lessons, weekID = null) => {
     const week = []
-
-    console.log('sch_parser:')
-    console.log(weekID)
-
     const currentDayId = weekID
         ?
         new Date(weekID).getDay()

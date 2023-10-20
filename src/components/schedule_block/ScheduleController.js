@@ -8,8 +8,6 @@ const ScheduleController = ({ weekID, updateWeek, calendar }) => {
 	const [isVisible, setIsVisible] = useState(false)
 	const modalControl = () => setIsVisible(prev => !prev)
 
-	// useEffect(() => console.log(isVisible), [isVisible])
-
 	return (
 		<>
 			<div className='calendar_block' onClick={modalControl}>

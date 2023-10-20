@@ -3,8 +3,6 @@ import { isSameDate } from '../../managers/timeManager'
 import moment from "moment/moment";
 
 const ScheduleLesson = ({ lesson, isLast }) => {
-	console.log(lesson)
-
 	const typeStyle = les => {
 		if (les.length > 3 && les.slice(0, 3) === 'лек') return 'lect'
 		if (les.length > 3 && les.slice(0, 3) === 'пр.') return 'pract'

@@ -90,18 +90,15 @@ const useApp = () => {
 		authCheck()
 			.then(r => {
 				console.log('authCheck: ', r)
-				if (!user.isAuth) user.setIsAuth(true)
+				// if (!user.isAuth) user.setIsAuth(true)
 				user.setUserData(r.data.data.user)
 				let id = r.data.data.user.anotherID
-				console.log(id, r.data.data.user)
+				// console.log(id, r.data.data.user)
 				/* загрузка курсов */
 				next(id, () => setIsLoading(false), courseData, localConfig)
 			})
 			.catch(err => {
-				// console.log('[ERROR] -> ', err);
-				// console.log(typeof(err), Object.getOwnPropertyNames(err));
-				// console.log(err.stack)
-				// console.log(err.message)
+				console.log(err)
 				try {
 					if (err.response.status === 401) {
 						// пользователь не авторизован
@@ -114,7 +111,7 @@ const useApp = () => {
 					}
 				}
 				catch (catchErr) {
-					console.log('Непредвиденная ошибка');
+					console.log('Непредвиденная ошибка', catchErr);
 					setIsError(true);
 				}
 			})

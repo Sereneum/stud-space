@@ -27,11 +27,11 @@ const Schedule = observer(() => {
 				user.setMinorUserData(r.data.data)
 			)
 
-		console.log(user.minorUserData)
+		// console.log(user.minorUserData)
 		const groupID = user.minorUserData.group.item2
 
 		await epoch_schedule({ groupID, weekID, isCalendar }).then(r => {
-			console.log(r)
+			// console.log(r)
 			if (!isCalendar) user.setCalendar(r[1])
 			setWeekData(sch_parser(r[0].rasp, weekID))
 			setIsLoading(false)
@@ -40,7 +40,7 @@ const Schedule = observer(() => {
 
 	useEffect(() => {
 		sequence(weekID).then(r => {
-			console.log('конец sequence')
+			// console.log('конец sequence')
 		})
 	}, [weekID])
 
