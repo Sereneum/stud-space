@@ -1,6 +1,10 @@
 import { LinkBreak } from '@phosphor-icons/react'
 
 const Unreach = () => {
+	const handleReload = () => {
+		window.location.reload()
+	}
+
 	return (
 		<div
 			style={{
@@ -8,7 +12,7 @@ const Unreach = () => {
 				flexDirection: 'column',
 				gap: '15px',
 				alignItems: 'center',
-				paddingBottom: '20px',
+				marginTop: '70px'
 			}}
 		>
 			<LinkBreak
@@ -19,6 +23,12 @@ const Unreach = () => {
 				Не удалось установить связь со stud.mgri.ru <br />
 				Попробуйте войти позднее.
 			</p>
+			<div
+				onClick={handleReload}
+				style={{ cursor: 'pointer', width: 'min-content', padding: '6px 12px 7px 12px', border: '2px solid white', borderRadius: '14px', marginTop: '50px'}}
+			>
+				<p style={{color: 'white', fontSize: '14px'}}>Перезагрузка</p>
+			</div>
 		</div>
 	)
 }
