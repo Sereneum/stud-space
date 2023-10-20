@@ -1,4 +1,4 @@
-import { CloudWarning } from '@phosphor-icons/react'
+import { LinkBreak } from '@phosphor-icons/react'
 
 const Unreach = () => {
 	return (
@@ -6,18 +6,18 @@ const Unreach = () => {
 			style={{
 				display: 'flex',
 				flexDirection: 'column',
-				gap: '6px',
+				gap: '15px',
 				alignItems: 'center',
 				paddingBottom: '20px',
 			}}
 		>
-			<CloudWarning
+			<LinkBreak
 				className='preloader_logo icon_big'
-				style={{ color: 'white', width: '50px', height: 'auto' }}
+				style={{ color: 'red', width: '60px', height: 'auto' }}
 			/>
-			<p style={{ textAlign: 'center', color: 'white' }}>
-				В данный момент сервера stud недоступны. <br />
-				Попробуйте позже.
+			<p style={{ textAlign: 'center', color: 'white', lineHeight: '1.5' }}>
+				Не удалось синхронизироваться со stud.mgri.ru <br />
+				Попробуйте войти позднее.
 			</p>
 		</div>
 	)
