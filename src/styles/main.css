@@ -51,7 +51,7 @@
 	background-color: var(--var-active-element);
 }
 *::-webkit-scrollbar-track {
-  background-color: var(--var-bg);
+	background-color: var(--var-bg);
 }
 
 input:-webkit-autofill,
@@ -335,9 +335,9 @@ a {
 	overflow: hidden;
 }
 
-
 .block-animation {
-	animation: enterBlock 1.2s cubic-bezier(0, 1, 0, 1), enterOpacity 0.2s ease-in-out;
+	animation: enterBlock 1.2s cubic-bezier(0, 1, 0, 1),
+		enterOpacity 0.2s ease-in-out;
 }
 
 .course-animation {
@@ -743,7 +743,7 @@ a {
 	background-color: var(--var-push);
 }
 
-.select-zoom{
+.select-zoom {
 	cursor: pointer;
 	transition: background-color 0.08s, transform 0.15s linear;
 	user-select: none;
@@ -904,7 +904,6 @@ input::placeholder {
 	-webkit-filter: blur(30px);
 	/* animation-delay: 2s; */
 	opacity: 1;
-	
 
 	animation: opacity 2.3s infinite ease-in-out;
 }
@@ -921,6 +920,12 @@ input::placeholder {
 .loader-flick {
 	animation: opacity 1s infinite;
 	position: absolute;
+}
+
+.icon-lighter {
+	flex-shrink: 0;
+	width: 14px;
+	height: auto;
 }
 
 @media (max-width: 1360px) {
@@ -1060,13 +1065,13 @@ input::placeholder {
 }
 
 .reject-animation {
-  animation: reject 2s, shake 0.4s linear;
+	animation: reject 2s, shake 0.4s linear;
 }
 
 @keyframes reject {
 	0% {
 		background-color: var(--decline);
-		box-shadow: 0px 5px 10px 0px rgba(199, 29, 29, 0.25)
+		box-shadow: 0px 5px 10px 0px rgba(199, 29, 29, 0.25);
 	}
 
 	100% {
