@@ -24,9 +24,7 @@ const App = observer(() => {
 
 	const { isThemeDetector } = useThemeDetector()
 
-	const { isLoading, isAuth, isError} = useApp()
-
-
+	const { isLoading, isAuth, isError } = useApp()
 
 	if (isLoading)
 		return (
@@ -36,7 +34,11 @@ const App = observer(() => {
 				classNames='preloader'
 				unmountOnExit
 			>
-				<Preloader isLoading={isLoading} isThemeDetector={isThemeDetector} isError={isError}/>
+				<Preloader
+					isLoading={isLoading}
+					isThemeDetector={isThemeDetector}
+					isError={isError}
+				/>
 			</CSSTransition>
 		)
 
