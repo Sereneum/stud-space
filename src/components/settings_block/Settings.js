@@ -36,6 +36,7 @@ const Settings = observer(() => {
 
 	useEffect(() => {
 		epoch_fetchConfigurableCourses(id).then(r => {
+			console.log('r.active', r.active)
 			setActive(r.active)
 			setPureActive(r.active)
 			setPassive(r.passive)

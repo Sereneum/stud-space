@@ -9,6 +9,9 @@ const preEpoch_deadlineParser = deadline => {
 
 export const preEpoch_mergeCourseData = (user_data, duty_data, course_id, course_name = '') => {
     return new Promise((resolve, reject) => {
+        //
+        // console.log(user_data, duty_data)
+        //
         const courseMaterials = duty_data.listFiles
         const courseThemes = duty_data.listCourseThemes
         const preTasks = user_data.listSelectedTasks

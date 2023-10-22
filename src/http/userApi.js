@@ -13,6 +13,8 @@ authCheckInter.interceptors.request.use(
         // Выполняем дополнительные действия перед отправкой запроса, если необходимо
         const token = localStorage.getItem('token')
         config.headers.Authorization = `Bearer ${token}`
+        // config.headers["Origin"] = `https://stud.mgri.ru`
+        // config.headers['Access-Control-Allow-Origin'] = 'https://stud.mgri.ru'
         return config
     },
     (error) => Promise.reject(error)

@@ -8,6 +8,8 @@ export default class UserStore {
         this._minorUserData = {}
         this._config = {}
         this._calendar = {}
+        this._weekData = {}
+        this._weekID = ''
         makeAutoObservable(this)
     }
 
@@ -31,6 +33,14 @@ export default class UserStore {
         this._calendar = JSON.parse(JSON.stringify(calendar))
     }
 
+    setWeekData(weekData) {
+        this._weekData = JSON.parse(JSON.stringify(weekData))
+    }
+
+    setWeekID(weekID) {
+        this._weekID = weekID
+    }
+
     get isAuth() {
         return this._isAuth
     }
@@ -49,5 +59,13 @@ export default class UserStore {
 
     get calendar() {
         return JSON.parse(JSON.stringify(this._calendar))
+    }
+
+    get weekData() {
+        return JSON.parse(JSON.stringify(this._weekData))
+    }
+
+    get weekID() {
+        return this._weekID
     }
 }

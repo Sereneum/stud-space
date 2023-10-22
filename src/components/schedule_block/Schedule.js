@@ -11,20 +11,14 @@ import {observer} from "mobx-react-lite";
 const Schedule = observer(() => {
 
 	const { user, localConfig} = useContext(Context)
-	const [weekData, setWeekData] = useState({})
-	const [weekID, setWeekID] = useState(pointToSlash(new Date())); // pointToSlash(new Date())
+	// const [weekData, setWeekData] = useState({})
+	// const [weekID, setWeekID] = useState(pointToSlash(new Date())); // pointToSlash(new Date())
 	const [isLoading, setIsLoading] = useState(true)
-	// const [isState, setIsState] = useState(0);
-	//
-	// useEffect(() => {
-	// 	// console.log('isState -> ', isState);
-	// }, [isState]);
 
 	const id = user.userData.anotherID
-	// console.log('weekID = ', weekID)
 
 	/* проверяет доп. данные, загружает календарь и лекции выбранной недели */
-	const sequence = async () => {
+	const sequence = async (weekID) => {
 		// нет доп. данных
 		const isEmptyMinor = !Object.keys(user.minorUserData).length
 		const isCalendar = !!Object.keys(user.calendar).length
@@ -34,33 +28,35 @@ const Schedule = observer(() => {
 				user.setMinorUserData(r.data.data)
 			)
 
-		// console.log(user.minorUserData)
 		const groupID = user.minorUserData.group.item2
 
 		await epoch_schedule({ groupID, weekID, isCalendar }).then(r => {
-			// console.log(r)
 			if (!isCalendar) user.setCalendar(r[1])
-			setWeekData(sch_parser(r[0].rasp, weekID))
+			user.setWeekData(sch_parser(r[0].rasp, weekID))
 			setIsLoading(false)
 		})
 	}
 
-	useEffect(() => {
-		// console.log('(useState) weekID = ', weekID)
-		// const week = weekID ? weekID : pointToSlash(new Date())
-		sequence(weekID).then(r => {
-			// console.log('вызвался sequence')
-		})
-	}, [weekID])
+
+	const logic = (week=null) => {
+		if(!week) {week = pointToSlash(new Date())}
+		user.setWeekID(week);
+		sequence(week)
+			.then(r => {})
+	}
 
 	useEffect(() => {
-		// console.log('weekData: ', weekData)
+		if(user.weekID && user.weekData !== {}) {
+			setIsLoading(false)
+			return
+		}
+		logic()
+	}, [])
 
-	}, [isLoading])
 
 	const updateWeek = newWeekID => {
-		// console.log('updateWeek')
-		setWeekID(newWeekID)
+		if(!isLoading) setIsLoading(true)
+		logic(newWeekID)
 	}
 
 	if (isLoading)
@@ -82,13 +78,13 @@ const Schedule = observer(() => {
 
 			{/* SCHEDULE CONTROL BLOCK */}
 			<ScheduleController
-				weekID={weekID}
+				weekID={user.weekID}
 				updateWeek={updateWeek}
 				calendar={user.calendar}
 			/>
 
 			{/* SCHEDULE WEEK BLOCK */}
-			<ScheduleWeek weekData={weekData} />
+			<ScheduleWeek weekData={user.weekData} />
 
 			{/* end block */}
 		</div>

@@ -9,9 +9,13 @@ const $authHost = axios.create({
     baseURL: const_url,
     headers: {
         'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        // 'Origin': 'https://stud.mgri.ru',
     }
 })
+
+// 'Access-Control-Allow-Origin': '*',
+// 'Cross-Origin-Resource-Policy': 'cross-origin',
 
 const configHost = token => {
     // $authHost.defaults.headers.common['Authorization'] = `Bearer ${token}`
