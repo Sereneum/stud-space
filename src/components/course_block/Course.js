@@ -110,7 +110,7 @@ const Course = observer(() => {
 				<h2>{course.course_name}</h2>
 			</div>
 
-			<CourseInfo />
+			{/*<CourseInfo />*/}
 
 			<div className='element_container'>
 				<div className='title_container'>
