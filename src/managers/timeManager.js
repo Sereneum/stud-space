@@ -7,6 +7,8 @@ const convResult = (result) => {
             return '1 час'
         case 'день':
             return '1 день'
+        case 'месяц':
+            return '1 месяц'
         default:
             return result
     }
