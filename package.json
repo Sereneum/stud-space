@@ -10,6 +10,7 @@
     "accordion-js": "^3.3.4",
     "axios": "^1.4.0",
     "date-fns": "^2.30.0",
+    "dotenv": "^16.3.1",
     "mobx": "^6.9.1",
     "mobx-react-lite": "^4.0.3",
     "moment": "^2.29.4",
@@ -29,6 +30,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:dev": "set REACT_APP_MODE=dev&& npm start",
+    "start:prod": "set REACT_APP_MODE=prod&& npm start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

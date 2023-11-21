@@ -5,6 +5,7 @@ import { Context } from '../index'
 import { epoch_courseData, epoch_fetchServerData } from '../http/epochServer'
 import { themeManager } from '../managers/themeManager'
 import {smoothTsManager} from "../managers/smoothTsManager";
+import {devPrint} from "../managers/devTools";
 
 const next = (id, end, courseData, localConfig) => {
 	loadingCourses(id)
@@ -89,7 +90,8 @@ const useApp = () => {
 	const mainPreloadingDate = () => {
 		authCheck()
 			.then(r => {
-				console.log('authCheck: ', r)
+				devPrint('authCheck: ')
+				devPrint('process.env', process.env)
 				if (!user.isAuth) user.setIsAuth(true)
 				user.setUserData(r.data.data.user)
 				let id = r.data.data.user.anotherID
@@ -98,7 +100,7 @@ const useApp = () => {
 				next(id, () => setIsLoading(false), courseData, localConfig)
 			})
 			.catch(err => {
-				console.log(err)
+				devPrint(err)
 				try {
 					if (err.response.status === 401) {
 						// пользователь не авторизован
@@ -106,12 +108,12 @@ const useApp = () => {
 						navigateAfterBadTryLogin(navigate, location.pathname)
 						setIsLoading(false)
 					} else {
-						console.log('Ошибка со статусом ' + err.response.status)
+						devPrint('Ошибка со статусом ' + err.response.status)
 						setIsError(true);
 					}
 				}
 				catch (catchErr) {
-					console.log('Непредвиденная ошибка', catchErr);
+					devPrint('Непредвиденная ошибка', catchErr);
 					setIsError(true);
 				}
 			})
