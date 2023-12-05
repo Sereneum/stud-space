@@ -12,6 +12,9 @@ import {
     File,
     FileJpg
 } from "@phosphor-icons/react";
+
+import { const_url } from '../http/consts.js';
+
 import React from "react";
 
 let list_preview_format = [
@@ -114,7 +117,7 @@ const downloadFunc = (url) => {
 
 export const handleDownload = (fileName, link, fileID = null) => {
   if (fileName) {
-    window.open(`${constUrl}${link}`, '_blank');
+    window.open(`${const_url}${link}`, '_blank');
     return;
   }
 
