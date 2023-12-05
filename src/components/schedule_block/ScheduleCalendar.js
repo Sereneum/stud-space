@@ -69,21 +69,23 @@ const ScheduleCalendar = ({
 	}, [calendar, weekID, month, year])
 
 	const previousMonth = () => {
-		let minDate = new Date(calendar?.dates[0])
-		let new_month = month - 1 < 0 ? 12 : month - 1
-		let new_year = month - 1 < 0 ? year - 1 : year
-		let new_date = new Date(new_year, new_month, 1)
+		const minDate = new Date(calendar?.minDate);
+   		const newMonth = month - 1 < 0 ? 12 : month - 1;
+    		const newYear = month - 1 < 0 ? year - 1 : year;
+    		const newDate = new Date(newYear, newMonth, 1);
 
-		return minDate.getMonth() <= new_date.getMonth()
+		return minDate.getMonth() <= newDate.getMonth()
+   		&& minDate.getFullYear() <= newDate.getFullYear();
 	}
 
 	const nextMonth = () => {
-		let maxDate = new Date(calendar?.dates[calendar?.dates.length - 1])
-		let new_month = month + 1 > 12 ? 0 : month + 1
-		let new_year = month + 1 > 12 ? year + 1 : year
-		let new_date = new Date(new_year, new_month, 1)
+		const maxDate = new Date(calendar?.maxDate);
+    		const newMonth = month + 1 > 12 ? 0 : month + 1;
+    		const newYear = month + 1 > 12 ? year + 1 : year;
+    		const newDate = new Date(newYear, newMonth, 1);
 
-		return maxDate.getMonth() >= new_date.getMonth()
+		return maxDate.getMonth() >= newDate.getMonth()
+		&& maxDate.getFullYear() >= newDate.getFullYear();
 	}
 
 	const clickOnArrow = offset => {
