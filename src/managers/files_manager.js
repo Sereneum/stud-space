@@ -112,23 +112,13 @@ const downloadFunc = (url) => {
         });
 }
 
-export const handleDownload = (fileName, link, fileID=null) => {
-    if(!fileName) {
-        window.open(link)
-        return
-    } else {
-        const baseUrl = 'https://stud.mgri.ru';
-        const url = baseUrl + `/api/ElectronicEducation/Files/download?fileID=${fileID}`;
-        window.open(url, '_blank');
-        // downloadFunc(url);
-        return;
-    }
+export const handleDownload = (fileName, link, fileID = null) => {
+  if (fileName) {
+    window.open(`${constUrl}${link}`, '_blank');
+    return;
+  }
 
-    let url = `https://stud.mgri.ru${link}`
-    let format_file = url.slice(url.lastIndexOf('.') + 1)
-
-    if(list_preview_format.find(e => e === format_file) !== undefined)
-        window.open(url, '_blank')
-    else
-        window.location.href = url
+  if (link) {
+    window.open(link);
+  }
 };
